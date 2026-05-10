@@ -10,7 +10,7 @@
 #include "../gfx/color.h"
 #include "../core/context.h"
 
-label_t label_new(int32_t x, int32_t y, const char* text) {
+label_t label(int x, int y, const char* text) {
     label_t label;
     label.text = strdup(text);
     label.x = x;
@@ -24,11 +24,17 @@ label_t label_new(int32_t x, int32_t y, const char* text) {
     return label;
 }
 
+label_t* label_new(int x, int y, const char* text) {
+    label_t* heap_label = malloc(sizeof(label_t));
+    *heap_label = label(x, y, text);
+    return heap_label;
+}
+
 void label_set_color(label_t* label, color_t color) {
     label->color = color;
 }
 
-void label_set_font_size(label_t* label, int16_t font_size, const uint8_t* data, size_t size) {
+void label_set_font_size(label_t* label, uint8_t font_size, const uint8_t* data, size_t size) {
     label->font_size = font_size;
     if (label->texture) {
         SDL_DestroyTexture(label->texture);
@@ -46,11 +52,11 @@ void label_render(const label_t* label) {
 
 void label_set_on_center(label_t* label) {
     SDL_Rect rect = gfx_get_texture_size(label->texture);
-    label->x = (WINDOW_WIDTH - rect.w)  * 0.5f;
-    label->y = (WINDOW_HEIGHT - rect.h) * 0.5f;
+    label->x = (WINDOW_WIDTH - rect.w)  * DIV2;
+    label->y = (WINDOW_HEIGHT - rect.h) * DIV2;
 }
 
 void label_set_horizontal_center(label_t* label) {
     SDL_Rect rect = gfx_get_texture_size(label->texture);
-    label->x = (WINDOW_WIDTH - rect.w) * 0.5f;
+    label->x = (WINDOW_WIDTH - rect.w) * DIV2;
 }

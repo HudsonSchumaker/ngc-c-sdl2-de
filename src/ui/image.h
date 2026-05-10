@@ -10,16 +10,17 @@
 #include "../gfx/color.h"
 
 typedef struct {
-    int32_t x;
-    int32_t y;
-    int32_t w;
-    int32_t h;
-    SDL_Texture* texture;
-    color_t color;
+    int x;
+    int y;
+    int w;
+    int h;
     bool visible;
+    color_t color;
+    SDL_Texture* texture;
 } image_t;
 
-image_t image_new(int32_t x, int32_t y);
+image_t image(int x, int y);
+image_t* image_new(int x, int y);
 void image_set_source(image_t* image, const uint8_t* data, size_t size);
 void image_set_tint(image_t* image, color_t color);
 void image_render(const image_t* image);

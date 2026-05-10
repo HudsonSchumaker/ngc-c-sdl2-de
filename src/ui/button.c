@@ -9,7 +9,7 @@
 #include "../gfx/gfx.h"
 #include "../core/context.h"
 
-button_t button_new(int32_t x, int32_t y) {
+button_t button(int x, int y) {
     button_t button;
     button.x = x;
     button.y = y;
@@ -19,6 +19,12 @@ button_t button_new(int32_t x, int32_t y) {
     button.onclick = NULL;
     button.visible = true;
     return button;
+}
+
+button_t* button_new(int x, int y) {
+    button_t* heap_button = malloc(sizeof(button_t));
+    *heap_button = button(x, y);
+    return heap_button;
 }
 
 void button_set_source(button_t* button, const uint8_t* data, size_t size) {
