@@ -7,13 +7,19 @@
 */
 #include "color.h"
 
-color_t color_new(uint8_t r, uint8_t g, uint8_t b, uint8_t a) {
+color_t color(uint8_t r, uint8_t g, uint8_t b, uint8_t a) {
     color_t color;
     color.r = r;
     color.g = g;
     color.b = b;
     color.a = a;
     return color;
+}
+
+color_t* color_new(uint8_t r, uint8_t g, uint8_t b, uint8_t a) {
+    color_t* heap_color = malloc(sizeof(color_t));
+    *heap_color = color(r, g, b, a);
+    return heap_color;
 }
 
 SDL_Color color_to_sdl_color(const color_t color) {
@@ -26,21 +32,21 @@ SDL_Color color_to_sdl_color(const color_t color) {
 }
 
 color_t color_red(void) {
-    return color_new(255, 0, 0, 255);
+    return color(255, 0, 0, 255);
 }
 
 color_t color_green(void) {
-    return color_new(0, 255, 0, 255);
+    return color(0, 255, 0, 255);
 }
 
 color_t color_blue(void) {
-    return color_new(0, 0, 255, 255);
+    return color(0, 0, 255, 255);
 }
 
 color_t color_white(void) {
-    return color_new(255, 255, 255, 255);
+    return color(255, 255, 255, 255);
 }
 
 color_t color_black(void) {
-    return color_new(0, 0, 0, 255);
+    return color(0, 0, 0, 255);
 }
