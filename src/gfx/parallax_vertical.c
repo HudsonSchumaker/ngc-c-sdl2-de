@@ -6,10 +6,10 @@
 * @copyright Copyright (c) 2024, Dodoi-Lab
 */
 #include "gfx.h"
+#include "parallax.h"
 #include "../core/context.h"
-#include "parallax_vertical.h"
 
-parallax_vertical_t parallax_vertical_new(const uint8_t* parallax_data, const size_t parallax_size) {
+parallax_vertical_t parallax_vertical_simple(const uint8_t* parallax_data, const size_t parallax_size) {
     parallax_vertical_t parallax;
     parallax.texture = gfx_load_texture(parallax_data, parallax_size);
     
@@ -21,7 +21,7 @@ parallax_vertical_t parallax_vertical_new(const uint8_t* parallax_data, const si
     return parallax;
 }
 
-parallax_vertical_t parallax_vertical_2new(const uint8_t* bg_data, const size_t bg_size, const uint8_t* parallax_data, const size_t parallax_size) {
+parallax_vertical_t parallax_vertical_double(const uint8_t* bg_data, const size_t bg_size, const uint8_t* parallax_data, const size_t parallax_size) {
     parallax_vertical_t parallax;
     parallax.background = gfx_load_texture(bg_data, bg_size);
     parallax.bg_rect = gfx_get_texture_size(parallax.background);
@@ -32,6 +32,18 @@ parallax_vertical_t parallax_vertical_2new(const uint8_t* bg_data, const size_t 
     parallax.rect_a = (SDL_Rect){ 0, 0, parallax.size.x, parallax.size.y };
     parallax.rect_b = (SDL_Rect){ 0, -parallax.size.y, parallax.size.x, parallax.size.y };
     
+    return parallax;
+}
+
+parallax_vertical_t* parallax_vertical_simple_new(const uint8_t* parallax_data, const size_t parallax_size) {
+    parallax_vertical_t* parallax = malloc(sizeof(parallax_vertical_t));
+    *parallax = parallax_vertical_simple(parallax_data, parallax_size);
+    return parallax;
+}
+
+parallax_vertical_t* parallax_vertical_double_new(const uint8_t* bg_data, const size_t bg_size, const uint8_t* parallax_data, const size_t parallax_size) {
+    parallax_vertical_t* parallax = malloc(sizeof(parallax_vertical_t));
+    *parallax = parallax_vertical_double(bg_data, bg_size, parallax_data, parallax_size);
     return parallax;
 }
 
