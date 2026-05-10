@@ -30,6 +30,20 @@
 #define FPS 60
 #define FRAME_TARGET_TIME (1000 / FPS)
 
+#define DIV2   0.5f
+#define DIV3   0.3333333333f
+#define DIV4   0.25f
+#define DIV5   0.2f
+#define DIV6   0.1666666667f
+#define DIV7   0.1428571429f
+#define DIV8   0.125f
+#define DIV9   0.1111111111f
+#define DIV10  0.1f
+#define DIV16  0.0625f
+#define DIV32  0.03125f
+#define DIV64  0.015625f
+#define DIV128 0.0078125f
+
 #define TWO_PI 6.28318530717958647692f
 #define HALF_PI 1.57079632679489661923f
 #define DIV_PI_180 0.01745329251994329577f
