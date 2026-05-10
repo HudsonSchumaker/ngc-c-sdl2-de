@@ -7,32 +7,32 @@
 */
 #include "de_math.h"
 
-int min(int32_t a, int32_t b) {
+int min(int a, int b) {
     return (a < b) ? a : b;
 }
 
-int max(int32_t a, int32_t b) {
+int max(int a, int b) {
     return (a > b) ? a : b;
 }
 
-int wrap(int32_t value, int32_t min_val, int32_t max_val) {
-    int32_t range = max_val - min_val + 1;
+int wrap(int value, int min_val, int max_val) {
+    int range = max_val - min_val + 1;
     if (range <= 0) return min_val; 
-    int32_t wrapped_value = (value - min_val) % range;
+    int wrapped_value = (value - min_val) % range;
     if (wrapped_value < 0) wrapped_value += range;
     return wrapped_value + min_val;
 }
 
-int clamp(int32_t value, int32_t min_val, int32_t max_val) {
+int clamp(int value, int min_val, int max_val) {
     if (value < min_val) return min_val;
     if (value > max_val) return max_val;
     return value;
 }
 
-int distance_between_points(int32_t x1, int32_t y1, int32_t x2, int32_t y2) {
-    int32_t dx = x2 - x1;
-    int32_t dy = y2 - y1;
-    return (int32_t)sqrtf((float)(dx * dx + dy * dy));
+int distance_between_points(int x1, int y1, int x2, int y2) {
+    int dx = x2 - x1;
+    int dy = y2 - y1;
+    return (int)sqrtf((float)(dx * dx + dy * dy));
 }
 
 float minf(float a, float b) {

@@ -8,11 +8,11 @@
 #pragma once
 #include "../pch.h"
 
-int min(int32_t a, int32_t b);
-int max(int32_t a, int32_t b);
-int wrap(int32_t value, int32_t min_val, int32_t max_val);
-int clamp(int32_t value, int32_t min_val, int32_t max_val);
-int distance_between_points(int32_t x1, int32_t y1, int32_t x2, int32_t y2);
+int min(int a, int b);
+int max(int a, int b);
+int wrap(int value, int min_val, int max_val);
+int clamp(int value, int min_val, int max_val);
+int distance_between_points(int x1, int y1, int x2, int y2);
 
 float minf(float a, float b);
 float maxf(float a, float b);
