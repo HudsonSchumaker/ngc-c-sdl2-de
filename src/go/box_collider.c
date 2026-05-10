@@ -7,12 +7,18 @@
 */
 #include "box_collider.h"
 
-box_collider_t box_collider_new(int32_t x, int32_t y, int32_t w, int32_t h) {
+box_collider_t box_collider(int x, int y, int w, int h) {
     box_collider_t collider;
     collider.x = x;
     collider.y = y;
     collider.w = w;
     collider.h = h;
+    return collider;
+}
+
+box_collider_t* box_collider_new(int x, int y, int w, int h) {
+    box_collider_t* collider = malloc(sizeof(box_collider_t));
+    *collider = box_collider(x, y, w, h);
     return collider;
 }
 
@@ -24,7 +30,7 @@ bool box_collider_collide(const box_collider_t* a, const box_collider_t* b) {
         );
 }
 
-bool box_collider_contains(const box_collider_t* collider, int32_t px, int32_t py) {
+bool box_collider_contains(const box_collider_t* collider, int px, int py) {
     return (px >= collider->x &&
             px <= collider->x + collider->w &&
             py >= collider->y &&
