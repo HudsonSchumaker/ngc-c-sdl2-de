@@ -22,7 +22,7 @@ include $(DEVKITPPC)/gamecube_rules
 #---------------------------------------------------------------------------------
 TARGET	 := $(notdir $(CURDIR))
 BUILD	 := build
-SOURCES	 := src src/core src/gfx src/sfx src/ui src/math src/go src/playground
+SOURCES	 := src src/core src/gfx src/sfx src/ui src/go src/math src/util src/playground 
 DATA	 := data
 BINARIES := bin
 INCLUDES :=
@@ -30,7 +30,7 @@ INCLUDES :=
 #---------------------------------------------------------------------------------
 # options for code generation
 #---------------------------------------------------------------------------------
-CFLAGS	 = `$(PREFIX)pkg-config --cflags sdl2 SDL2_ttf SDL2_gfx SDL2_mixer SDL2_image freetype2` -ffast-math -g -O2 -Wall $(MACHDEP) $(INCLUDE) -DGAMECUBE -DCONSOLE
+CFLAGS	 = `$(PREFIX)pkg-config --cflags sdl2 SDL2_ttf SDL2_gfx SDL2_mixer SDL2_image freetype2` -ffast-math -g -O3 -Wall $(MACHDEP) $(INCLUDE) -DGAMECUBE -DCONSOLE
 CXXFLAGS =	$(CFLAGS)
 LDFLAGS	 = -g $(MACHDEP) -Wl,-Map,$(notdir $@).map
 
