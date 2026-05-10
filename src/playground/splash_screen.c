@@ -37,7 +37,6 @@ void splash_screen_load(void) {
     SDL_QueryTexture(logoTexture, NULL, NULL, &rect.w, &rect.h);
     rect.x = (WINDOW_WIDTH - rect.w) * 0.5f;
     rect.y = (WINDOW_HEIGHT - rect.h) * 0.5f;
-
     running = true;
 }
 
