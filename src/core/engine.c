@@ -7,6 +7,7 @@
 */
 #include "engine.h"
 #include "context.h"
+#include "../math/de_math.h"
 #include "../playground/splash_screen.h"
 
 static float delta_time = 0.0f;
@@ -15,6 +16,8 @@ void engine_init(void) {
     if (ctx_init() != 0) {
         exit(EXIT_FAILURE);
     }
+
+    build_trigo_tables();
 
     splash_screen_init();
     splash_screen_get_scene()->load();
