@@ -114,7 +114,7 @@ void gfx_draw_dashed_circle(const int cx, const int cy, const int radius, const 
     SDL_SetRenderDrawColor(ctx_get_renderer(), color.r, color.g, color.b, color.a);
     
     const int total_segments = (int)(radius * M_PI / dash_length);
-    const float angle_increment = (2.0f * M_PI) / total_segments;
+    const float angle_increment = TWO_PI / total_segments;
 
      for (short i = 0; i < total_segments; ++i) {
         float angle = angle_increment * i;
