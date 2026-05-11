@@ -6,6 +6,24 @@
 * @copyright Copyright (c) 2024, Dodoi-Lab
 */
 #include "de_math.h"
+static float sin_table[TABLE_SIZE];
+static float cos_table[TABLE_SIZE];
+
+void build_trigo_tables(void) {
+    for (int i = 0; i < TABLE_SIZE; i++) {
+        float angle =  ((float)i / TABLE_SIZE) * TWO_PI;
+        sin_table[i] = sinf(angle);
+        cos_table[i] = cosf(angle);
+    }
+}
+
+float sinf_table(int angle) {
+    return sin_table[angle & ANGLE_MASK];
+}
+
+float cosf_table(int angle) {
+    return cos_table[angle & ANGLE_MASK];
+}
 
 int min(int a, int b) {
     return (a < b) ? a : b;
@@ -32,7 +50,10 @@ int clamp(int value, int min_val, int max_val) {
 int distance_between_points(int x1, int y1, int x2, int y2) {
     int dx = x2 - x1;
     int dy = y2 - y1;
-    return (int)sqrtf((float)(dx * dx + dy * dy));
+
+    float distSq = (float)(dx * dx + dy * dy);
+    float inv = rsqrtf(distSq);
+    return (int)(distSq * inv);
 }
 
 float minf(float a, float b) {
@@ -69,9 +90,9 @@ float rsqrtf(float number) {
     x2 = number * 0.5f;
     y  = number;
 
-    i =* (long*) &y;
+    i = *(long*) &y;
     i = 0x5f3759df - (i >> 1);
-    y =* (float*) &i;
+    y = *(float*) &i;
 
     y = y * (threehalfs - (x2 * y * y));
     return y;
@@ -114,5 +135,8 @@ float interpolatef(float start, float end, float t) {
 float distance_between_pointsf(float x1, float y1, float x2, float y2) {
     float dx = x2 - x1;
     float dy = y2 - y1;
-    return sqrtf(dx * dx + dy * dy);
+
+    float distSq = dx * dx + dy * dy;
+    float inv = rsqrtf(distSq);
+    return distSq * inv;
 }
