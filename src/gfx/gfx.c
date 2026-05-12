@@ -44,10 +44,8 @@ SDL_FRect gfx_get_texture_fsize(SDL_Texture* texture) {
     return rect;
 }
 
-void gfx_render_texture(SDL_Texture* texture, int x, int y) {
-    SDL_Rect dest = gfx_get_texture_size(texture);
-    dest.x = x;
-    dest.y = y;
+void gfx_render_texture(SDL_Texture* texture, int x, int y, int w, int h) {
+    SDL_Rect dest = {x, y, w, h};
     SDL_RenderCopy(ctx_get_renderer(), texture, NULL, &dest);
 }
 

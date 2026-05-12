@@ -28,7 +28,7 @@ void map_render(const map_t* map) {
     for (short y = 0; y < MAP_HEIGHT; ++y) {
         for (short x = 0; x < MAP_WIDTH; ++x) {
             short tex_id = map->tiles[y][x].texture_id;
-            gfx_render_texture(map->textures[tex_id], x * MAP_TILE_SIZE, y * MAP_TILE_SIZE);
+            gfx_render_texture(map->textures[tex_id], x * MAP_TILE_SIZE, y * MAP_TILE_SIZE, MAP_TILE_SIZE, MAP_TILE_SIZE);
         }
     }
 }
