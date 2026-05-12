@@ -29,10 +29,41 @@ void engine_quit(void) {
 }
 
 float engine_calculate_delta_time(void) {
-    static uint32_t last_time = 0;
-    uint32_t current_time = SDL_GetTicks();
-    delta_time = (current_time - last_time) / 1000.0f; // Convert to seconds
-    last_time = current_time;
+    static u_int64_t frequency = 0;
+    static u_int64_t last_counter = 0;
+    static float smooth_dt = 0.0f;
+
+    const float MAX_DT = 0.25f;
+    const float SMOOTH_ALPHA = 0.08f;
+
+    if (frequency == 0) {
+        frequency = SDL_GetPerformanceFrequency();
+    }
+    u_int64_t now = SDL_GetPerformanceCounter();
+
+    if (last_counter == 0) {
+        last_counter = now;
+        return 0.0f;
+    }
+
+    float dt = (float)(now - last_counter) / (float)frequency;
+    last_counter = now;
+
+    if (dt < 0.0f) {
+        dt = 0.0f;
+    }
+
+    if (dt > MAX_DT) {
+        dt = MAX_DT;
+    }
+
+    if (smooth_dt == 0.0f) {
+        smooth_dt = dt;
+    } else {
+        smooth_dt += SMOOTH_ALPHA * (dt - smooth_dt);
+    }
+
+    delta_time = smooth_dt;
     return delta_time;
 }
 

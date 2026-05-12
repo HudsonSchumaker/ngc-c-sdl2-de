@@ -27,9 +27,6 @@
 #define H_WINDOW_WIDTH 320
 #define H_WINDOW_HEIGHT 240
 
-#define FPS 60
-#define FRAME_TARGET_TIME (1000 / FPS)
-
 #define DIV2   0.5f
 #define DIV3   0.3333333333f
 #define DIV4   0.25f
