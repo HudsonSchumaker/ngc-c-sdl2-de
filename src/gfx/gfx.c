@@ -14,7 +14,7 @@ SDL_Texture* gfx_load_texture(const uint8_t* data, const size_t size) {
     return texture;
 }
 
-SDL_Texture* gfx_create_text(const uint8_t* data, const size_t size, const char* text, uint8_t text_size, const color_t color) {
+SDL_Texture* gfx_create_text(const uint8_t* data, const size_t size, const char* text, uint8_t text_size, color_t color) {
     SDL_RWops* rw = SDL_RWFromMem((void*)data, size);
     TTF_Font* font = TTF_OpenFontRW(rw, 1, text_size);
 
@@ -44,7 +44,14 @@ SDL_FRect gfx_get_texture_fsize(SDL_Texture* texture) {
     return rect;
 }
 
-void gfx_draw_line(const int x0, const int y0, const int x1, const int y1, const color_t color) {
+void gfx_render_texture(SDL_Texture* texture, int x, int y) {
+    SDL_Rect dest = gfx_get_texture_size(texture);
+    dest.x = x;
+    dest.y = y;
+    SDL_RenderCopy(ctx_get_renderer(), texture, NULL, &dest);
+}
+
+void gfx_draw_line(int x0, int y0, int x1, int y1, color_t color) {
     uint8_t prev_r, prev_g, prev_b, prev_a;
     SDL_GetRenderDrawColor(ctx_get_renderer(), &prev_r, &prev_g, &prev_b, &prev_a);
 
@@ -54,7 +61,7 @@ void gfx_draw_line(const int x0, const int y0, const int x1, const int y1, const
     SDL_SetRenderDrawColor(ctx_get_renderer(), prev_r, prev_g, prev_b, prev_a);
 }
 
-void gfx_draw_circle(const int cx, const int cy, const int radius, const color_t color) {
+void gfx_draw_circle(int cx, int cy, int radius, color_t color) {
     uint8_t prev_r, prev_g, prev_b, prev_a;
     SDL_GetRenderDrawColor(ctx_get_renderer(), &prev_r, &prev_g, &prev_b, &prev_a);
     SDL_SetRenderDrawColor(ctx_get_renderer(), color.r, color.g, color.b, color.a);
@@ -92,7 +99,7 @@ void gfx_draw_circle(const int cx, const int cy, const int radius, const color_t
     SDL_SetRenderDrawColor(ctx_get_renderer(), prev_r, prev_g, prev_b, prev_a);
 }
 
-void gfx_draw_fill_circle(const int cx, const int cy, const int radius, const color_t color) {
+void gfx_draw_fill_circle(int cx, int cy, int radius, color_t color) {
     uint8_t prev_r, prev_g, prev_b, prev_a;
     SDL_GetRenderDrawColor(ctx_get_renderer(), &prev_r, &prev_g, &prev_b, &prev_a);
     SDL_SetRenderDrawColor(ctx_get_renderer(), color.r, color.g, color.b, color.a);
@@ -135,7 +142,7 @@ void gfx_draw_dashed_circle(const int cx, const int cy, const int radius, const 
     SDL_SetRenderDrawColor(ctx_get_renderer(), prev_r, prev_g, prev_b, prev_a);
 }
 
-void gfx_draw_box(const SDL_Rect rect, const color_t color) {
+void gfx_draw_box(SDL_Rect rect, color_t color) {
     uint8_t prev_r, prev_g, prev_b, prev_a;
     SDL_GetRenderDrawColor(ctx_get_renderer(), &prev_r, &prev_g, &prev_b, &prev_a);
     SDL_SetRenderDrawColor(ctx_get_renderer(), color.r, color.g, color.b, color.a);
@@ -144,7 +151,7 @@ void gfx_draw_box(const SDL_Rect rect, const color_t color) {
     SDL_SetRenderDrawColor(ctx_get_renderer(), prev_r, prev_g, prev_b, prev_a);
 }
 
-void gfx_draw_fbox(const SDL_FRect rect, const color_t color) {
+void gfx_draw_fbox(SDL_FRect rect, color_t color) {
     uint8_t prev_r, prev_g, prev_b, prev_a;
     SDL_GetRenderDrawColor(ctx_get_renderer(), &prev_r, &prev_g, &prev_b, &prev_a);
     SDL_SetRenderDrawColor(ctx_get_renderer(), color.r, color.g, color.b, color.a);
@@ -153,7 +160,7 @@ void gfx_draw_fbox(const SDL_FRect rect, const color_t color) {
     SDL_SetRenderDrawColor(ctx_get_renderer(), prev_r, prev_g, prev_b, prev_a);
 }
 
-void gfx_draw_fill_box(const SDL_Rect rect, const color_t color) {
+void gfx_draw_fill_box(SDL_Rect rect, color_t color) {
     uint8_t prev_r, prev_g, prev_b, prev_a;
     SDL_GetRenderDrawColor(ctx_get_renderer(), &prev_r, &prev_g, &prev_b, &prev_a);
     SDL_SetRenderDrawColor(ctx_get_renderer(), color.r, color.g, color.b, color.a);
@@ -162,7 +169,7 @@ void gfx_draw_fill_box(const SDL_Rect rect, const color_t color) {
     SDL_SetRenderDrawColor(ctx_get_renderer(), prev_r, prev_g, prev_b, prev_a);
 }
 
-void gfx_draw_fill_fbox(const SDL_FRect rect, const color_t color) {
+void gfx_draw_fill_fbox(SDL_FRect rect, color_t color) {
     uint8_t prev_r, prev_g, prev_b, prev_a;
     SDL_GetRenderDrawColor(ctx_get_renderer(), &prev_r, &prev_g, &prev_b, &prev_a);
     SDL_SetRenderDrawColor(ctx_get_renderer(), color.r, color.g, color.b, color.a);
@@ -171,7 +178,7 @@ void gfx_draw_fill_fbox(const SDL_FRect rect, const color_t color) {
     SDL_SetRenderDrawColor(ctx_get_renderer(), prev_r, prev_g, prev_b, prev_a);
 }
 
-void gfx_draw_triangle(int x1, int y1, int x2, int y2, int x3, int y3, const color_t color) {
+void gfx_draw_triangle(int x1, int y1, int x2, int y2, int x3, int y3, color_t color) {
     gfx_draw_line(x1, y1, x2, y2, color);
     gfx_draw_line(x2, y2, x3, y3, color);
     gfx_draw_line(x3, y3, x1, y1, color);
