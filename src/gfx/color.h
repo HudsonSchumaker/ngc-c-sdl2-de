@@ -24,3 +24,6 @@ color_t color_green(void);
 color_t color_blue(void);
 color_t color_white(void);
 color_t color_black(void);
+color_t color_silver(void);
+color_t color_gray(void);
+color_t color_yellow(void);

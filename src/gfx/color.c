@@ -43,6 +43,18 @@ color_t color_blue(void) {
     return color(0, 0, 255, 255);
 }
 
+color_t color_silver(void) {
+    return color(192, 192, 192, 255);
+}
+
+color_t color_gray(void) {
+    return color(128, 128, 128, 255);
+}
+
+color_t color_yellow(void) {
+    return color(0, 255, 255, 255);
+}
+
 color_t color_white(void) {
     return color(255, 255, 255, 255);
 }
