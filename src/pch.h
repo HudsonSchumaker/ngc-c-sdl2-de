@@ -27,6 +27,10 @@
 #define H_WINDOW_WIDTH 320
 #define H_WINDOW_HEIGHT 240
 
+#define MAP_WIDTH 20
+#define MAP_HEIGHT 15
+#define MAP_TILE_SIZE 32
+
 #define DIV2   0.5f
 #define DIV3   0.3333333333f
 #define DIV4   0.25f
