@@ -9,6 +9,7 @@
 #include "context.h"
 #include "../math/de_math.h"
 #include "../playground/splash_screen.h"
+#include "../playground/level1.h"
 
 static float delta_time = 0.0f;
 
@@ -22,6 +23,13 @@ void engine_init(void) {
     splash_screen_init();
     splash_screen_get_scene()->load();
     splash_screen_get_scene()->run();
+    splash_screen_get_scene()->unload();
+
+    level1_init();
+    level1_get_scene()->load();
+    level1_get_scene()->run();
+    level1_get_scene()->unload();
+    
 }
 
 void engine_quit(void) {

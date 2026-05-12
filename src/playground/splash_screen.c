@@ -42,7 +42,14 @@ void splash_screen_load(void) {
 
 void splash_screen_input(void) {}
 
-void splash_screen_update(void) {}
+void splash_screen_update(void) {
+    static float timer = 0.0f;
+    timer += engine_calculate_delta_time();
+
+    if (timer > 2.99f) {
+        running = false;
+    }
+}
 
 void splash_screen_render(void) {
     scene_begin_render();
@@ -58,7 +65,6 @@ u8 splash_screen_run(void) {
         splash_screen_input();
         splash_screen_update();
         splash_screen_render();
-        engine_calculate_delta_time();
     }
     return 1;
 }
