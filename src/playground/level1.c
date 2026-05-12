@@ -81,7 +81,7 @@ u8 level1_run(void) {
 }
 
 void level1_unload(void) {
-    for (int i = 0; i < 8; ++i) {
+    for (short i = 0; i < 8; ++i) {
         if (map.textures[i]) {
             SDL_DestroyTexture(map.textures[i]);
         }
