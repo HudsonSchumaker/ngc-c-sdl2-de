@@ -27,6 +27,10 @@
 #define H_WINDOW_WIDTH 320
 #define H_WINDOW_HEIGHT 240
 
+#define ATAN_LUT_SIZE 256
+#define SIN_COS_LUT_SIZE 1024
+#define ANGLE_MASK (SIN_COS_LUT_SIZE - 1)
+
 #define MAP_WIDTH 20
 #define MAP_HEIGHT 15
 #define MAP_TILE_SIZE 32
