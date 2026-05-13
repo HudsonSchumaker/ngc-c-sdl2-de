@@ -16,6 +16,7 @@ SDL_Rect gfx_get_texture_size(SDL_Texture* texture);
 SDL_FRect gfx_get_texture_fsize(SDL_Texture* texture);
 
 void gfx_render_texture(SDL_Texture* texture, int x, int y, int w, int h);
+void gfx_render_texture_rotated(SDL_Texture* texture, int x, int y, int w, int h, double angle);
 
 void gfx_draw_line(int x0,int y0, int x1, int y1, color_t color);
 void gfx_draw_circle(int cx, int cy, int radius, color_t color);

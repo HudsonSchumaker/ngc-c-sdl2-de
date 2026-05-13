@@ -49,6 +49,12 @@ void gfx_render_texture(SDL_Texture* texture, int x, int y, int w, int h) {
     SDL_RenderCopy(ctx_get_renderer(), texture, NULL, &dest);
 }
 
+void gfx_render_texture_rotated(SDL_Texture* texture, int x, int y, int w, int h, double angle) {
+    SDL_Rect dest = { x, y, w, h };
+    SDL_Point center = { w >> 1, h >> 1 };
+    SDL_RenderCopyEx(ctx_get_renderer(), texture, NULL, &dest, angle, &center, SDL_FLIP_NONE);
+}
+
 void gfx_draw_line(int x0, int y0, int x1, int y1, color_t color) {
     uint8_t prev_r, prev_g, prev_b, prev_a;
     SDL_GetRenderDrawColor(ctx_get_renderer(), &prev_r, &prev_g, &prev_b, &prev_a);
