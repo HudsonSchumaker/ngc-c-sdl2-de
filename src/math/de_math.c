@@ -6,15 +6,44 @@
 * @copyright Copyright (c) 2024, Dodoi-Lab
 */
 #include "de_math.h"
-static float sin_table[TABLE_SIZE];
-static float cos_table[TABLE_SIZE];
+static float sin_table[SIN_COS_LUT_SIZE];
+static float cos_table[SIN_COS_LUT_SIZE];
+static unsigned short atan_table[ATAN_LUT_SIZE + 1];
 
 void build_trigo_tables(void) {
-    for (int i = 0; i < TABLE_SIZE; i++) {
-        float angle =  ((float)i / TABLE_SIZE) * TWO_PI;
+    for (int i = 0; i < SIN_COS_LUT_SIZE; i++) {
+        float angle =  ((float)i / SIN_COS_LUT_SIZE) * TWO_PI;
         sin_table[i] = sinf(angle);
         cos_table[i] = cosf(angle);
     }
+
+    for (int i = 0; i <= ATAN_LUT_SIZE; ++i) {
+        float ratio = (float)i / (float)ATAN_LUT_SIZE;
+        atan_table[i] = (unsigned short)(atanf(ratio) * ((float)SIN_COS_LUT_SIZE / TWO_PI));
+    }
+}
+
+int atan2_table(int dy, int dx) {
+    if (dx == 0 && dy == 0) {
+        return 0;
+    }
+
+    int adx = dx < 0 ? -dx : dx;
+    int ady = dy < 0 ? -dy : dy;
+
+    int base;
+    if (adx >= ady) {
+        int ratio = (ady * ATAN_LUT_SIZE) / (adx == 0 ? 1 : adx);
+        base = atan_table[ratio];
+    } else {
+        int ratio = (adx * ATAN_LUT_SIZE) / (ady == 0 ? 1 : ady);
+        base = 256 - atan_table[ratio];
+    }
+
+    if (dx >= 0 && dy >= 0) return base;
+    if (dx < 0 && dy >= 0) return 512 - base;
+    if (dx < 0 && dy < 0) return 512 + base;
+    return 1024 - base;
 }
 
 float sinf_table(int angle) {

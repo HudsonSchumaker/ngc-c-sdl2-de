@@ -6,8 +6,6 @@
 * @copyright Copyright (c) 2024, Dodoi-Lab
 */
 #pragma once
-#define TABLE_SIZE 1024
-#define ANGLE_MASK 1023
 #include "../pch.h"
 
 int min(int a, int b);
@@ -17,8 +15,10 @@ int clamp(int value, int min_val, int max_val);
 int distance_between_points(int x1, int y1, int x2, int y2);
 
 void build_trigo_tables(void);
+int atan2_table(int dy, int dx);
 float sinf_table(int angle);
 float cosf_table(int angle);
+
 float minf(float a, float b);
 float maxf(float a, float b);
 float randf(float min, float max);
