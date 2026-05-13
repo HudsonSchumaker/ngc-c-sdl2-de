@@ -25,3 +25,4 @@ typedef struct {
 
 void map_load(map_t* map, const char* data[MAP_HEIGHT][MAP_WIDTH]);
 void map_render(const map_t* map);
+map_tile_type_t map_get_tile_type(const map_t* map, short x, short y);

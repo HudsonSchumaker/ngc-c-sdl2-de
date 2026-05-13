@@ -32,3 +32,11 @@ void map_render(const map_t* map) {
         }
     }
 }
+
+map_tile_type_t map_get_tile_type(const map_t* map, short x, short y) {
+    if (x < 0 || x >= MAP_WIDTH || y < 0 || y >= MAP_HEIGHT) {
+        return TILE_PATH; // Default to path for out-of-bounds
+    }
+    return map->tiles[y][x].type;
+}
+    
