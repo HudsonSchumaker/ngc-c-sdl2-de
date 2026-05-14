@@ -35,6 +35,10 @@ typedef float   f32;
 typedef double  f64;
 typedef int32_t b32;
 
+#define INLINE static inline __attribute__((always_inline)) 
+#define ALIGN32 __attribute__((aligned(32))) 
+#define RESTRICT __restrict__
+
 #define WINDOW_WIDTH 640
 #define WINDOW_HEIGHT 480
 #define H_WINDOW_WIDTH 320
@@ -65,16 +69,19 @@ typedef int32_t b32;
 #define PI_F 3.1415927f
 #define TWO_PI_F (PI_F * 2.0f)
 #define HALF_PI_F (PI_F * 0.5f)
-#define DIV_PI_180_F (PI_F / 180.0f)
-#define DIV_180_PI_F (180.0f / PI_F)
+#define DEG_2_RAD_F (PI_F / 180.0f)
+#define RAD_2_DEG_F (180.0f / PI_F)
+#define EPSILON_F 0.00001f
 
 typedef struct {
-    u8 a: 1;
-    u8 b: 1;
-    u8 c: 1;
-    u8 d: 1;
-    u8 e: 1;
-    u8 f: 1;
-    u8 g: 1;
-    u8 h: 1;
+    u8 value;
 } byte_t;
+
+#define BIT_0 (1u << 0)
+#define BIT_1 (1u << 1)
+#define BIT_2 (1u << 2)
+#define BIT_3 (1u << 3)
+#define BIT_4 (1u << 4)
+#define BIT_5 (1u << 5)
+#define BIT_6 (1u << 6)
+#define BIT_7 (1u << 7)

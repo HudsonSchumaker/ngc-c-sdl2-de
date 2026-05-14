@@ -8,7 +8,7 @@
 */
 #include "tower.h"
 #include "../gfx/gfx.h"
-#include "../math/de_math.h"
+#include "../math/math2d.h"
 
 tower_t tower(int x, int y, int w, int h, int range, int damage, int fire_rate) {
     tower_t t;
@@ -52,10 +52,10 @@ void tower_update(tower_t* tower, enemy_t* enemy, float delta_time){
         return;
     }
 
-    tower->angle = atan2_table(dy, dx);
+    tower->angle = de_atanf(dy, dx);
     if (tower->cooldown <= 0.0f) {
-        float vx = cosf_table(tower->angle);
-        float vy = sinf_table(tower->angle);
+        float vx = de_cosf(tower->angle);
+        float vy = de_sinf(tower->angle);
 
         // spawn projectile here using vx, vy
         // or apply instant-hit damage here
@@ -68,7 +68,7 @@ void tower_render(const tower_t* tower) {
     if (!tower->active) return;
 
     if (tower->texture) {
-        double angle_deg = ((double)tower->angle * 360.0) / (double)SIN_COS_LUT_SIZE;
+        f64 angle_deg = ((f64)tower->angle * 360.0) / (f64)SIN_COS_LUT_SIZE;
         gfx_render_texture_rotated(tower->texture, tower->x, tower->y, tower->w, tower->h, angle_deg);
     }
 }
