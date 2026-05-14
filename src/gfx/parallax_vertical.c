@@ -9,7 +9,7 @@
 #include "parallax.h"
 #include "../core/context.h"
 
-parallax_vertical_t parallax_vertical_simple(const uint8_t* parallax_data, const size_t parallax_size) {
+parallax_vertical_t parallax_vertical_simple(const u8* parallax_data, const size_t parallax_size) {
     parallax_vertical_t parallax;
     parallax.texture = gfx_load_texture(parallax_data, parallax_size);
     
@@ -21,7 +21,7 @@ parallax_vertical_t parallax_vertical_simple(const uint8_t* parallax_data, const
     return parallax;
 }
 
-parallax_vertical_t parallax_vertical_double(const uint8_t* bg_data, const size_t bg_size, const uint8_t* parallax_data, const size_t parallax_size) {
+parallax_vertical_t parallax_vertical_double(const u8* bg_data, const size_t bg_size, const u8* parallax_data, const size_t parallax_size) {
     parallax_vertical_t parallax;
     parallax.background = gfx_load_texture(bg_data, bg_size);
     parallax.bg_rect = gfx_get_texture_size(parallax.background);
@@ -35,13 +35,13 @@ parallax_vertical_t parallax_vertical_double(const uint8_t* bg_data, const size_
     return parallax;
 }
 
-parallax_vertical_t* parallax_vertical_simple_new(const uint8_t* parallax_data, const size_t parallax_size) {
+parallax_vertical_t* parallax_vertical_simple_new(const u8* parallax_data, const size_t parallax_size) {
     parallax_vertical_t* parallax = malloc(sizeof(parallax_vertical_t));
     *parallax = parallax_vertical_simple(parallax_data, parallax_size);
     return parallax;
 }
 
-parallax_vertical_t* parallax_vertical_double_new(const uint8_t* bg_data, const size_t bg_size, const uint8_t* parallax_data, const size_t parallax_size) {
+parallax_vertical_t* parallax_vertical_double_new(const u8* bg_data, const size_t bg_size, const u8* parallax_data, const size_t parallax_size) {
     parallax_vertical_t* parallax = malloc(sizeof(parallax_vertical_t));
     *parallax = parallax_vertical_double(bg_data, bg_size, parallax_data, parallax_size);
     return parallax;

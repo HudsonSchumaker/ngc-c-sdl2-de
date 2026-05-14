@@ -10,7 +10,7 @@
 #include "../gfx/color.h"
 #include "../core/context.h"
 
-image_t image(int x, int y) {
+image_t image(i32 x, i32 y) {
     image_t image;
     image.x = x;
     image.y = y;
@@ -22,13 +22,13 @@ image_t image(int x, int y) {
     return image;
 }
 
-image_t* image_new(int x, int y) {
+image_t* image_new(i32 x, i32 y) {
     image_t* heap_image = malloc(sizeof(image_t));
     *heap_image = image(x, y);
     return heap_image;
 }
     
-void image_set_source(image_t* image, const uint8_t* data, size_t size) {
+void image_set_source(image_t* image, const u8* data, size_t size) {
     image->texture = gfx_load_texture(data, size);
     SDL_QueryTexture(image->texture, NULL, NULL, &image->w, &image->h);
 }

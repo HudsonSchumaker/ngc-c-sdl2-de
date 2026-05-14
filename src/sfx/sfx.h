@@ -8,11 +8,11 @@
 #pragma once
 #include "../pch.h"
 
-Mix_Chunk* sfx_load_sound(const uint8_t* data, const size_t size);
-Mix_Music* sfx_load_music(const uint8_t* data, const size_t size);
+Mix_Chunk* sfx_load_sound(const u8* data, const size_t size);
+Mix_Music* sfx_load_music(const u8* data, const size_t size);
 
-int sfx_play_sound(Mix_Chunk* sound);
-int sfx_play_music(Mix_Music* music, int loops);
+i32 sfx_play_sound(Mix_Chunk* sound);
+i32 sfx_play_music(Mix_Music* music, i32 loops);
 
 void sfx_pause_music();
 void sfx_unpause_music();

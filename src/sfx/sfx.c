@@ -7,23 +7,23 @@
 */
 #include "sfx.h"
 
-Mix_Chunk* sfx_load_sound(const uint8_t* data, const size_t size) {
+Mix_Chunk* sfx_load_sound(const u8* data, const size_t size) {
     SDL_RWops* rw = SDL_RWFromMem((void*)data, size);
     Mix_Chunk* chunk = Mix_LoadWAV_RW(rw, 1);
     return chunk;
 }
 
-Mix_Music* sfx_load_music(const uint8_t* data, const size_t size) {
+Mix_Music* sfx_load_music(const u8* data, const size_t size) {
     SDL_RWops* rw = SDL_RWFromMem((void*)data, size);
     Mix_Music* music = Mix_LoadMUS_RW(rw, 1);
     return music;
 }
 
-int sfx_play_sound(Mix_Chunk* sound) {
+i32 sfx_play_sound(Mix_Chunk* sound) {
     return Mix_PlayChannel(-1, sound, 0);
 }
 
-int sfx_play_music(Mix_Music* music, int loops) {   
+i32 sfx_play_music(Mix_Music* music, i32 loops) {   
     return Mix_PlayMusic(music, loops);
 }
 

@@ -8,16 +8,17 @@
 #include "context.h"
 static SDL_Window* window = NULL;
 static SDL_Renderer* renderer = NULL;
-static bool started = false;
+static byte_t initialized = {0};
 
 int ctx_init(void) {
-    if (started) {
+    if (initialized.h) {
         return 0; // Already initialized
     }
 
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) {
         return -1;
     }
+    initialized.a = 1;
 
     window = SDL_CreateWindow(
         "dodoi-engine",
@@ -27,34 +28,40 @@ int ctx_init(void) {
         WINDOW_HEIGHT,
         SDL_WINDOW_SHOWN
     );
+    initialized.b = 1;
 
     if (!window) {
         ctx_quit();
         return -1;
     }
+    initialized.c = 1;
 
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     if (!renderer) {
         ctx_quit();
         return -1;
     }
+    initialized.d = 1;
 
     if ((IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG) != IMG_INIT_PNG) {
         ctx_quit();
         return 1;
     }
+    initialized.e = 1;
 
     if (Mix_OpenAudio(32000, MIX_DEFAULT_FORMAT, 2, 1024) < 0) {
         ctx_quit();
         return 1;
     }
+    initialized.f = 1;
 
     if (TTF_Init() == -1) {
         ctx_quit();
         return 1;
     }
+    initialized.g = 1;
 
-    started = true;
+    initialized.h = 1;
     return 0;
 }
 
@@ -64,6 +71,34 @@ SDL_Window* ctx_get_window(void) {
 
 SDL_Renderer* ctx_get_renderer(void) {
     return renderer;
+}
+
+u8 ctx_is_initialized(void) {
+    return initialized.h;
+}
+
+u8 ctx_is_video_initialized(void) {
+    return initialized.a;
+}
+
+u8 ctx_is_window_initialized(void) {
+    return initialized.b;
+}
+
+u8 ctx_is_renderer_initialized(void) {
+    return initialized.d;
+}
+
+u8 ctx_is_image_initialized(void) {
+    return initialized.e;
+}
+
+u8 ctx_is_audio_initialized(void) {
+    return initialized.f;
+}
+
+u8 ctx_is_ttf_initialized(void) {
+    return initialized.g;
 }
 
 void ctx_quit(void) {
@@ -83,5 +118,5 @@ void ctx_quit(void) {
     TTF_Quit();
     IMG_Quit();
     SDL_Quit();
-    started = false;
+    initialized.h = 0;
 }

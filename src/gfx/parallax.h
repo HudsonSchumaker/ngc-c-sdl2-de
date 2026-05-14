@@ -26,16 +26,16 @@ typedef struct {
 	SDL_Point size;
 } parallax_horizontal_t;
 
-parallax_vertical_t parallax_vertical_simple(const uint8_t* parallax_data, const size_t parallax_size);
-parallax_vertical_t parallax_vertical_double(const uint8_t* bg_data, const size_t bg_size, const uint8_t* parallax_data, const size_t parallax_size);
-parallax_vertical_t* parallax_vertical_simple_new(const uint8_t* parallax_data, const size_t parallax_size);
-parallax_vertical_t* parallax_vertical_double_new(const uint8_t* bg_data, const size_t bg_size, const uint8_t* parallax_data, const size_t parallax_size);
+parallax_vertical_t parallax_vertical_simple(const u8* parallax_data, const size_t parallax_size);
+parallax_vertical_t parallax_vertical_double(const u8* bg_data, const size_t bg_size, const u8* parallax_data, const size_t parallax_size);
+parallax_vertical_t* parallax_vertical_simple_new(const u8* parallax_data, const size_t parallax_size);
+parallax_vertical_t* parallax_vertical_double_new(const u8* bg_data, const size_t bg_size, const u8* parallax_data, const size_t parallax_size);
 void parallax_vertical_update(parallax_vertical_t* parallax);
 void parallax_vertical_render(const parallax_vertical_t* parallax);
 
-parallax_horizontal_t parallax_horizontal_simple(const uint8_t* parallax_data, const size_t parallax_size);
-parallax_horizontal_t parallax_horizontal_double(const uint8_t* bg_data, const size_t bg_size, const uint8_t* parallax_data, const size_t parallax_size);
-parallax_horizontal_t* parallax_horizontal_simple_new(const uint8_t* parallax_data, const size_t parallax_size);
-parallax_horizontal_t* parallax_horizontal_double_new(const uint8_t* bg_data, const size_t bg_size, const uint8_t* parallax_data, const size_t parallax_size);
+parallax_horizontal_t parallax_horizontal_simple(const u8* parallax_data, const size_t parallax_size);
+parallax_horizontal_t parallax_horizontal_double(const u8* bg_data, const size_t bg_size, const u8* parallax_data, const size_t parallax_size);
+parallax_horizontal_t* parallax_horizontal_simple_new(const u8* parallax_data, const size_t parallax_size);
+parallax_horizontal_t* parallax_horizontal_double_new(const u8* bg_data, const size_t bg_size, const u8* parallax_data, const size_t parallax_size);
 void parallax_horizontal_update(parallax_horizontal_t* parallax);
 void parallax_horizontal_render(const parallax_horizontal_t* parallax);

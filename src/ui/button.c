@@ -9,7 +9,7 @@
 #include "../gfx/gfx.h"
 #include "../core/context.h"
 
-button_t button(int x, int y) {
+button_t button(i32 x, i32 y) {
     button_t button;
     button.x = x;
     button.y = y;
@@ -21,13 +21,13 @@ button_t button(int x, int y) {
     return button;
 }
 
-button_t* button_new(int x, int y) {
+button_t* button_new(i32 x, i32 y) {
     button_t* heap_button = malloc(sizeof(button_t));
     *heap_button = button(x, y);
     return heap_button;
 }
 
-void button_set_source(button_t* button, const uint8_t* data, size_t size) {
+void button_set_source(button_t* button, const u8* data, size_t size) {
     button->texture = gfx_load_texture(data, size);
     SDL_QueryTexture(button->texture, NULL, NULL, &button->w, &button->h);
 }

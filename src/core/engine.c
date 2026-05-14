@@ -29,7 +29,6 @@ void engine_init(void) {
     level1_get_scene()->load();
     level1_get_scene()->run();
     level1_get_scene()->unload();
-    
 }
 
 void engine_quit(void) {
@@ -37,8 +36,8 @@ void engine_quit(void) {
 }
 
 float engine_calculate_delta_time(void) {
-    static u_int64_t frequency = 0;
-    static u_int64_t last_counter = 0;
+    static u64 frequency = 0;
+    static u64 last_counter = 0;
     static float smooth_dt = 0.0f;
 
     const float MAX_DT = 0.25f;
@@ -47,7 +46,7 @@ float engine_calculate_delta_time(void) {
     if (frequency == 0) {
         frequency = SDL_GetPerformanceFrequency();
     }
-    u_int64_t now = SDL_GetPerformanceCounter();
+    u64 now = SDL_GetPerformanceCounter();
 
     if (last_counter == 0) {
         last_counter = now;

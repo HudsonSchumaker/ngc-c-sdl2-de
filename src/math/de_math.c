@@ -12,14 +12,14 @@ static unsigned short atan_table[ATAN_LUT_SIZE + 1];
 
 void build_trigo_tables(void) {
     for (int i = 0; i < SIN_COS_LUT_SIZE; i++) {
-        float angle =  ((float)i / SIN_COS_LUT_SIZE) * TWO_PI;
+        float angle =  ((float)i / SIN_COS_LUT_SIZE) * TWO_PI_F;
         sin_table[i] = sinf(angle);
         cos_table[i] = cosf(angle);
     }
 
     for (int i = 0; i <= ATAN_LUT_SIZE; ++i) {
         float ratio = (float)i / (float)ATAN_LUT_SIZE;
-        atan_table[i] = (unsigned short)(atanf(ratio) * ((float)SIN_COS_LUT_SIZE / TWO_PI));
+        atan_table[i] = (unsigned short)(atanf(ratio) * ((float)SIN_COS_LUT_SIZE / TWO_PI_F));
     }
 }
 
@@ -132,11 +132,11 @@ float fsqrtf(float number) {
 }
 
 float deg_to_radf(float degrees) {
-    return degrees * DIV_PI_180;
+    return degrees * DIV_PI_180_F;
 }
 
 float rad_to_degf(float radians) {
-    return radians * DIV_180_PI;
+    return radians * DIV_180_PI_F;
 }
 
 float normalize_anglef(float angle) {

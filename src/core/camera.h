@@ -10,10 +10,10 @@
 #include "../gfx/color.h"
 
 typedef struct {
-    int16_t x;
-    int16_t y;
-    int16_t w;
-    int16_t h;
+    i16 x;
+    i16 y;
+    i16 w;
+    i16 h;
     color_t color;
 } camera_t;
 

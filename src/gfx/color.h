@@ -9,14 +9,14 @@
 #include "../pch.h"
 
 typedef struct {
-    uint8_t r;
-    uint8_t g;
-    uint8_t b;
-    uint8_t a;
+    u8 r;
+    u8 g;
+    u8 b;
+    u8 a;
 } color_t;
 
-color_t color(uint8_t r, uint8_t g, uint8_t b, uint8_t a);
-color_t* color_new(uint8_t r, uint8_t g, uint8_t b, uint8_t a);
+color_t color(u8 r, u8 g, u8 b, u8 a);
+color_t* color_new(u8 r, u8 g, u8 b, u8 a);
 SDL_Color color_to_sdl_color(const color_t color);
 
 color_t color_red(void);

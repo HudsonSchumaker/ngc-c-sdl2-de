@@ -7,7 +7,7 @@
 */
 #include "game_object.h"
 
-game_object_t go(int x, int y, int w, int h) {
+game_object_t go(i32 x, i32 y, i32 w, i32 h) {
     game_object_t obj;
     obj.x = x;
     obj.y = y;
@@ -18,7 +18,7 @@ game_object_t go(int x, int y, int w, int h) {
     return obj;
 }
 
-game_object_t* go_new(int x, int y, int w, int h) {
+game_object_t* go_new(i32 x, i32 y, i32 w, i32 h) {
     game_object_t* obj = malloc(sizeof(game_object_t));
     *obj = go(x, y, w, h);
     return obj;

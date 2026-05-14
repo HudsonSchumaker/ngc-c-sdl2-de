@@ -8,28 +8,28 @@
 #pragma once
 #include "../pch.h"
 
-int min(int a, int b);
-int max(int a, int b);
-int wrap(int value, int min_val, int max_val);
-int clamp(int value, int min_val, int max_val);
-int distance_between_points(int x1, int y1, int x2, int y2);
+i32 min(i32 a, i32 b);
+i32 max(i32 a, i32 b);
+i32 wrap(i32 value, i32 min_val, i32 max_val);
+i32 clamp(i32 value, i32 min_val, i32 max_val);
+i32 distance_between_points(i32 x1, i32 y1, i32 x2, i32 y2);
 
 void build_trigo_tables(void);
-int atan2_table(int dy, int dx);
-float sinf_table(int angle);
-float cosf_table(int angle);
+i32 atan2_table(i32 dy, i32 dx);
+f32 sinf_table(i32 angle);
+f32 cosf_table(i32 angle);
 
-float minf(float a, float b);
-float maxf(float a, float b);
-float randf(float min, float max);
-float wrapf(float value, float min_val, float max_val);
-float clampf(float value, float min_val, float max_val);
-float rsqrtf(float number);
-float fsqrtf(float number);
-float deg_to_radf(float degrees);
-float rad_to_degf(float radians);
-float normalize_anglef(float angle);
-float smoothstepf(float edge0, float edge1, float x);
-float inverse_lerpf(float a, float b, float value);
-float interpolatef(float start, float end, float t);
-float distance_between_pointsf(float x1, float y1, float x2, float y2);
+f32 minf(f32 a, f32 b);
+f32 maxf(f32 a, f32 b);
+f32 randf(f32 min, f32 max);
+f32 wrapf(f32 value, f32 min_val, f32 max_val);
+f32 clampf(f32 value, f32 min_val, f32 max_val);
+f32 rsqrtf(f32 number);
+f32 fsqrtf(f32 number);
+f32 deg_to_radf(f32 degrees);
+f32 rad_to_degf(f32 radians);
+f32 normalize_anglef(f32 angle);
+f32 smoothstepf(f32 edge0, f32 edge1, f32 x);
+f32 inverse_lerpf(f32 a, f32 b, f32 value);
+f32 interpolatef(f32 start, f32 end, f32 t);
+f32 distance_between_pointsf(f32 x1, f32 y1, f32 x2, f32 y2);

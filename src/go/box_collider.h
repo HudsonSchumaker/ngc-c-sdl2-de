@@ -15,7 +15,7 @@ typedef struct {
     int h;
 } box_collider_t;
 
-box_collider_t box_collider(int x, int y, int w, int h);
-box_collider_t* box_collider_new(int x, int y, int w, int h);
+box_collider_t box_collider(i32 x, i32 y, i32 w, i32 h);
+box_collider_t* box_collider_new(i32 x, i32 y, i32 w, i32 h);
 bool box_collider_collide(const box_collider_t* a, const box_collider_t* b);
-bool box_collider_contains(const box_collider_t* collider, int px, int py);
+bool box_collider_contains(const box_collider_t* collider, i32 px, i32 py);

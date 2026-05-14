@@ -10,14 +10,14 @@
 #include "box_collider.h"
 
 typedef struct {
-    int x;
-    int y;
-    int z;
-    int w;
-    int h;
+    i32 x;
+    i32 y;
+    i32 z;
+    i32 w;
+    i32 h;
     bool active;
 } game_object_t;
 
-game_object_t go(int x, int y, int w, int h);
-game_object_t* go_new(int x, int y, int w, int h);
+game_object_t go(i32 x, i32 y, i32 w, i32 h);
+game_object_t* go_new(i32 x, i32 y, i32 w, i32 h);
 box_collider_t go_get_collider(const game_object_t* obj);

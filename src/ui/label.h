@@ -11,21 +11,21 @@
 
 typedef struct {
     char* text;
-    int x;
-    int y;
-    int w;
-    int h;
+    i32 x;
+    i32 y;
+    i32 w;
+    i32 h;
     bool visible;
     color_t color;
-    uint8_t font_size;
+    u8 font_size;
     SDL_Texture* texture;
 } label_t;
 
-label_t label(int x, int y, const char* text);
-label_t* label_new(int x, int y, const char* text);
+label_t label(i32 x, i32 y, const char* text);
+label_t* label_new(i32 x, i32 y, const char* text);
 
 void label_set_color(label_t* label, color_t color);
-void label_set_font_size(label_t* label, uint8_t font_size, const uint8_t* data, size_t size);
+void label_set_font_size(label_t* label, u8 font_size, const u8* data, size_t size);
 void label_render(const label_t* label);
 void label_set_on_center(label_t* label);
 void label_set_horizontal_center(label_t* label);
