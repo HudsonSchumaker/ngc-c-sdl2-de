@@ -9,6 +9,9 @@
 #pragma once
 #include "../pch.h"
 
+/**
+ * Represents a game scene with function pointers for loading, input handling, updating, rendering, running, and unloading the scene.
+ */
 typedef struct {
     void (*load)(void);    // Load the scene
     void (*input)(void);   // Handle input
@@ -18,6 +21,19 @@ typedef struct {
     void (*unload)(void);  // Unload the scene
 } scene_t;
 
+/**
+ * Sets the current active scene. If there is an existing scene, it will be unloaded before the new scene is loaded and run.
+ * @param scene Pointer to the new scene to set as active
+ * @return Status code returned by the run function of the new scene, or 0 if no scene is set
+ */
 u8 scene_set_scene(scene_t* scene);
+
+/**
+ * Begins the rendering process for the current scene.
+ */
 void scene_begin_render(void);
+
+/**
+ * Ends the rendering process for the current scene.
+ */
 void scene_end_render(void);
