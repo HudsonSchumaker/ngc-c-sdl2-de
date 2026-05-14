@@ -139,6 +139,13 @@ INLINE vec2_t vec2_rotate(vec2_t v, i32 angle) {
     return r;
 }
 
+INLINE vec2_t vec2_move_forward(vec2_t position, i32 angle,f32 speed) {
+    position.x += de_cosf(angle) * speed;
+    position.y += de_sinf(angle) * speed;
+
+    return position;
+}
+
 //----------------------------------------------------------------
 // Math utility functions
 //----------------------------------------------------------------
@@ -164,6 +171,37 @@ INLINE f32 absf(f32 v) {
 
 INLINE f32 randf(f32 min, f32 max) {
     return ((f32)rand() / (f32)RAND_MAX) * (max - min) + min;
+}
+
+INLINE f32 distance_pointsf(f32 x1, f32 y1, f32 x2, f32 y2) {
+    f32 dx = x2 - x1;
+    f32 dy = y2 - y1;
+
+    f32 dist_sq = dx * dx + dy * dy;
+    f32 inv = rsqrtf(dist_sq);
+    return dist_sq * inv;
+}
+
+INLINE f32 distance_points_sqf(f32 x1, f32 y1, f32 x2, f32 y2) {
+    f32 dx = x2 - x1;
+    f32 dy = y2 - y1;
+    return dx * dx + dy * dy;
+}
+
+INLINE f32 vec2_distance_sq(vec2_t a, vec2_t b) {
+    f32 dx = b.x - a.x;
+    f32 dy = b.y - a.y;
+    return dx * dx + dy * dy;
+}
+
+INLINE f32 vec2_distance(vec2_t a, vec2_t b) {
+    return fsqrtf(vec2_distance_sq(a, b));
+}
+
+INLINE f32 angle_between_pointsf(f32 x1, f32 y1, f32 x2, f32 y2) {
+    f32 dx = x2 - x1;
+    f32 dy = y2 - y1;
+    return atan2f(dy, dx);
 }
 
 //----------------------------------------------------------------
