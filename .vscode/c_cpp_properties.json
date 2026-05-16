@@ -9,10 +9,10 @@
                 "C:/devkitPro/portlibs/gamecube/include"
             ],
             "defines": [
-                "Gekko - CPU"
+                "GEKKO"
             ],
             "compilerPath": "C:/devkitPro/devkitPPC/bin/powerpc-eabi-gcc.exe",
-            "cStandard": "c17",
+            "cStandard": "gnu17",
             "cppStandard": "gnu++17",
             "intelliSenseMode": "gcc-x64"
         },
@@ -21,13 +21,15 @@
             "includePath": [
                 "${workspaceFolder}/src",
                 "${workspaceFolder}/build",
-                "/opt/devkitPro/libogc/include",
-                "/opt/devkitPro/portlibs/gamecube/include"
+                "/opt/devkitpro/libogc/include",
+                "/opt/devkitpro/portlibs/gamecube/include",
+                "/opt/devkitpro/devkitPPC/powerpc-eabi/include",
+                "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include"
             ],
             "defines": [
-                "Gekko - CPU"
+                "GEKKO"
             ],
-            "compilerPath": "/opt/devkitPro/devkitPPC/bin/powerpc-eabi-gcc",
+            "compilerPath": "/opt/devkitpro/devkitPPC/bin/powerpc-eabi-gcc",
             "cStandard": "gnu17",
             "cppStandard": "gnu++17",
             "intelliSenseMode": "macos-gcc-x64"
