@@ -14,7 +14,7 @@
             "compilerPath": "C:/devkitPro/devkitPPC/bin/powerpc-eabi-gcc.exe",
             "cStandard": "gnu17",
             "cppStandard": "gnu++17",
-            "intelliSenseMode": "gcc-x64"
+            "intelliSenseMode": "windows-gcc-x64"
         },
         {
             "name": "NGC - macOS",
