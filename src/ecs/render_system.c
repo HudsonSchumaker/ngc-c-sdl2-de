@@ -17,7 +17,15 @@ void render_system(transform_pool_t* t, texture_pool_t* r) {
     for (entity_t i = 0; i < MAX_ENTITIES; i++) {
         if (em->alive[i] && r->texture[i]) {
             SDL_FRect dest = { t->px[i], t->py[i], r->w[i] * t->sx[i], r->h[i] * t->sy[i] };
-            SDL_RenderCopyF(renderer, r->texture[i], NULL, &dest);
+            SDL_RenderCopyExF(
+				renderer,
+				r->texture[i],
+				NULL,
+				&dest,
+				t->ra[i],
+				NULL,
+				SDL_FLIP_NONE
+			);
         }
     }
 }

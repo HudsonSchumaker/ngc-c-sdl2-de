@@ -45,14 +45,12 @@ f32 engine_calculate_delta_time(void) {
     const f32 MAX_DT = 0.25f;
     const f32 SMOOTH_ALPHA = 0.08f;
 
-    if (frequency == 0)
-    {
+    if (frequency == 0) {
         frequency = SDL_GetPerformanceFrequency();
     }
     u64 now = SDL_GetPerformanceCounter();
 
-    if (last_counter == 0)
-    {
+    if (last_counter == 0) {
         last_counter = now;
         return 0.0f;
     }
@@ -60,22 +58,18 @@ f32 engine_calculate_delta_time(void) {
     f32 dt = (f32)(now - last_counter) / (f32)frequency;
     last_counter = now;
 
-    if (dt < 0.0f)
-    {
+    if (dt < 0.0f) {
         dt = 0.0f;
     }
 
-    if (dt > MAX_DT)
-    {
+    if (dt > MAX_DT) {
         dt = MAX_DT;
     }
 
-    if (smooth_dt == 0.0f)
-    {
+    if (smooth_dt == 0.0f) {
         smooth_dt = dt;
     }
-    else
-    {
+    else {
         smooth_dt += SMOOTH_ALPHA * (dt - smooth_dt);
     }
 

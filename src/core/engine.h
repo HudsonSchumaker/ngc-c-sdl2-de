@@ -31,4 +31,8 @@ f32 engine_get_delta_time(void);
  */
 f32 engine_calculate_delta_time(void);
 
+/**
+ * Gets the entity manager instance.
+ * @return A pointer to the entity manager
+ */
 entity_manager_t* engine_get_entity_manager(void);
