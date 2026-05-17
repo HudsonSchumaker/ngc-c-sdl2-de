@@ -34,6 +34,8 @@ typedef int64_t i64;
 typedef float   f32;
 typedef double  f64;
 typedef u16 entity_t;
+#define ARRAY_LEN(arr) (sizeof(arr) / sizeof((arr)[0]))
+#define FIELD_LEN(obj, field) (sizeof((obj)->field) / sizeof((obj)->field[0]))
 
 #define INLINE static inline __attribute__((always_inline)) 
 #define ALIGN32 __attribute__((aligned(32))) 

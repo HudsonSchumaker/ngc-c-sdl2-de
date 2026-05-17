@@ -7,6 +7,7 @@
 */
 #pragma once
 #include "../pch.h"
+#include "../ecs/entity_manager.h"
 
 /**
  * Initializes the engine and its subsystems.
@@ -29,3 +30,5 @@ f32 engine_get_delta_time(void);
  * @return The calculated delta time in seconds
  */
 f32 engine_calculate_delta_time(void);
+
+entity_manager_t* engine_get_entity_manager(void);
