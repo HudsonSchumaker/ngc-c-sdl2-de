@@ -33,7 +33,7 @@ typedef int32_t i32;
 typedef int64_t i64;
 typedef float   f32;
 typedef double  f64;
-typedef int32_t b32;
+typedef u16 entity_t;
 
 #define INLINE static inline __attribute__((always_inline)) 
 #define ALIGN32 __attribute__((aligned(32))) 
@@ -51,6 +51,7 @@ typedef int32_t b32;
 #define MAP_WIDTH 20
 #define MAP_HEIGHT 15
 #define MAP_TILE_SIZE 32
+#define MAX_ENTITIES 128
 
 #define DIV2   0.5f
 #define DIV3   0.3333333333f
