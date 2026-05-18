@@ -10,7 +10,7 @@
 #include "../math/math2d.h"
 
 /**
- * Checks if a point (px, py) is inside a rectangle defined by (rx, ry, rw, rh).
+ * @brief @brief Checks if a point (px, py) is inside a rectangle defined by (rx, ry, rw, rh).
  * @param px Point X coordinate
  * @param py Point Y coordinate
  * @param rx Rectangle X coordinate
@@ -29,7 +29,7 @@ INLINE bool point_in_rect(i32 px, i32 py, i32 rx, i32 ry, i32 rw, i32 rh) {
 }
 
 /**
- * Checks if two rectangles intersect.
+ * @brief Checks if two rectangles intersect.
  * @param ax First rectangle X coordinate
  * @param ay First rectangle Y coordinate
  * @param aw First rectangle width
@@ -50,7 +50,7 @@ INLINE bool rect_intersects(i32 ax, i32 ay, i32 aw, i32 ah, i32 bx, i32 by, i32 
 }
 
 /**
- * Checks if two circles intersect.
+ * @brief Checks if two circles intersect.
  * @param a First circle center
  * @param ra First circle radius
  * @param b Second circle center

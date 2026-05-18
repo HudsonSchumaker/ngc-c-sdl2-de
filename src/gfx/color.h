@@ -9,7 +9,7 @@
 #include "../pch.h"
 
 /**
- * A color structure representing RGBA values.
+ * @brief color structure representing RGBA values.
  */
 typedef struct {
     u8 r;
@@ -19,7 +19,7 @@ typedef struct {
 } color_t;
 
 /**
- * Creates a color with the specified RGBA values.
+ * @brief Creates a color with the specified RGBA values.
  * @param r Red component (0-255)
  * @param g Green component (0-255)
  * @param b Blue component (0-255)
@@ -29,7 +29,7 @@ typedef struct {
 color_t color(u8 r, u8 g, u8 b, u8 a);
 
 /**
- * Creates a new color with the specified RGBA values.
+ * @brief Creates a new color with the specified RGBA values.
  * @param r Red component (0-255)
  * @param g Green component (0-255)
  * @param b Blue component (0-255)
@@ -39,56 +39,56 @@ color_t color(u8 r, u8 g, u8 b, u8 a);
 color_t* color_new(u8 r, u8 g, u8 b, u8 a);
 
 /**
- * Converts a color_t to an SDL_Color.
+ * @brief Converts a color_t to an SDL_Color.
  * @param color The color_t to convert
  * @return The corresponding SDL_Color
  */
 SDL_Color color_to_sdl_color(const color_t color);
 
 /**
- * Returns a red color.
+ * @brief Returns a red color.
  * @return A color_t struct representing red
  */
 color_t color_red(void);
 
 /**
- * Returns a green color.
+ * @brief Returns a green color.
  * @return A color_t struct representing green
  */
 color_t color_green(void);
 
 /**
- * Returns a blue color.
+ * @brief Returns a blue color.
  * @return A color_t struct representing blue
  */
 color_t color_blue(void);
 
 /**
- * Returns a white color.
+ * @brief Returns a white color.
  * @return A color_t struct representing white
  */
 color_t color_white(void);
 
 /**
- * Returns a black color.
+ * @brief Returns a black color.
  * @return A color_t struct representing black
  */
 color_t color_black(void);
 
 /**
- * Returns a silver color.
+ * @brief Returns a silver color.
  * @return A color_t struct representing silver
  */
 color_t color_silver(void);
 
 /**
- * Returns a gray color.
+ * @brief Returns a gray color.
  * @return A color_t struct representing gray
  */
 color_t color_gray(void);
 
 /**
- * Returns a yellow color.
+ * @brief Returns a yellow color.
  * @return A color_t struct representing yellow
  */
 color_t color_yellow(void);

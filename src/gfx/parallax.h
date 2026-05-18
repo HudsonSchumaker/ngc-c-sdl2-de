@@ -33,7 +33,7 @@ typedef struct {
 } parallax_horizontal_t;
 
 /**
- * Creates a simple vertical parallax effect using the provided parallax texture data.
+ * @brief Creates a simple vertical parallax effect using the provided parallax texture data.
  * @param parallax_data Pointer to the parallax texture data in memory
  * @param parallax_size Size of the parallax texture data in bytes
  * @return A parallax_vertical_t struct initialized with the loaded texture and rectangles
@@ -41,7 +41,7 @@ typedef struct {
 parallax_vertical_t parallax_vertical_simple(const u8* parallax_data, const size_t parallax_size);
 
 /**
- * Creates a vertical parallax effect with a background layer and a foreground layer using the provided texture data.
+ * @brief Creates a vertical parallax effect with a background layer and a foreground layer using the provided texture data.
  * @param bg_data Pointer to the background texture data in memory
  * @param bg_size Size of the background texture data in bytes
  * @param parallax_data Pointer to the parallax texture data in memory
@@ -51,7 +51,7 @@ parallax_vertical_t parallax_vertical_simple(const u8* parallax_data, const size
 parallax_vertical_t parallax_vertical_double(const u8* bg_data, const size_t bg_size, const u8* parallax_data, const size_t parallax_size);
 
 /**
- * Creates a new parallax_vertical_t struct on the heap using the simple parallax effect.
+ * @brief Creates a new parallax_vertical_t struct on the heap using the simple parallax effect.
  * @param parallax_data Pointer to the parallax texture data in memory
  * @param parallax_size Size of the parallax texture data in bytes
  * @return A pointer to a newly allocated parallax_vertical_t struct initialized with the loaded texture and rectangles
@@ -59,7 +59,7 @@ parallax_vertical_t parallax_vertical_double(const u8* bg_data, const size_t bg_
 parallax_vertical_t* parallax_vertical_simple_new(const u8* parallax_data, const size_t parallax_size);
 
 /**
- * Creates a new parallax_vertical_t struct on the heap using the double parallax effect.
+ * @brief Creates a new parallax_vertical_t struct on the heap using the double parallax effect.
  * @param bg_data Pointer to the background texture data in memory
  * @param bg_size Size of the background texture data in bytes
  * @param parallax_data Pointer to the parallax texture data in memory
@@ -69,19 +69,19 @@ parallax_vertical_t* parallax_vertical_simple_new(const u8* parallax_data, const
 parallax_vertical_t* parallax_vertical_double_new(const u8* bg_data, const size_t bg_size, const u8* parallax_data, const size_t parallax_size);
 
 /**
- * Updates the vertical parallax effect by moving the foreground rectangles and resetting their positions when they move off-screen.
+ * @brief Updates the vertical parallax effect by moving the foreground rectangles and resetting their positions when they move off-screen.
  * @param parallax Pointer to the parallax_vertical_t struct to update
  */
 void parallax_vertical_update(parallax_vertical_t* parallax);
 
 /**
- * Renders the vertical parallax effect by drawing the background and foreground layers to the screen.
+ * @brief Renders the vertical parallax effect by drawing the background and foreground layers to the screen.
  * @param parallax Pointer to the parallax_vertical_t struct to render
  */
 void parallax_vertical_render(const parallax_vertical_t* parallax);
 
 /**
- * Creates a simple horizontal parallax effect using the provided parallax texture data.
+ * @brief Creates a simple horizontal parallax effect using the provided parallax texture data.
  * @param parallax_data Pointer to the parallax texture data in memory
  * @param parallax_size Size of the parallax texture data in bytes
  * @return A parallax_horizontal_t struct initialized with the loaded texture and rectangles
@@ -89,7 +89,7 @@ void parallax_vertical_render(const parallax_vertical_t* parallax);
 parallax_horizontal_t parallax_horizontal_simple(const u8* parallax_data, const size_t parallax_size);
 
 /**
- * Creates a horizontal parallax effect with a background layer and a foreground layer using the provided texture data.
+ * @brief Creates a horizontal parallax effect with a background layer and a foreground layer using the provided texture data.
  * @param bg_data Pointer to the background texture data in memory
  * @param bg_size Size of the background texture data in bytes
  * @param parallax_data Pointer to the parallax texture data in memory
@@ -99,7 +99,7 @@ parallax_horizontal_t parallax_horizontal_simple(const u8* parallax_data, const 
 parallax_horizontal_t parallax_horizontal_double(const u8* bg_data, const size_t bg_size, const u8* parallax_data, const size_t parallax_size);
 
 /**
- * Creates a new parallax_horizontal_t struct on the heap using the simple parallax effect.
+ * @brief Creates a new parallax_horizontal_t struct on the heap using the simple parallax effect.
  * @param parallax_data Pointer to the parallax texture data in memory
  * @param parallax_size Size of the parallax texture data in bytes
  * @return A pointer to a newly allocated parallax_horizontal_t struct initialized with the loaded texture and rectangles
@@ -107,7 +107,7 @@ parallax_horizontal_t parallax_horizontal_double(const u8* bg_data, const size_t
 parallax_horizontal_t* parallax_horizontal_simple_new(const u8* parallax_data, const size_t parallax_size);
 
 /**
- * Creates a new parallax_horizontal_t struct on the heap using the double parallax effect.
+ * @brief Creates a new parallax_horizontal_t struct on the heap using the double parallax effect.
  * @param bg_data Pointer to the background texture data in memory
  * @param bg_size Size of the background texture data in bytes
  * @param parallax_data Pointer to the parallax texture data in memory
@@ -117,13 +117,13 @@ parallax_horizontal_t* parallax_horizontal_simple_new(const u8* parallax_data, c
 parallax_horizontal_t* parallax_horizontal_double_new(const u8* bg_data, const size_t bg_size, const u8* parallax_data, const size_t parallax_size);
 
 /**
- * Updates the horizontal parallax effect by moving the foreground rectangles and resetting their positions when they move off-screen.
+ * @brief Updates the horizontal parallax effect by moving the foreground rectangles and resetting their positions when they move off-screen.
  * @param parallax Pointer to the parallax_horizontal_t struct to update
  */
 void parallax_horizontal_update(parallax_horizontal_t* parallax);
 
 /**
- * Renders the horizontal parallax effect by drawing the background and foreground layers to the screen.
+ * @brief Renders the horizontal parallax effect by drawing the background and foreground layers to the screen.
  * @param parallax Pointer to the parallax_horizontal_t struct to render
  */
 void parallax_horizontal_render(const parallax_horizontal_t* parallax);

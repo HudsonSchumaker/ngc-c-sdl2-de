@@ -393,7 +393,7 @@ INLINE f32 angle_between_pointsf(f32 x1, f32 y1, f32 x2, f32 y2) {
 //----------------------------------------------------------------
 
 /**
- * Wraps an angle to the range [0, 1024) where 1024 represents 360 degrees.
+ * @brief Wraps an angle to the range [0, 1024) where 1024 represents 360 degrees.
  * @param angle The input angle
  * @return The wrapped angle in the range [0, 1024)
  */
@@ -402,7 +402,7 @@ INLINE i32 wrap_angle(i32 angle) {
 }
 
 /**
- * Converts degrees to radians.
+ * @brief Converts degrees to radians.
  * @param deg The angle in degrees
  * @return The angle in radians
  */
@@ -411,7 +411,7 @@ INLINE f32 deg2rad(f32 deg) {
 }
 
 /**
- * Converts radians to degrees.
+ * @brief Converts radians to degrees.
  * @param rad The angle in radians
  * @return The angle in degrees
  */

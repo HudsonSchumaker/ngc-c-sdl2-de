@@ -8,6 +8,9 @@
 #pragma once
 #include "../pch.h"
 
+/**
+ * @brief A transform pool that holds the position, scale, and rotation for all entities.
+ */
 typedef struct {
     f32 px[MAX_ENTITIES];
     f32 py[MAX_ENTITIES];

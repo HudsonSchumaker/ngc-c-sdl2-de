@@ -8,7 +8,6 @@
 #include "render_system.h"
 #include "entity_manager.h"
 #include "../core/engine.h"
-
 #include "../core/context.h"
 
 void render_system(transform_pool_t* t, texture_pool_t* r, camera_t* c) {
@@ -24,7 +23,7 @@ void render_system(transform_pool_t* t, texture_pool_t* r, camera_t* c) {
             float h = r->h[i] * t->sy[i];
             SDL_Texture* texture = r->texture[i];
 
-            bool is_out_of_camera = ( x + w < c->x) || (x > c->x + c->w) || (y + h < c->y) || (y > c->y + c->h); 
+            bool is_out_of_camera = (x + w < c->x) || (x > c->x + c->w) || (y + h < c->y) || (y > c->y + c->h); 
             if (is_out_of_camera) {
                 continue;
             }

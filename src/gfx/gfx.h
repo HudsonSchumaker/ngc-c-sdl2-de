@@ -16,7 +16,7 @@ typedef struct {
 } texture_t;
 
 /**
- * Loads a texture from memory data.
+ * @brief Loads a texture from memory data.
  * @param data The pointer to the texture data in memory
  * @param size The size of the texture data in bytes
  * @return A pointer to the loaded SDL_Texture, or NULL on failure
@@ -24,7 +24,7 @@ typedef struct {
 SDL_Texture* gfx_load_texture(const u8* data, const size_t size);
 
 /**
- * Loads a texture from memory data and returns a texture_t struct containing the texture and its dimensions.
+ * @brief Loads a texture from memory data and returns a texture_t struct containing the texture and its dimensions.
  * @param data The pointer to the texture data in memory
  * @param size The size of the texture data in bytes
  * @return A texture_t struct containing the loaded texture and its dimensions, or a struct with NULL texture on failure
@@ -32,7 +32,7 @@ SDL_Texture* gfx_load_texture(const u8* data, const size_t size);
 texture_t gfx_load_texture_ex(const u8* data, const size_t size);
 
 /**
- * Creates a texture from text using a font loaded from memory.
+ * @brief Creates a texture from text using a font loaded from memory.
  * @param data The pointer to the font data in memory
  * @param size The size of the font data in bytes
  * @param text The text to render
@@ -43,21 +43,21 @@ texture_t gfx_load_texture_ex(const u8* data, const size_t size);
 SDL_Texture* gfx_create_text(const u8* data, const size_t size, const char* text, u8 text_size, color_t color);
 
 /**
- * Gets the size of a texture as an SDL_Rect.
+ * @brief Gets the size of a texture as an SDL_Rect.
  * @param texture The texture to query
  * @return An SDL_Rect containing the width and height of the texture
  */
 SDL_Rect gfx_get_texture_size(SDL_Texture* texture);
 
 /**
- * Gets the size of a texture as an SDL_FRect.
+ * @brief Gets the size of a texture as an SDL_FRect.
  * @param texture The texture to query
  * @return An SDL_FRect containing the width and height of the texture
  */    
 SDL_FRect gfx_get_texture_fsize(SDL_Texture* texture);
 
 /**
- * Renders a texture at the specified position and size.
+ * @brief Renders a texture at the specified position and size.
  * @param texture The texture to render
  * @param x The X coordinate of the top-left corner
  * @param y The Y coordinate of the top-left corner
@@ -67,7 +67,7 @@ SDL_FRect gfx_get_texture_fsize(SDL_Texture* texture);
 void gfx_render_texture(SDL_Texture* texture, i32 x, i32 y, i32 w, i32 h);
 
 /**
- * Renders a texture at the specified position and size with rotation.
+ * @brief Renders a texture at the specified position and size with rotation.
  * @param texture The texture to render
  * @param x The X coordinate of the top-left corner
  * @param y The Y coordinate of the top-left corner
@@ -78,7 +78,7 @@ void gfx_render_texture(SDL_Texture* texture, i32 x, i32 y, i32 w, i32 h);
 void gfx_render_texture_rotated(SDL_Texture* texture, i32 x, i32 y, i32 w, i32 h, double angle);
 
 /**
- * Draws a line between two points with the specified color.
+ * @brief Draws a line between two points with the specified color.
  * @param x0 The X coordinate of the starting point
  * @param y0 The Y coordinate of the starting point
  * @param x1 The X coordinate of the ending point
@@ -88,7 +88,7 @@ void gfx_render_texture_rotated(SDL_Texture* texture, i32 x, i32 y, i32 w, i32 h
 void gfx_draw_line(i32 x0, i32 y0, i32 x1, i32 y1, color_t color);
 
 /**
- * Draws a circle with the specified center, radius, and color.
+ * @brief Draws a circle with the specified center, radius, and color.
  * @param cx The X coordinate of the center
  * @param cy The Y coordinate of the center
  * @param radius The radius of the circle
@@ -97,7 +97,7 @@ void gfx_draw_line(i32 x0, i32 y0, i32 x1, i32 y1, color_t color);
 void gfx_draw_circle(i32 cx, i32 cy, i32 radius, color_t color);
 
 /**
- * Draws a filled circle with the specified center, radius, and color.
+ * @brief Draws a filled circle with the specified center, radius, and color.
  * @param cx The X coordinate of the center
  * @param cy The Y coordinate of the center
  * @param radius The radius of the circle
@@ -106,7 +106,7 @@ void gfx_draw_circle(i32 cx, i32 cy, i32 radius, color_t color);
 void gfx_draw_fill_circle(i32 cx, i32 cy, i32 radius, color_t color);
 
 /**
- * Draws a dashed circle with the specified center, radius, dash length, and color.
+ * @brief Draws a dashed circle with the specified center, radius, dash length, and color.
  * @param cx The X coordinate of the center
  * @param cy The Y coordinate of the center
  * @param radius The radius of the circle
@@ -116,35 +116,35 @@ void gfx_draw_fill_circle(i32 cx, i32 cy, i32 radius, color_t color);
 void gfx_draw_dashed_circle(i32 cx, i32 cy, i32 radius, i32 dash_length, color_t color);
 
 /**
- * Draws a rectangle with the specified dimensions and color.
+ * @brief Draws a rectangle with the specified dimensions and color.
  * @param rect The SDL_Rect defining the rectangle
  * @param color The color of the rectangle
  */
 void gfx_draw_box(SDL_Rect rect, color_t color);
 
 /**
- * Draws a rectangle with floating-point dimensions and the specified color.
+ * @brief Draws a rectangle with floating-point dimensions and the specified color.
  * @param rect The SDL_FRect defining the rectangle
  * @param color The color of the rectangle
  */
 void gfx_draw_fbox(SDL_FRect rect, color_t color);
 
 /**
- * Draws a filled rectangle with the specified dimensions and color.
+ * @brief Draws a filled rectangle with the specified dimensions and color.
  * @param rect The SDL_Rect defining the rectangle
  * @param color The color of the rectangle
  */
 void gfx_draw_fill_box(SDL_Rect rect, color_t color);
 
 /**
- * Draws a filled rectangle with floating-point dimensions and the specified color.
+ * @brief Draws a filled rectangle with floating-point dimensions and the specified color.
  * @param rect The SDL_FRect defining the rectangle
  * @param color The color of the rectangle
  */
 void gfx_draw_fill_fbox(SDL_FRect rect, color_t color);
 
 /**
- * Draws a triangle with the specified vertices and color.
+ * @brief Draws a triangle with the specified vertices and color.
  * @param x1 The X coordinate of the first vertex
  * @param y1 The Y coordinate of the first vertex
  * @param x2 The X coordinate of the second vertex

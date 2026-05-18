@@ -12,7 +12,7 @@
 #include "../core/camera.h"
 
 /**
- * Renders entities with transform and texture components.
+ * @brief Renders entities with transform and texture components.
  * @param t A pointer to the transform pool
  * @param r A pointer to the texture pool
  * @param c A pointer to the camera

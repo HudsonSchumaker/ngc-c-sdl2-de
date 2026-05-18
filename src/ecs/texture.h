@@ -7,6 +7,10 @@
 */
 #pragma once
 #include "../pch.h"
+
+/**
+ * @brief A texture pool that holds the textures and their dimensions for all entities.
+ */
 typedef struct {
     i32 w[MAX_ENTITIES];
     i32 h[MAX_ENTITIES];
