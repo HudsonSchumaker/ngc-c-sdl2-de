@@ -14,6 +14,16 @@ SDL_Texture* gfx_load_texture(const u8* data, const size_t size) {
     return texture;
 }
 
+texture_t gfx_load_texture_ex(const u8* data, const size_t size) {
+    SDL_Texture* texture = gfx_load_texture(data, size);
+    if (texture == NULL) {
+        return (texture_t){ 0, 0, NULL };
+    }
+
+    SDL_Rect rect = gfx_get_texture_size(texture);
+    return (texture_t){ rect.w, rect.h, texture };
+}
+
 SDL_Texture* gfx_create_text(const u8* data, const size_t size, const char* text, u8 text_size, color_t color) {
     SDL_RWops* rw = SDL_RWFromMem((void*)data, size);
     TTF_Font* font = TTF_OpenFontRW(rw, 1, text_size);

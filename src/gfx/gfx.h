@@ -9,6 +9,12 @@
 #include "color.h"
 #include "../pch.h"
 
+typedef struct {
+    i32 w;
+    i32 h;
+    SDL_Texture* texture;
+} texture_t;
+
 /**
  * Loads a texture from memory data.
  * @param data The pointer to the texture data in memory
@@ -16,6 +22,14 @@
  * @return A pointer to the loaded SDL_Texture, or NULL on failure
  */
 SDL_Texture* gfx_load_texture(const u8* data, const size_t size);
+
+/**
+ * Loads a texture from memory data and returns a texture_t struct containing the texture and its dimensions.
+ * @param data The pointer to the texture data in memory
+ * @param size The size of the texture data in bytes
+ * @return A texture_t struct containing the loaded texture and its dimensions, or a struct with NULL texture on failure
+ */
+texture_t gfx_load_texture_ex(const u8* data, const size_t size);
 
 /**
  * Creates a texture from text using a font loaded from memory.
