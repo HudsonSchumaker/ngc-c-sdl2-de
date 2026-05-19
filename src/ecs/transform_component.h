@@ -16,5 +16,6 @@ typedef struct {
     f32 py[MAX_ENTITIES];
     f32 sx[MAX_ENTITIES];
     f32 sy[MAX_ENTITIES];
-    i32 ra[MAX_ENTITIES]; 
+    i32 ra[MAX_ENTITIES];
+    i8  zi[MAX_ENTITIES]; 
 } transform_pool_t;
