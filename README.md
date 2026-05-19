@@ -26,7 +26,6 @@ Developed by **Hudson Schumaker** — [Dodoi-Lab](https://github.com/Dodoi-Lab) 
 src/
 ├── core/        # Engine init/quit, context (window + renderer), camera
 ├── gfx/         # Scene, graphics helpers, parallax scrolling
-├── go/          # Game objects and box colliders
 ├── sfx/         # Sound effects and music (SDL_mixer)
 ├── ui/          # Button, image, label widgets
 ├── math/        # 2D math with LUT-based trigonometry
