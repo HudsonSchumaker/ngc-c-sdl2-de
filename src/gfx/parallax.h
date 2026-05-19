@@ -9,7 +9,7 @@
 #include "../pch.h"
 
 /**
- * Represents a vertical parallax effect with background and foreground layers.
+ * @brief Represents a vertical parallax effect with background and foreground layers.
  */
 typedef struct {
 	SDL_Texture* background;
@@ -21,7 +21,7 @@ typedef struct {
 } parallax_vertical_t;
 
 /**
- * Represents a horizontal parallax effect with background and foreground layers.
+ * @brief Represents a horizontal parallax effect with background and foreground layers.
  */
 typedef struct {
 	SDL_Texture* background;

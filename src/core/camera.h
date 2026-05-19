@@ -10,7 +10,7 @@
 #include "../gfx/color.h"
 
 /**
- * Camera structure representing the viewport and background color.
+ * @brief structure representing the viewport and background color.
  */
 typedef struct {
     i16 x;
@@ -21,7 +21,7 @@ typedef struct {
 } camera_t;
 
 /**
- * Creates a new camera with the specified color.
+ * @brief Creates a new camera with the specified color.
  * @param color The background color of the camera
  * @return A new camera instance
  */

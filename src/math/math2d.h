@@ -12,12 +12,12 @@
 //----------------------------------------------------------------
 
 /**
- * Builds the sine, cosine, and arctangent lookup tables. This function should be called once during initialization.
+ * @brief Builds the sine, cosine, and arctangent lookup tables. This function should be called once during initialization.
  */
 void build_trigo_tables(void);
 
 /**
- * Approximates the arctangent of dy/dx using a lookup table.
+ * @brief Approximates the arctangent of dy/dx using a lookup table.
  * @param dy The difference in Y coordinates
  * @param dx The difference in X coordinates
  * @return Approximation of the angle in the range [0, 1024) where 1024 represents 360 degrees
@@ -25,14 +25,14 @@ void build_trigo_tables(void);
 i32 de_atanf(i32 dy, i32 dx);
 
 /**
- * Approximates the sine of an angle using a lookup table.
+ * @brief Approximates the sine of an angle using a lookup table.
  * @param angle The input angle in the range [0, 1024) where 1024 represents 360 degrees
  * @return Approximation of the sine of the angle
  */    
 f32 de_sinf(i32 angle);
 
 /**
- * Approximates the cosine of an angle using a lookup table.
+ * @brief Approximates the cosine of an angle using a lookup table.
  * @param angle The input angle in the range [0, 1024) where 1024 represents 360 degrees
  * @return Approximation of the cosine of the angle
  */
@@ -43,7 +43,7 @@ f32 de_cosf(i32 angle);
 //----------------------------------------------------------------
 
 /**
- * Fast inverse square root approximation.
+ * @brief Fast inverse square root approximation.
  * @param number The input number
  * @return Approximation of 1/sqrt(number)
  */
@@ -64,7 +64,7 @@ INLINE f32 rsqrtf(f32 number) {
 }
 
 /**
- * Fast square root approximation using the inverse square root.
+ * @brief Fast square root approximation using the inverse square root.
  * @param number The input number
  * @return Approximation of sqrt(number)
  */
@@ -77,7 +77,7 @@ INLINE f32 fsqrtf(f32 number) {
 //----------------------------------------------------------------
 
 /**
- * A 2D vector structure with x and y components, aligned to 32 bytes for SIMD optimizations.
+ * @brief A 2D vector structure with x and y components, aligned to 32 bytes for SIMD optimizations.
  */
 typedef union ALIGN32 {
     struct {
@@ -87,6 +87,12 @@ typedef union ALIGN32 {
     f32 v[2];
 } vec2_t;
 
+/**
+ * @brief Creates a new 2D vector with the specified x and y components.
+ * @param x The X component of the vector
+ * @param y The Y component of the vector
+ * @return A vec2_t struct with the specified components
+ */
 INLINE vec2_t vec2_create(f32 x, f32 y) {
     vec2_t v;
     v.x = x;
@@ -95,7 +101,7 @@ INLINE vec2_t vec2_create(f32 x, f32 y) {
 }
 
 /**
- * Returns a zero vector.
+ * @brief Returns a zero vector.
  * @return A vector with x = 0 and y = 0
  */
 INLINE vec2_t vec2_zero(void) {
@@ -103,7 +109,7 @@ INLINE vec2_t vec2_zero(void) {
 }
 
 /**
- * Returns a vector pointing to the left.
+ * @brief Returns a vector pointing to the left.
  * @return A vector with x = -1 and y = 0
  */
 INLINE vec2_t vec2_left(void) {
@@ -111,7 +117,7 @@ INLINE vec2_t vec2_left(void) {
 }
 
 /**
- * Returns a vector pointing to the right.
+ * @brief Returns a vector pointing to the right.
  * @return A vector with x = 1 and y = 0
  */
 INLINE vec2_t vec2_right(void) {
@@ -119,7 +125,7 @@ INLINE vec2_t vec2_right(void) {
 }
 
 /**
- * Returns a vector pointing upwards.
+ * @brief Returns a vector pointing upwards.
  * @return A vector with x = 0 and y = -1
  */
 INLINE vec2_t vec2_up(void) {
@@ -127,7 +133,7 @@ INLINE vec2_t vec2_up(void) {
 }
 
 /**
- * Returns a vector pointing downwards.
+ * @brief Returns a vector pointing downwards.
  * @return A vector with x = 0 and y = 1
  */
 INLINE vec2_t vec2_down(void) {
@@ -135,7 +141,7 @@ INLINE vec2_t vec2_down(void) {
 }
 
 /**
- * Adds two vectors a and b.
+ * @brief Adds two vectors a and b.
  * @param a First vector
  * @param b Second vector
  * @return The resulting vector after addition
@@ -148,7 +154,7 @@ INLINE vec2_t vec2_add(vec2_t a, vec2_t b) {
 }
 
 /**
- * Subtracts vector b from vector a.
+ * @brief Subtracts vector b from vector a.
  * @param a First vector
  * @param b Second vector to subtract from the first
  * @return The resulting vector after subtraction
@@ -161,7 +167,7 @@ INLINE vec2_t vec2_sub(vec2_t a, vec2_t b) {
 }
 
 /**
- * Multiplies a vector v by a scalar s.
+ * @brief Multiplies a vector v by a scalar s.
  * @param v The input vector
  * @param s The scalar value
  * @return The resulting vector after multiplication
@@ -174,7 +180,7 @@ INLINE vec2_t vec2_mul(vec2_t v, f32 s) {
 }
 
 /**
- * Calculates the dot product of two vectors a and b.
+ * @brief Calculates the dot product of two vectors a and b.
  * @param a First vector
  * @param b Second vector
  * @return The dot product of the two vectors
@@ -184,7 +190,7 @@ INLINE f32 vec2_dot(vec2_t a, vec2_t b) {
 }
 
 /**
- * Calculates the squared length of a vector v.
+ * @brief Calculates the squared length of a vector v.
  * @param v The input vector
  * @return The squared length of the vector
  */
@@ -193,7 +199,7 @@ INLINE f32 vec2_length_sq(vec2_t v) {
 }
 
 /**
- * Calculates the length of a vector v using a fast approximation.
+ * @brief Calculates the length of a vector v using a fast approximation.
  * @param v The input vector
  * @return Approximation of the length of the vector
  */
@@ -207,7 +213,7 @@ INLINE f32 vec2_length(vec2_t v) {
 }
 
 /**
- * Normalizes a vector v using a fast approximation.
+ * @brief Normalizes a vector v using a fast approximation.
  * @param v The input vector
  * @return Approximation of the normalized vector
  */
@@ -226,7 +232,7 @@ INLINE vec2_t vec2_normalize(vec2_t v) {
 }
 
 /**
- * Rotates a vector v by a given angle using the sine and cosine lookup tables.
+ * @brief Rotates a vector v by a given angle using the sine and cosine lookup tables.
  * @param v The input vector
  * @param angle The angle to rotate by in the range [0, 1024) where 1024 represents 360 degrees
  * @return The rotated vector
@@ -243,7 +249,7 @@ INLINE vec2_t vec2_rotate(vec2_t v, i32 angle) {
 }
 
 /**
- * Moves a position forward in the direction of a given angle by a specified speed.
+ * @brief Moves a position forward in the direction of a given angle by a specified speed.
  * @param position The current position
  * @param angle The direction to move in the range [0, 1024) where 1024 represents 360 degrees
  * @param speed The distance to move
@@ -261,7 +267,7 @@ INLINE vec2_t vec2_move_forward(vec2_t position, i32 angle,f32 speed) {
 //----------------------------------------------------------------
 
 /**
- * Returns the minimum of two floating-point values.
+ * @brief Returns the minimum of two floating-point values.
  * @param a First value
  * @param b Second value
  * @return The minimum value
@@ -271,7 +277,7 @@ INLINE f32 minf(f32 a, f32 b) {
 }
 
 /**
- * Returns the maximum of two floating-point values.
+ * @brief Returns the maximum of two floating-point values.
  * @param a First value
  * @param b Second value
  * @return The maximum value
@@ -281,7 +287,7 @@ INLINE f32 maxf(f32 a, f32 b) {
 }
 
 /**
- * Clamps a floating-point value between a minimum and maximum range.
+ * @brief Clamps a floating-point value between a minimum and maximum range.
  * @param v The value to clamp
  * @param min The minimum value
  * @param max The maximum value
@@ -292,7 +298,7 @@ INLINE f32 clampf(f32 v, f32 min, f32 max) {
 }
 
 /**
- * Linearly interpolates between two floating-point values a and b by a factor of t.
+ * @brief Linearly interpolates between two floating-point values a and b by a factor of t.
  * @param a The start value
  * @param b The end value
  * @param t The interpolation factor in the range [0, 1]
@@ -303,7 +309,7 @@ INLINE f32 lerpf(f32 a, f32 b, f32 t) {
 }
 
 /**
- * Returns the absolute value of a floating-point number.
+ * @brief Returns the absolute value of a floating-point number.
  * @param v The input value
  * @return The absolute value of the input
  */
@@ -312,7 +318,7 @@ INLINE f32 absf(f32 v) {
 }
 
 /**
- * Returns a random floating-point number between min and max.
+ * @brief Returns a random floating-point number between min and max.
  * @param min The minimum value
  * @param max The maximum value
  * @return A random floating-point number in the range [min, max]
@@ -322,7 +328,7 @@ INLINE f32 randf(f32 min, f32 max) {
 }
 
 /**
- * Calculates the distance between two points (x1, y1) and (x2, y2) using a fast approximation.
+ * @brief Calculates the distance between two points (x1, y1) and (x2, y2) using a fast approximation.
  * @param x1 First point X coordinate
  * @param y1 First point Y coordinate
  * @param x2 Second point X coordinate
@@ -339,7 +345,7 @@ INLINE f32 distance_pointsf(f32 x1, f32 y1, f32 x2, f32 y2) {
 }
 
 /**
- * Calculates the squared distance between two points (x1, y1) and (x2, y2).
+ * @brief Calculates the squared distance between two points (x1, y1) and (x2, y2).
  * @param x1 First point X coordinate
  * @param y1 First point Y coordinate
  * @param x2 Second point X coordinate
@@ -353,10 +359,10 @@ INLINE f32 distance_points_sqf(f32 x1, f32 y1, f32 x2, f32 y2) {
 }
 
 /**
- * Calculates the distance between two vectors a and b using a fast approximation.
+ * @brief Calculates the squared distance between two vectors a and b.
  * @param a First vector
  * @param b Second vector
- * @return Approximation of the distance between the two vectors
+ * @return Squared distance between the two vectors
  */
 INLINE f32 vec2_distance_sq(vec2_t a, vec2_t b) {
     f32 dx = b.x - a.x;
@@ -365,7 +371,7 @@ INLINE f32 vec2_distance_sq(vec2_t a, vec2_t b) {
 }
 
 /**
- * Calculates the distance between two vectors a and b using a fast approximation.
+ * @brief Calculates the distance between two vectors a and b using a fast approximation.
  * @param a First vector
  * @param b Second vector
  * @return Approximation of the distance between the two vectors
@@ -375,7 +381,7 @@ INLINE f32 vec2_distance(vec2_t a, vec2_t b) {
 }
 
 /**
- * Calculates the angle in radians between two points (x1, y1) and (x2, y2).
+ * @brief Calculates the angle in radians between two points (x1, y1) and (x2, y2).
  * @param x1 First point X coordinate
  * @param y1 First point Y coordinate
  * @param x2 Second point X coordinate
