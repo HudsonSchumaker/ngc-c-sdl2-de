@@ -8,8 +8,18 @@
 #pragma once
 #include "../pch.h"
 
+typedef enum {
+    TAG_NONE = 0,
+    TAG_PLAYER = 1,
+    TAG_ENEMY = 2,
+    TAG_PROJECTILE = 3,
+    TAG_POWERUP = 4,
+    TAG_TOWER = 5
+} tag_t;
+
 typedef struct {
     bool alive[MAX_ENTITIES];
+    tag_t tag[MAX_ENTITIES];
     u16 next;
 } entity_manager_t;
 
@@ -19,8 +29,9 @@ typedef struct {
  */
 static inline void entity_manager_init(entity_manager_t* em) {
     em->next = 0;
-    for (u16 i = 0; i < MAX_ENTITIES; i++) {
-        em->alive[i] = false;
+    for (u16 e = 0; e < MAX_ENTITIES; e++) {
+        em->tag[e] = TAG_NONE;
+        em->alive[e] = false;
     }
 }
 
@@ -30,14 +41,58 @@ static inline void entity_manager_init(entity_manager_t* em) {
  * @return The ID of the newly created entity, or UINT16_MAX if no available slots.
  */
 static inline entity_t entity_create(entity_manager_t* em) {
-    for (u16 i = em->next; i < MAX_ENTITIES; i++) {
-        if (!em->alive[i]) {
-            em->alive[i] = true;
-            em->next = i + 1;
-            return i;
+    for (u16 e = em->next; e < MAX_ENTITIES; e++) {
+        if (!em->alive[e]) {
+            em->alive[e] = true;
+            em->tag[e] = TAG_NONE;
+            em->next = e + 1;
+            return e;
         }
     }
     return UINT16_MAX;
+}
+
+/**
+ * @brief Creates a new entity by finding the next available slot in the entity manager.
+ * @param em A pointer to the entity manager.
+ * @param tag The tag to assign to the newly created entity.
+ * @return The ID of the newly created entity, or UINT16_MAX if no available slots.
+ */
+static inline entity_t entity_create_w_tag(entity_manager_t* em, tag_t tag) {
+    for (u16 e = em->next; e < MAX_ENTITIES; e++) {
+        if (!em->alive[e]) {
+            em->alive[e] = true;
+            em->tag[e] = tag;
+            em->next = e + 1;
+            return e;
+        }
+    }
+    return UINT16_MAX;
+}
+
+/**
+ * @brief Sets the tag of an entity if it is alive.
+ * @param em A pointer to the entity manager.
+ * @param e The ID of the entity to set the tag for.
+ * @param tag The tag to assign to the entity.
+ */
+static inline void entity_set_tag(entity_manager_t* em, entity_t e, tag_t tag) {
+    if (e < MAX_ENTITIES && em->alive[e]) {
+        em->tag[e] = tag;
+    }
+}
+
+/**
+ * @brief Gets the tag of an entity if it is alive.
+ * @param em A pointer to the entity manager.
+ * @param e The ID of the entity to get the tag for.
+ * @return The tag of the entity, or TAG_NONE if the entity is not alive or the ID is out of bounds.
+ */
+static inline tag_t entity_get_tag(entity_manager_t* em, entity_t e) {
+    if (e < MAX_ENTITIES && em->alive[e]) {
+        return em->tag[e];
+    }
+    return TAG_NONE;
 }
 
 /**
@@ -47,6 +102,7 @@ static inline entity_t entity_create(entity_manager_t* em) {
  */
 static inline void entity_destroy(entity_manager_t* em, entity_t e) { 
     em->alive[e] = false;
+    em->tag[e] = TAG_NONE;
     if (e < em->next) {
         em->next = e;
     }

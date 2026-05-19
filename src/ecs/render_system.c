@@ -18,7 +18,7 @@ void render_system(transform_pool_t* t, texture_pool_t* r, camera_t* c) {
         if (em->alive[i] && r->texture[i]) {
             float x = t->px[i];
             float y = t->py[i];
-            float angle = t->ra[i];
+            float a = t->ra[i];
             float w = r->w[i] * t->sx[i];
             float h = r->h[i] * t->sy[i];
             SDL_Texture* texture = r->texture[i];
@@ -34,7 +34,7 @@ void render_system(transform_pool_t* t, texture_pool_t* r, camera_t* c) {
 				texture,
 				NULL,
 				&rec_dest,
-				angle,
+				a,
 				NULL,
 				SDL_FLIP_NONE
 			);

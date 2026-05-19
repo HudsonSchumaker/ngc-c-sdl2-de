@@ -8,31 +8,45 @@
 #pragma once
 #include "../pch.h"
 #include "../ecs/entity_manager.h"
+#include "../ecs/texture_component.h"
+#include "../ecs/transform_component.h"
 
 /**
- * Initializes the engine and its subsystems.
+ * @brief Initializes the engine and its subsystems.
  */
 void engine_init(void);
 
 /**
- * Quits the engine and cleans up resources.
+ * @brief Quits the engine and cleans up resources.
  */
 void engine_quit(void);
 
 /**
- * Gets the time elapsed since the last frame in seconds.
+ * @brief Gets the time elapsed since the last frame in seconds.
  * @return The delta time in seconds
  */
 f32 engine_get_delta_time(void);
 
 /**
- * Calculates the time elapsed since the last frame and updates the delta time.
+ * @brief Calculates the time elapsed since the last frame and updates the delta time.
  * @return The calculated delta time in seconds
  */
 f32 engine_calculate_delta_time(void);
 
 /**
- * Gets the entity manager instance.
+ * @brief Gets the entity manager instance.
  * @return A pointer to the entity manager
  */
 entity_manager_t* engine_get_entity_manager(void);
+
+/**
+ * @brief Gets the transform pool instance.
+ * @return A pointer to the transform pool
+ */
+transform_pool_t* engine_get_transform_pool(void);
+
+/**
+ * @brief Gets the texture pool instance.
+ * @return A pointer to the texture pool
+ */
+texture_pool_t* engine_get_texture_pool(void);

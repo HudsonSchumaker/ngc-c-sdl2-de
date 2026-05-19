@@ -7,29 +7,24 @@
  * @copyright Copyright (c) 2024, Dodoi-Lab
  */
 #include "enemy.h"
+#include "tower.h"
+#include "enemy.h"
 #include "level1.h"
 #include "../gfx/gfx.h"
 #include "../util/map.h"
 #include "../core/engine.h"
 #include "../core/camera.h"
+#include "../ecs/radar_system.h"
 #include "../ecs/render_system.h"
 #include "grass_png.h"
 #include "path_png.h"
-#include "orc_png.h"
-#include "t1_png.h"
 
 static bool running = false;
-static scene_t* level1 = NULL;
-static entity_manager_t* em = NULL;
 static map_t map;
-
-static enemy_t enemie;
-static SDL_Texture *enemy_texture = NULL;
-
 static camera_t camera;
-static entity_t tower;
-static transform_pool_t transform_pool;
-static texture_pool_t texture_pool;
+static tower_pool_t tower_pool;
+static enemy_pool_t enemy_pool;
+static scene_t* level1 = NULL;
 
 static const char *level1_data[MAP_HEIGHT][MAP_WIDTH] = {
     {"g0", "g0", "g0", "g0", "g0", "g0", "g0", "g0", "g0", "g0", "g0", "g0", "g0", "g0", "g0", "g0", "g0", "g0", "g0", "g0"},
@@ -67,22 +62,13 @@ void level1_load(void) {
     map.textures[0] = gfx_load_texture(grass_png, grass_png_size);
     map.textures[1] = gfx_load_texture(path_png, path_png_size);
     camera = camera_new(color_white());
-    enemy_texture = gfx_load_texture(orc_png, orc_png_size);
-    enemie = enemy(0, 7 * MAP_TILE_SIZE, MAP_TILE_SIZE, MAP_TILE_SIZE, 100, 25.0f);
-    enemie.texture = enemy_texture;
 
-    em = engine_get_entity_manager();
-    tower = entity_create(em);
-    texture_t tower_texture = gfx_load_texture_ex(t1_png, t1_png_size);
-    texture_pool.w[tower] = tower_texture.w;
-    texture_pool.h[tower] = tower_texture.h;
-    texture_pool.texture[tower] = tower_texture.texture;
-
-    transform_pool.px[tower] = 5 * MAP_TILE_SIZE;
-    transform_pool.py[tower] = 6 * MAP_TILE_SIZE;
-    transform_pool.sx[tower] = 0.5f;
-    transform_pool.sy[tower] = 0.5f;
-    transform_pool.ra[tower] = 0.0f;
+    tower_create(&tower_pool, 5 * 32.0f, 6 * 32.0f);
+    enemy_create(&enemy_pool, 0.0f, 7 * 32.0f);
+    enemy_create(&enemy_pool, -32.0f, 7 * 32.0f);
+    enemy_create(&enemy_pool, -64.0f, 7 * 32.0f);
+    enemy_create(&enemy_pool, -96.0f, 7 * 32.0f);
+    enemy_create(&enemy_pool, -128.0f, 7 * 32.0f);
 
     running = true;
 }
@@ -90,16 +76,16 @@ void level1_load(void) {
 void level1_input(void) {}
 
 void level1_update(void) {
-    float delta_time = engine_calculate_delta_time();
-    enemy_update(&enemie, delta_time);
+    f32 delta_time = engine_calculate_delta_time();
+    enemy_move(&enemy_pool, delta_time);
+    radar_system(TAG_TOWER, TAG_ENEMY);
 }
 
 void level1_render(void) {
     scene_begin_render();
     {
         map_render(&map);
-        enemy_render(&enemie);
-        render_system(&transform_pool, &texture_pool, &camera);
+        render_system(engine_get_transform_pool(), engine_get_texture_pool(), &camera);
     }
     scene_end_render();
 }
@@ -121,10 +107,6 @@ void level1_unload(void) {
     }
     free(level1);
     level1 = NULL;
-
-    if (enemy_texture) {
-        SDL_DestroyTexture(enemy_texture);
-    }
 }
 
 scene_t *level1_get_scene(void) {

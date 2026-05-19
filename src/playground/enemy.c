@@ -1,41 +1,52 @@
 /**
-* @file enemy.c
-* @author Hudson Schumaker
-* @version 1.0.0
-*
-* Dodoi-Engine is a game engine developed by Dodoi-Lab.
-* @copyright Copyright (c) 2024, Dodoi-Lab
-*/
+ * @file enemy.c
+ * @author Hudson Schumaker
+ * @version 1.0.0
+ *
+ * Dodoi-Engine is a game engine developed by Dodoi-Lab.
+ * @copyright Copyright (c) 2024, Dodoi-Lab
+ */
 #include "enemy.h"
 #include "../gfx/gfx.h"
+#include "../core/engine.h"
+#include "../ecs/entity_manager.h"
+#include "../ecs/texture_component.h"
+#include "../ecs/transform_component.h"
+#include "orc_png.h"
 
-enemy_t enemy(float x, float y, int w, int h, int health, float speed) {
-    enemy_t e;
-    e.x = x;
-    e.y = y;
-    e.w = w;
-    e.h = h;
-    e.z = 0;
-    e.health = health;
-    e.speed = speed;
-    e.active = true;
-    e.texture = NULL; // Set this to your enemy texture
-    return e;
+void enemy_create(enemy_pool_t* enemy_pool, i32 x, i32 y) {
+    // Get entity manager
+    entity_manager_t* em = engine_get_entity_manager();
+    entity_t enemy = entity_create_w_tag(em, TAG_ENEMY);
+
+    // Initialize transform
+    transform_pool_t* transform_pool = engine_get_transform_pool();
+    transform_pool->px[enemy] = x;
+    transform_pool->py[enemy] = y;
+    transform_pool->sx[enemy] = 0.5f;
+    transform_pool->sy[enemy] = 0.5f;
+    transform_pool->ra[enemy] = 0.0f;
+    transform_pool->zi[enemy] = 1;
+
+    // Initialize texture
+    texture_pool_t* texture_pool = engine_get_texture_pool();
+    texture_t enemy_texture = gfx_load_texture_ex(orc_png, orc_png_size);
+    texture_pool->w[enemy] = enemy_texture.w;
+    texture_pool->h[enemy] = enemy_texture.h;
+    texture_pool->texture[enemy] = enemy_texture.texture;
+
+    // Initialize enemy properties
+    enemy_pool->speed[enemy] = 25.0f;
+    enemy_pool->health[enemy] = 100.0f;
 }
 
-void enemy_update(enemy_t* enemy, float delta_time) {
-    if (!enemy->active) return;
+void enemy_move(enemy_pool_t* enemy_pool, f32 delta_time) {
+    entity_manager_t* em = engine_get_entity_manager();
+    transform_pool_t* transform_pool = engine_get_transform_pool();
 
-    // Example movement logic (move right)
-    enemy->x += enemy->speed * delta_time;
-}
-
-void enemy_render(const enemy_t* enemy) {
-    if (!enemy->active) return;
-
-    // Render the enemy using its texture and position
-    if (enemy->texture) {
-        SDL_FRect dest = { enemy->x, enemy->y, (float)enemy->w, (float)enemy->h };
-        gfx_render_texture(enemy->texture, dest.x, dest.y, dest.w, dest.h);
+    for (entity_t i = 0; i < MAX_ENTITIES; i++) {
+        if (em->alive[i] && em->tag[i] == TAG_ENEMY) {
+            transform_pool->px[i] += enemy_pool->speed[i] * delta_time;
+        }
     }
 }

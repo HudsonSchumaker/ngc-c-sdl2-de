@@ -7,9 +7,9 @@
 */
 #pragma once
 #include "../pch.h"
-#include "texture.h"
-#include "transform.h"
 #include "../core/camera.h"
+#include "texture_component.h"
+#include "transform_component.h"
 
 /**
  * @brief Renders entities with transform and texture components.

@@ -9,10 +9,13 @@
 #include "context.h"
 #include "../math/math2d.h"
 #include "../playground/level1.h"
+
 #include "../playground/splash_screen.h"
 
 static f32 delta_time = 0.0f;
+static texture_pool_t texture_pool;
 static entity_manager_t entity_manager;
+static transform_pool_t transform_pool;
 
 void engine_init(void) {
     if (ctx_init() != 0) {
@@ -81,6 +84,14 @@ f32 engine_get_delta_time(void) {
     return delta_time;
 }
 
-entity_manager_t *engine_get_entity_manager(void) {
+entity_manager_t* engine_get_entity_manager(void) {
     return &entity_manager;
+}
+
+transform_pool_t* engine_get_transform_pool(void) {
+    return &transform_pool;
+}
+
+texture_pool_t* engine_get_texture_pool(void) {
+    return &texture_pool;
 }
