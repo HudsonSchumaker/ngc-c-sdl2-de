@@ -40,4 +40,14 @@ void tower_create(tower_pool_t* tower_pool, i32 x, i32 y) {
     tower_pool->damage[tower] = 25.0f;  
     tower_pool->cooldown[tower] = 0.0f;
     tower_pool->fire_rate[tower] = 1.0f;
+    tower_pool->level[tower] = 1;
 }
+
+void tower_upgrade(tower_pool_t* tower_pool, entity_t tower) {
+    if (tower_pool->level[tower] < 3) {
+        tower_pool->level[tower]++;
+        tower_pool->damage[tower] += 10.0f; 
+        tower_pool->range[tower] += 8.0f; 
+        tower_pool->fire_rate[tower] += 0.5f;
+    }
+}   
