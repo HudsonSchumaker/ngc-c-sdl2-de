@@ -9,7 +9,6 @@
 #include "context.h"
 #include "../math/math2d.h"
 #include "../playground/level1.h"
-
 #include "../playground/splash_screen.h"
 
 static f32 delta_time = 0.0f;
@@ -71,8 +70,7 @@ f32 engine_calculate_delta_time(void) {
 
     if (smooth_dt == 0.0f) {
         smooth_dt = dt;
-    }
-    else {
+    } else {
         smooth_dt += SMOOTH_ALPHA * (dt - smooth_dt);
     }
 

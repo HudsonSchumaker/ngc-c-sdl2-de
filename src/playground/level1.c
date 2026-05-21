@@ -8,7 +8,6 @@
  */
 #include "enemy.h"
 #include "tower.h"
-#include "enemy.h"
 #include "level1.h"
 #include "../gfx/gfx.h"
 #include "../util/map.h"
