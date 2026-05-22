@@ -31,6 +31,14 @@ SDL_Color color_to_sdl_color(const color_t color) {
     return sdl_color;
 }
 
+u32 color_to_rgba_hex(const color_t color) {
+    return (color.r << 24) | (color.g << 16) | (color.b << 8) | color.a;
+}
+
+u32 color_to_argb_hex(const color_t color) {
+    return (color.a << 24) | (color.r << 16) | (color.g << 8) | color.b;
+}
+
 color_t color_red(void) {
     return color(255, 0, 0, 255);
 }

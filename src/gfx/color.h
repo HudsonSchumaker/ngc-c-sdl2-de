@@ -46,6 +46,20 @@ color_t* color_new(u8 r, u8 g, u8 b, u8 a);
 SDL_Color color_to_sdl_color(const color_t color);
 
 /**
+ * @brief Converts a color_t to a hexadecimal RGBA value.
+ * @param color The color_t to convert
+ * @return The hexadecimal representation of the color
+ */
+u32 color_to_rgba_hex(const color_t color);
+
+/**
+ * @brief Converts a color_t to a hexadecimal ARGB value.
+ * @param color The color_t to convert
+ * @return The hexadecimal representation of the color
+ */
+u32 color_to_argb_hex(const color_t color);
+
+/**
  * @brief Returns a red color.
  * @return A color_t struct representing red
  */
