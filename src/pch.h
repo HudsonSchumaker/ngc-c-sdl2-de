@@ -21,19 +21,6 @@
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
-
-typedef uint8_t  u8;
-typedef uint16_t u16;
-typedef uint32_t u32;
-typedef uint64_t u64;
-
-typedef int8_t  i8;
-typedef int16_t i16;
-typedef int32_t i32;
-typedef int64_t i64;
-typedef float   f32;
-typedef double  f64;
-typedef u16 entity_t;
 #define ARRAY_LEN(arr) (sizeof(arr) / sizeof((arr)[0]))
 #define FIELD_LEN(obj, field) (sizeof((obj)->field) / sizeof((obj)->field[0]))
 
@@ -46,9 +33,9 @@ typedef u16 entity_t;
 #define H_WINDOW_WIDTH 320
 #define H_WINDOW_HEIGHT 240
 
-#define ATAN_LUT_SIZE 256
-#define SIN_COS_LUT_SIZE 1024
-#define ANGLE_MASK (SIN_COS_LUT_SIZE - 1)
+#define SIN_LUT_SIZE 2048
+#define ANGLE_MASK (SIN_LUT_SIZE - 1)
+#define TABLE_SCALE (SIN_LUT_SIZE / 360.0f)
 
 #define MAP_WIDTH 20
 #define MAP_HEIGHT 15
@@ -76,10 +63,6 @@ typedef u16 entity_t;
 #define RAD_2_DEG_F (180.0f / PI_F)
 #define EPSILON_F 0.00001f
 
-typedef struct {
-    u8 value;
-} byte_t;
-
 #define BIT_0 (1u << 0)
 #define BIT_1 (1u << 1)
 #define BIT_2 (1u << 2)
@@ -88,3 +71,20 @@ typedef struct {
 #define BIT_5 (1u << 5)
 #define BIT_6 (1u << 6)
 #define BIT_7 (1u << 7)
+
+typedef uint8_t  u8;
+typedef uint16_t u16;
+typedef uint32_t u32;
+typedef uint64_t u64;
+
+typedef int8_t  i8;
+typedef int16_t i16;
+typedef int32_t i32;
+typedef int64_t i64;
+typedef float   f32;
+typedef double  f64;
+typedef u16 entity_t;
+
+typedef struct {
+    u8 value;
+} byte_t;
