@@ -41,7 +41,7 @@ void radar_system(tag_t source, tag_t target) {
                         continue;
                     }
 
-                    i32 angle = de_atanf((i32)dy, (i32)dx);
+                    i32 angle = degrees_to_index(rad2deg(angle_between_direction(dx, dy)));
                     t->ra[i] = angle;
 
                     // Here you can implement the logic to check the distance between (source_x, source_y) and (target_x, target_y)
