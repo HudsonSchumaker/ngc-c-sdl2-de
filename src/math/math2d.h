@@ -17,12 +17,11 @@
 void build_trigo_tables(void);
 
 /**
- * @brief Approximates the arctangent of dy/dx using a lookup table.
- * @param dy The difference in Y coordinates
- * @param dx The difference in X coordinates
- * @return Approximation of the angle in the range [0, 1024) where 1024 represents 360 degrees
+ * @brief Converts degrees to the corresponding index in the lookup table.
+ * @param degrees The angle in degrees
+ * @return The corresponding index in the range [0, 1024) where 1024 represents 360 degrees
  */
-i32 de_atanf(i32 dy, i32 dx);
+i32 degrees_to_index(f32 degrees);
 
 /**
  * @brief Approximates the sine of an angle using a lookup table.
@@ -37,6 +36,13 @@ f32 de_sinf(i32 angle);
  * @return Approximation of the cosine of the angle
  */
 f32 de_cosf(i32 angle);
+
+/**
+ * @brief Approximates the tangent of an angle using a lookup table.
+ * @param angle The input angle in the range [0, 1024) where 1024 represents 360 degrees
+ * @return Approximation of the tangent of the angle
+ */
+f32 de_tanf(i32 angle);
 
 //----------------------------------------------------------------
 // Square root and inverse fast square root
@@ -391,6 +397,10 @@ INLINE f32 vec2_distance(vec2_t a, vec2_t b) {
 INLINE f32 angle_between_pointsf(f32 x1, f32 y1, f32 x2, f32 y2) {
     f32 dx = x2 - x1;
     f32 dy = y2 - y1;
+    return atan2f(dy, dx);
+}
+
+INLINE f32 angle_between_direction(f32 dx, f32 dy) {
     return atan2f(dy, dx);
 }
 
