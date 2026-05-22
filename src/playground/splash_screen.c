@@ -11,11 +11,14 @@
 #include "../core/engine.h"
 #include "../core/context.h"
 #include "logo_png.h"
+#include "de-128_png.h"
 
 static bool running = false;
 static scene_t* splash_screen = NULL;
-static SDL_Texture* logoTexture = NULL;
-static SDL_Rect rect = { 0, 0, 0, 0 };
+static SDL_Texture* logo_texture = NULL;
+static SDL_Texture* dodoi_texture = NULL;
+static SDL_Rect logo_rect = { 0, 0, 0, 0 };
+static SDL_Rect dodoi_rect = { 0, 0, 0, 0 };
 
 void splash_screen_init(void) {
     splash_screen = (scene_t*)malloc(sizeof(scene_t));
@@ -32,11 +35,19 @@ void splash_screen_init(void) {
 }
 
 void splash_screen_load(void) {
-    logoTexture = gfx_load_texture(logo_png, logo_png_size);  
+    logo_texture = gfx_load_texture(logo_png, logo_png_size);  
 
-    SDL_QueryTexture(logoTexture, NULL, NULL, &rect.w, &rect.h);
-    rect.x = (WINDOW_WIDTH - rect.w) * DIV2;
-    rect.y = (WINDOW_HEIGHT - rect.h) * DIV2;
+    SDL_QueryTexture(logo_texture, NULL, NULL, &logo_rect.w, &logo_rect.h);
+    logo_rect.x = (WINDOW_WIDTH - logo_rect.w) * DIV2;
+    logo_rect.y = (WINDOW_HEIGHT - logo_rect.h) * DIV2;
+
+    dodoi_texture = gfx_load_texture(de_128_png, de_128_png_size);
+    dodoi_rect.w = 64;
+    dodoi_rect.h = 64;
+
+    dodoi_rect.x = 0;
+    dodoi_rect.y = (WINDOW_HEIGHT - dodoi_rect.h);
+
     running = true;
 }
 
@@ -55,7 +66,8 @@ void splash_screen_render(void) {
     scene_begin_render();
     {
         SDL_Renderer* renderer = ctx_get_renderer();
-        SDL_RenderCopy(renderer, logoTexture, NULL, &rect);
+        SDL_RenderCopy(renderer, logo_texture, NULL, &logo_rect);
+        SDL_RenderCopy(renderer, dodoi_texture, NULL, &dodoi_rect);
     }
     scene_end_render();
 }
@@ -70,9 +82,14 @@ u8 splash_screen_run(void) {
 }
 
 void splash_screen_unload(void) {
-    if (logoTexture != NULL) {
-        SDL_DestroyTexture(logoTexture);
-        logoTexture = NULL;
+    if (logo_texture != NULL) {
+        SDL_DestroyTexture(logo_texture);
+        logo_texture = NULL;
+    }
+
+    if (dodoi_texture != NULL) {
+        SDL_DestroyTexture(dodoi_texture);
+        dodoi_texture = NULL;
     }
 
     free(splash_screen);
