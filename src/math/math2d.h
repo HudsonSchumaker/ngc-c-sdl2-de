@@ -303,16 +303,7 @@ INLINE f32 clampf(f32 v, f32 min, f32 max) {
     return minf(maxf(v, min), max);
 }
 
-/**
- * @brief Linearly interpolates between two floating-point values a and b by a factor of t.
- * @param a The start value
- * @param b The end value
- * @param t The interpolation factor in the range [0, 1]
- * @return The interpolated value
- */
-INLINE f32 lerpf(f32 a, f32 b, f32 t) {
-    return a + (b - a) * t;
-}
+
 
 /**
  * @brief Returns the absolute value of a floating-point number.
