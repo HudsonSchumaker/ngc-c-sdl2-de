@@ -7,8 +7,7 @@
 * @copyright Copyright (c) 2024, Dodoi-Lab
 */
 #pragma once
-#include "../pch.h"
-#include "../gfx/scene.h"
+#include "../de-ngc/gfx/scene.h"
 
 void splash_screen_init(void);
 void splash_screen_load(void);

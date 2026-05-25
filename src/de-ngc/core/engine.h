@@ -6,7 +6,7 @@
 * @copyright Copyright (c) 2024, Dodoi-Lab
 */
 #pragma once
-#include "../pch.h"
+#include "../de.h"
 #include "../ecs/entity_manager.h"
 #include "../ecs/texture_component.h"
 #include "../ecs/transform_component.h"

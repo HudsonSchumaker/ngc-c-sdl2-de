@@ -7,11 +7,11 @@
 * @copyright Copyright (c) 2024, Dodoi-Lab
 */
 #include "tower.h"
-#include "../gfx/gfx.h"
-#include "../core/engine.h"
-#include "../ecs/entity_manager.h"
-#include "../ecs/texture_component.h"
-#include "../ecs/transform_component.h"
+#include "../de-ngc/gfx/gfx.h"
+#include "../de-ngc/core/engine.h"
+#include "../de-ngc/ecs/entity_manager.h"
+#include "../de-ngc/ecs/texture_component.h"
+#include "../de-ngc/ecs/transform_component.h"
 #include "t1_png.h"
 
 void tower_create(tower_pool_t* tower_pool, i32 x, i32 y) {

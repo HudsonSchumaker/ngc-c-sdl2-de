@@ -7,7 +7,7 @@
 */
 #pragma once
 #include "color.h"
-#include "../pch.h"
+#include "../de.h"
 
 typedef struct {
     i32 w;

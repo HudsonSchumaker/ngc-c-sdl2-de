@@ -6,7 +6,7 @@
 * @copyright Copyright (c) 2024, Dodoi-Lab
 */
 #pragma once
-#include "../pch.h"
+#include "../de.h"
 #include "../core/camera.h"
 #include "texture_component.h"
 #include "transform_component.h"

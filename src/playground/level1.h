@@ -6,8 +6,8 @@
 * @copyright Copyright (c) 2024, Dodoi-Lab
 */
 #pragma once
-#include "../pch.h"
-#include "../gfx/scene.h"
+#include "../de-ngc/de.h"
+#include "../de-ngc/gfx/scene.h"
 
 void level1_init(void);
 void level1_load(void);

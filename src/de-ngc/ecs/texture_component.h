@@ -6,7 +6,7 @@
 * @copyright Copyright (c) 2024, Dodoi-Lab
 */
 #pragma once
-#include "../pch.h"
+#include "../de.h"
 
 /**
  * @brief A texture pool that holds the textures and their dimensions for all entities.

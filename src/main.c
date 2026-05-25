@@ -6,8 +6,7 @@
 * Dodoi-Engine is a game engine developed by Dodoi-Lab.
 * @copyright Copyright (c) 2024, Dodoi-Lab
 */
-#include "pch.h"
-#include "core/engine.h"
+#include "playground/game.h"
 
 /**
  * @brief The entry point of the game.
@@ -16,7 +15,6 @@
  * @return Exit status of the program
  */
 int main(int argc, char **argv) {
-    engine_init();
-    engine_quit();
+    game_start();
     return 0;
 }

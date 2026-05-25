@@ -7,7 +7,7 @@
  * @copyright Copyright (c) 2024, Dodoi-Lab
  */
 #pragma once
-#include "../pch.h"
+#include "../de-ngc/de.h"
 
 /**
  * @brief A pool of properties for tower entities.

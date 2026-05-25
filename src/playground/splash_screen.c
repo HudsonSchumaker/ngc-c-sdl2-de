@@ -6,10 +6,10 @@
 * Dodoi-Engine is a game engine developed by Dodoi-Lab.
 * @copyright Copyright (c) 2024, Dodoi-Lab
 */
-#include "../gfx/gfx.h"
 #include "splash_screen.h"
-#include "../core/engine.h"
-#include "../core/context.h"
+#include "../de-ngc/gfx/gfx.h"
+#include "../de-ngc/core/engine.h"
+#include "../de-ngc/core/context.h"
 #include "logo_png.h"
 #include "de-128_png.h"
 

@@ -8,8 +8,6 @@
 #include "engine.h"
 #include "context.h"
 #include "../math/math2d.h"
-#include "../playground/level1.h"
-#include "../playground/splash_screen.h"
 
 static f32 delta_time = 0.0f;
 static texture_pool_t texture_pool;
@@ -23,16 +21,6 @@ void engine_init(void) {
 
     build_trigo_tables();
     entity_manager_init(&entity_manager);
-
-    splash_screen_init();
-    splash_screen_get_scene()->load();
-    splash_screen_get_scene()->run();
-    splash_screen_get_scene()->unload();
-
-    level1_init();
-    level1_get_scene()->load();
-    level1_get_scene()->run();
-    level1_get_scene()->unload();
 }
 
 void engine_quit(void) {

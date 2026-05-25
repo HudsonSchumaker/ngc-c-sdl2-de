@@ -6,7 +6,7 @@
 * @copyright Copyright (c) 2024, Dodoi-Lab
 */
 #pragma once
-#include "../pch.h"
+#include "../de-ngc/de.h"
 
 typedef struct {
     f32 speed[MAX_ENTITIES];

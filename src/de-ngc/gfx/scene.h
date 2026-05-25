@@ -7,7 +7,7 @@
 * @copyright Copyright (c) 2024, Dodoi-Lab
 */
 #pragma once
-#include "../pch.h"
+#include "../de.h"
 
 /**
  * @brief Represents a game scene with function pointers for loading, input handling, updating, rendering, running, and unloading the scene.
