@@ -22,7 +22,7 @@ include $(DEVKITPPC)/gamecube_rules
 #---------------------------------------------------------------------------------
 TARGET	 := $(notdir $(CURDIR))
 BUILD	 := build
-SOURCES	 := src src/core src/gfx src/sfx src/ecs src/ui src/math src/util src/playground 
+SOURCES	 := src src/de-ngc/core src/de-ngc/gfx src/de-ngc/sfx src/de-ngc/ecs src/de-ngc/ui src/de-ngc/math src/de-ngc/util src/playground 
 DATA	 := data
 BINARIES := bin
 INCLUDES :=
