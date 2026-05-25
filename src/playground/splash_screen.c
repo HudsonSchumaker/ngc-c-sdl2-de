@@ -54,7 +54,7 @@ void splash_screen_load(void) {
 void splash_screen_input(void) {}
 
 void splash_screen_update(void) {
-    static float timer = 0.0f;
+    static f32 timer = 0.0f;
     timer += engine_calculate_delta_time();
 
     if (timer > 2.99f) {
