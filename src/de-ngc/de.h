@@ -14,6 +14,7 @@
 #include <stdbool.h>
 
 // Console-specific includes
+#include <fat.h>
 #include <gccore.h>
 
 // SDL2 includes
