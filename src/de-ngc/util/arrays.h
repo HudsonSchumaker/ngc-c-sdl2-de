@@ -11,26 +11,72 @@
 /**
  * @brief Number of items in a static array
  * @param array The array to get the length of
- */
+*/
 #define ARRAY_LENGTH(array) (sizeof(array) / sizeof((array)[0]))
 
 /**
  * @brief Size of one array item
  * @param array The array to get the item size of
- */
+*/
 #define ARRAY_ITEM_SIZE(array) (sizeof((array)[0]))
 
 /**
  * @brief Total size of array in bytes
  * @param array The array to get the total size of
- */
+*/
 #define ARRAY_SIZE(array) (sizeof(array))
 
 /**
+ * @brief Get the last item in an array
+ * @param array The array to get the last item of
+*/
+#define ARRAY_LAST(array) ((array)[ARRAY_LENGTH(array) - 1])
+
+/**
+ * @brief Clear an array by setting all bytes to zero
+ * @param array The array to clear
+*/
+#define ARRAY_CLEAR(array) memset((array), 0, sizeof(array))
+
+/**
+ * @brief Iterate over each item in an array
+ * @param type The type of the items in the array
+ * @param item The loop variable for the current item
+ * @param array The array to iterate over
+*/
+#define ARRAY_FOR_EACH(type, item, array) \
+    for (type* item = (array); \
+        item < (array) + ARRAY_LENGTH(array); \
+        item++)
+
+/**
  * @brief Seed the random number generator for array shuffling
- */
+*/
 static inline void array_shuffle_seed(void) {
     srand((unsigned int)time(NULL));
+}
+
+/**
+ * @brief Comparison function for integers
+ * @param a Pointer to the first integer
+ * @param b Pointer to the second integer
+ * @return Negative if a < b, zero if a == b, positive if a > b
+*/
+static inline i32 compare_i32(const void* a, const void* b) {
+    return (*(const i32*)a - *(const i32*)b);
+}
+
+/**
+ * @brief Comparison function for floating-point numbers
+ * @param a Pointer to the first float
+ * @param b Pointer to the second float
+ * @return Negative if a < b, zero if a == b, positive if a > b
+*/
+static inline i32 compare_f32(const void* a, const void* b) {
+    f32 fa = *(const f32*)a;
+    f32 fb = *(const f32*)b;
+
+    return (fa > fb) - (fa < fb);
 }
 
 /**
@@ -38,7 +84,7 @@ static inline void array_shuffle_seed(void) {
  * @param a Pointer to the first item
  * @param b Pointer to the second item
  * @param item_size Size of each item in bytes
- */
+*/
 static inline void array_swap_bytes(void* a, void* b, size_t item_size) {
     uint8_t* pa = (uint8_t*)a;
     uint8_t* pb = (uint8_t*)b;
@@ -55,7 +101,7 @@ static inline void array_swap_bytes(void* a, void* b, size_t item_size) {
  * @param arr The array to reverse
  * @param count Number of items in the array
  * @param item_size Size of each item in bytes
- */
+*/
 static inline void array_reverse(void* array, size_t count, size_t item_size) {
     uint8_t* arr = (uint8_t*)array;
 
@@ -71,7 +117,7 @@ static inline void array_reverse(void* array, size_t count, size_t item_size) {
  * @param array The array to shuffle
  * @param count Number of items in the array
  * @param item_size Size of each item in bytes
- */
+*/
 static inline void array_shuffle(void* array, size_t count, size_t item_size) {
     uint8_t* arr = (uint8_t*)array;
 
@@ -89,7 +135,7 @@ static inline void array_shuffle(void* array, size_t count, size_t item_size) {
  * @param count Number of items in the array
  * @param item_size Size of each item in bytes
  * @param compare Comparison function that returns negative, zero, or positive
- */
+*/
 static inline void array_sort(void* array, size_t count, size_t item_size, i32 (*compare)(const void*, const void*)) {
     qsort(array, count, item_size, compare);
 }
@@ -102,7 +148,7 @@ static inline void array_sort(void* array, size_t count, size_t item_size, i32 (
  * @param key The item to search for
  * @param compare Comparison function that returns negative, zero, or positive
  * @return The index of the found item, or -1 if not found
- */
+*/
 static inline int array_linear_search(const void* array, size_t count, size_t item_size,const void* key, i32 (*compare)(const void*, const void*)) {
     const uint8_t* arr = (const uint8_t*)array;
     for (size_t i = 0; i < count; i++) {
@@ -122,7 +168,7 @@ static inline int array_linear_search(const void* array, size_t count, size_t it
  * @param key The item to search for
  * @param compare Comparison function that returns negative, zero, or positive
  * @return The index of the found item, or -1 if not found
- */
+*/
 static inline int array_binary_search(const void* array, size_t count, size_t item_size, const void* key, i32 (*compare)(const void*, const void*)) {
     size_t left = 0;
     size_t right = count;
@@ -154,7 +200,7 @@ static inline int array_binary_search(const void* array, size_t count, size_t it
  * @param item_size Size of each item in bytes
  * @param compare Comparison function that returns negative, zero, or positive
  * @return Pointer to the minimum item, or NULL if the array is empty
- */
+*/
 static inline void* array_min(void* array, size_t count, size_t item_size, i32 (*compare)(const void*, const void*)) {
     if (count == 0) {
         return NULL;
@@ -179,7 +225,7 @@ static inline void* array_min(void* array, size_t count, size_t item_size, i32 (
  * @param item_size Size of each item in bytes
  * @param compare Comparison function that returns negative, zero, or positive
  * @return Pointer to the maximum item, or NULL if the array is empty
- */
+*/
 static inline void* array_max(void* array, size_t count, size_t item_size, i32 (*compare)(const void*, const void*)) {
     if (count == 0) {
         return NULL;
