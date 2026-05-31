@@ -27,7 +27,13 @@ u8 scene_set_scene(scene_t* scene) {
 
 void scene_begin_render(void) {
     SDL_Renderer* renderer = ctx_get_renderer();
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_SetRenderDrawColor(
+        renderer,
+        current_scene->camera.color.r,
+        current_scene->camera.color.g,
+        current_scene->camera.color.b, 
+        current_scene->camera.color.a
+    );
     SDL_RenderClear(renderer);
 }
 

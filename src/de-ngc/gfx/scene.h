@@ -8,6 +8,7 @@
 */
 #pragma once
 #include "../de.h"
+#include "../core/camera.h"
 
 /**
  * @brief Represents a game scene with function pointers for loading, input handling, updating, rendering, running, and unloading the scene.
@@ -19,6 +20,7 @@ typedef struct {
     void (*render)(void);  // Render the scene
 	u8   (*run)(void);     // Game Loop for the scene
     void (*unload)(void);  // Unload the scene
+    camera_t camera;       // Camera associated with the scene
 } scene_t;
 
 /**
