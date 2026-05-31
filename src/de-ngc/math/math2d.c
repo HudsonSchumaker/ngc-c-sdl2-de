@@ -1,9 +1,9 @@
 /**
-* @file math2d.c
-* @author Hudson Schumaker
-*
-* Dodoi-Engine is a game engine developed by Dodoi-Lab.
-* @copyright Copyright (c) 2024, Dodoi-Lab
+ * @file math2d.c
+ * @author Hudson Schumaker
+ *
+ * Dodoi-Engine is a game engine developed by Dodoi-Lab.
+ * @copyright Copyright (c) 2024, Dodoi-Lab
 */
 #include "math2d.h"
 static f32 sin_table[SIN_LUT_SIZE];

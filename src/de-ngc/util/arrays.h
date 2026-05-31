@@ -1,9 +1,9 @@
 /**
-* @file arrays.h
-* @author Hudson Schumaker
-*
-* Dodoi-Engine is a game engine developed by Dodoi-Lab.
-* @copyright Copyright (c) 2024, Dodoi-Lab
+ * @file arrays.h
+ * @author Hudson Schumaker
+ *
+ * Dodoi-Engine is a game engine developed by Dodoi-Lab.
+ * @copyright Copyright (c) 2024, Dodoi-Lab
 */
 #pragma once
 #include "../de.h"

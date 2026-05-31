@@ -1,10 +1,10 @@
 /**
-* @file scene.h
-* @author Hudson Schumaker
-* @version 1.0.0
-*
-* Dodoi-Engine is a game engine developed by Dodoi-Lab.
-* @copyright Copyright (c) 2024, Dodoi-Lab
+ * @file scene.h
+ * @author Hudson Schumaker
+ * @version 1.0.0
+ *
+ * Dodoi-Engine is a game engine developed by Dodoi-Lab.
+ * @copyright Copyright (c) 2024, Dodoi-Lab
 */
 #pragma once
 #include "../de.h"
@@ -12,7 +12,7 @@
 
 /**
  * @brief Represents a game scene with function pointers for loading, input handling, updating, rendering, running, and unloading the scene.
- */
+*/
 typedef struct {
     void (*load)(void);    // Load the scene
     void (*input)(void);   // Handle input
@@ -27,15 +27,15 @@ typedef struct {
  * @brief Sets the current active scene. If there is an existing scene, it will be unloaded before the new scene is loaded and run.
  * @param scene Pointer to the new scene to set as active
  * @return Status code returned by the run function of the new scene, or 0 if no scene is set
- */
+*/
 u8 scene_set_scene(scene_t* scene);
 
 /**
  * @brief Begins the rendering process for the current scene.
- */
+*/
 void scene_begin_render(void);
 
 /**
  * @brief Ends the rendering process for the current scene.
- */
+*/
 void scene_end_render(void);

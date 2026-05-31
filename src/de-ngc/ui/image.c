@@ -1,9 +1,9 @@
 /**
-* @file image.c
-* @author Hudson Schumaker
-*
-* Dodoi-Engine is a game engine developed by Dodoi-Lab.
-* @copyright Copyright (c) 2024, Dodoi-Lab
+ * @file image.c
+ * @author Hudson Schumaker
+ *
+ * Dodoi-Engine is a game engine developed by Dodoi-Lab.
+ * @copyright Copyright (c) 2024, Dodoi-Lab
 */
 #include "image.h"
 #include "../gfx/gfx.h"

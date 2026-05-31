@@ -1,9 +1,9 @@
 /**
-* @file render_system.h
-* @author Hudson Schumaker
-*
-* Dodoi-Engine is a game engine developed by Dodoi-Lab.
-* @copyright Copyright (c) 2024, Dodoi-Lab
+ * @file render_system.h
+ * @author Hudson Schumaker
+ *
+ * Dodoi-Engine is a game engine developed by Dodoi-Lab.
+ * @copyright Copyright (c) 2024, Dodoi-Lab
 */
 #pragma once
 #include "../de.h"
@@ -16,5 +16,5 @@
  * @param t A pointer to the transform pool
  * @param r A pointer to the texture pool
  * @param c A pointer to the camera
- */
+*/
 void render_system(transform_pool_t* t, texture_pool_t* r, camera_t* c);

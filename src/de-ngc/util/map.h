@@ -1,9 +1,9 @@
 /**
-* @file map.h
-* @author Hudson Schumaker
-*
-* Dodoi-Engine is a game engine developed by Dodoi-Lab.
-* @copyright Copyright (c) 2024, Dodoi-Lab
+ * @file map.h
+ * @author Hudson Schumaker
+ *
+ * Dodoi-Engine is a game engine developed by Dodoi-Lab.
+ * @copyright Copyright (c) 2024, Dodoi-Lab
 */
 #pragma once
 #include "../de.h"
@@ -23,6 +23,24 @@ typedef struct {
     map_tile_t tiles[MAP_HEIGHT][MAP_WIDTH];
 } map_t;
 
+/**
+ * Loads a map from the provided data array. Each element in the array represents a tile, with the first character indicating the tile type and the remaining characters representing the texture ID.
+ * @param map A pointer to the map_t struct to load the data into
+ * @param data A 2D array of strings representing the map data
+*/
 void map_load(map_t* map, const char* data[MAP_HEIGHT][MAP_WIDTH]);
+
+/**
+ * Renders the map on the screen.
+ * @param map A pointer to the map_t struct to render
+*/
 void map_render(const map_t* map);
+
+/**
+ * Gets the type of a tile at the specified coordinates.
+ * @param map A pointer to the map_t struct
+ * @param x The x-coordinate of the tile
+ * @param y The y-coordinate of the tile
+ * @return The type of the tile at the specified coordinates
+*/
 map_tile_type_t map_get_tile_type(const map_t* map, short x, short y);
