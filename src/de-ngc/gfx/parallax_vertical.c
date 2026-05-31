@@ -11,12 +11,14 @@
 
 parallax_vertical_t parallax_vertical_simple(const u8* parallax_data, const size_t parallax_size) {
     parallax_vertical_t parallax;
+    parallax.background = NULL;
+    parallax.bg_rect = (SDL_Rect){ 0, 0, 0, 0 };
     parallax.texture = gfx_load_texture(parallax_data, parallax_size);
-    
     SDL_QueryTexture(parallax.texture, NULL, NULL, &parallax.size.x, &parallax.size.y);
 
     parallax.rect_a = (SDL_Rect){ 0, 0, parallax.size.x, parallax.size.y };
     parallax.rect_b = (SDL_Rect){ 0, -parallax.size.y, parallax.size.x, parallax.size.y };
+    parallax.direction = 1; // Default direction is down
     
     return parallax;
 }
@@ -31,7 +33,7 @@ parallax_vertical_t parallax_vertical_double(const u8* bg_data, const size_t bg_
     
     parallax.rect_a = (SDL_Rect){ 0, 0, parallax.size.x, parallax.size.y };
     parallax.rect_b = (SDL_Rect){ 0, -parallax.size.y, parallax.size.x, parallax.size.y };
-    
+    parallax.direction = 1; // Default direction is down
     return parallax;
 }
 
@@ -59,9 +61,8 @@ void parallax_vertical_update(parallax_vertical_t* parallax) {
         parallax->rect_b.w = parallax->size.x;
         parallax->rect_b.h = parallax->size.y;
     }
-    
-    parallax->rect_a.y += 1;
-    parallax->rect_b.y += 1;
+    parallax->rect_a.y += parallax->direction;
+    parallax->rect_b.y += parallax->direction;
 }
 
 void parallax_vertical_render(const parallax_vertical_t* parallax) {
@@ -71,4 +72,14 @@ void parallax_vertical_render(const parallax_vertical_t* parallax) {
     
     SDL_RenderCopy(ctx_get_renderer(), parallax->texture, NULL, &parallax->rect_a);
     SDL_RenderCopy(ctx_get_renderer(), parallax->texture, NULL, &parallax->rect_b);
+}
+
+void parallax_vertical_destroy(parallax_vertical_t* parallax) {
+    if (parallax->background) {
+        SDL_DestroyTexture(parallax->background);
+        parallax->background = NULL;
+    }
+    SDL_DestroyTexture(parallax->texture);
+    parallax->texture = NULL;
+    free(parallax);
 }
