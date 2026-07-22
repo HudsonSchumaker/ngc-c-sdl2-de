@@ -27,6 +27,14 @@ button_t* button_new(i32 x, i32 y) {
     return heap_button;
 }
 
+void button_destroy(button_t* button) {
+    if (button->texture) {
+        SDL_DestroyTexture(button->texture);
+        button->texture = NULL;
+    }
+    free(button);
+}
+
 void button_set_source(button_t* button, const u8* data, size_t size) {
     button->texture = gfx_load_texture(data, size);
     SDL_QueryTexture(button->texture, NULL, NULL, &button->w, &button->h);

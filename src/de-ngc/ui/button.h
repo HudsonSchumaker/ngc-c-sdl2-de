@@ -40,6 +40,12 @@ button_t button(i32 x, i32 y);
 button_t* button_new(i32 x, i32 y);
 
 /**
+ * Destroys a button created with button_new. This will destroy its texture (if set) and free the button itself.
+ * @param button Pointer to the heap-allocated button_t struct to destroy
+*/
+void button_destroy(button_t* button);
+
+/**
  * Sets the source texture of the button. This will update the button's texture with the provided data and also update its width and height based on the texture's dimensions.
  * @param button Pointer to the button_t struct to modify
  * @param data Pointer to the texture data in memory
