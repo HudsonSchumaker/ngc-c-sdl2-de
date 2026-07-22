@@ -54,16 +54,18 @@ f32 de_tanf(i32 angle);
  * @return Approximation of 1/sqrt(number)
 */
 INLINE f32 rsqrtf(f32 number) {
-    i64 i;
+    union {
+        f32 f;
+        i32 i;
+    } conv;
     f32 x2, y;
     const f32 threehalfs = 1.5f;
 
     x2 = number * 0.5f;
-    y  = number;
+    conv.f = number;
 
-    i = *(i64*) &y;
-    i = 0x5f3759df - (i >> 1);
-    y = *(f32*) &i;
+    conv.i = 0x5f3759df - (conv.i >> 1);
+    y = conv.f;
 
     y = y * (threehalfs - (x2 * y * y));
     return y;
