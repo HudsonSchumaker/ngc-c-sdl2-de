@@ -39,6 +39,12 @@ color_t color(u8 r, u8 g, u8 b, u8 a);
 color_t* color_new(u8 r, u8 g, u8 b, u8 a);
 
 /**
+ * @brief Frees a color_t previously created with color_new.
+ * @param color Pointer to the heap-allocated color_t to destroy
+*/
+void color_destroy(color_t* color);
+
+/**
  * @brief Converts a color_t to an SDL_Color.
  * @param color The color_t to convert
  * @return The corresponding SDL_Color

@@ -22,6 +22,10 @@ color_t* color_new(u8 r, u8 g, u8 b, u8 a) {
     return heap_color;
 }
 
+void color_destroy(color_t* color) {
+    free(color);
+}
+
 SDL_Color color_to_sdl_color(const color_t color) {
     SDL_Color sdl_color;
     sdl_color.r = color.r;
