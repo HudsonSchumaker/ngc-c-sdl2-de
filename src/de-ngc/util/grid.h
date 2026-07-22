@@ -36,6 +36,12 @@ grid_t grid(short rows, short cols, short cell_width, short cell_height);
 grid_t* grid_new(short rows, short cols, short cell_width, short cell_height);
 
 /**
+ * Frees a grid_t previously created with grid_new. This function should be called to avoid memory leaks.
+ * @param grid Pointer to the heap-allocated grid_t to destroy
+*/
+void grid_destroy(grid_t* grid);
+
+/**
  * Renders the grid on the screen.
  * @param grid A pointer to the grid_t struct to render
 */

@@ -23,6 +23,10 @@ grid_t* grid_new(short rows, short cols, short cell_width, short cell_height) {
     return g;
 }
 
+void grid_destroy(grid_t* grid) {
+    free(grid);
+}
+
 void grid_render(grid_t* grid) {
     color_t white = color_white();
     short width = grid->cols * grid->cell_width;
