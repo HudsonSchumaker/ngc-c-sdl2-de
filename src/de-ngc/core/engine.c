@@ -19,6 +19,7 @@ void engine_init(void) {
         exit(EXIT_FAILURE);
     }
 
+    PAD_Init();
     build_trigo_tables();
     entity_manager_init(&entity_manager);
 }
