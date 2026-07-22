@@ -43,6 +43,12 @@ label_t label(i32 x, i32 y, const char* text);
 label_t* label_new(i32 x, i32 y, const char* text);
 
 /**
+ * Destroys a label created with label_new. This will destroy its texture (if set), free its text, and free the label itself.
+ * @param label Pointer to the heap-allocated label_t struct to destroy
+*/
+void label_destroy(label_t* label);
+
+/**
  * Sets the color of the label's text. This will affect how the label is rendered on the screen.
  * @param label Pointer to the label_t struct to modify
  * @param color The new color to set for the label's text

@@ -30,6 +30,16 @@ label_t* label_new(i32 x, i32 y, const char* text) {
     return heap_label;
 }
 
+void label_destroy(label_t* label) {
+    if (label->texture) {
+        SDL_DestroyTexture(label->texture);
+        label->texture = NULL;
+    }
+    free(label->text);
+    label->text = NULL;
+    free(label);
+}
+
 void label_set_color(label_t* label, color_t color) {
     label->color = color;
 }
