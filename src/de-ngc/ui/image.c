@@ -27,6 +27,14 @@ image_t* image_new(i32 x, i32 y) {
     *heap_image = image(x, y);
     return heap_image;
 }
+
+void image_destroy(image_t* image) {
+    if (image->texture) {
+        SDL_DestroyTexture(image->texture);
+        image->texture = NULL;
+    }
+    free(image);
+}
     
 void image_set_source(image_t* image, const u8* data, size_t size) {
     image->texture = gfx_load_texture(data, size);

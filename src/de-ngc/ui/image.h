@@ -39,6 +39,12 @@ image_t image(i32 x, i32 y);
 image_t* image_new(i32 x, i32 y);
 
 /**
+ * Destroys an image created with image_new. This will destroy its texture (if set) and free the image itself.
+ * @param image Pointer to the heap-allocated image_t struct to destroy
+*/
+void image_destroy(image_t* image);
+
+/**
  * Sets the source texture of the image. This will update the image's texture with the provided data.
  * @param image Pointer to the image_t struct to modify
  * @param data Pointer to the texture data in memory
