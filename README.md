@@ -1,4 +1,4 @@
-# Dodoi-Engine - version 0.23.3
+# Dodoi-Engine - version 0.24.0
 
 A lightweight 2D game engine for **Nintendo GameCube** homebrew, built in C using the [devkitPPC](https://devkitpro.org/) toolchain and SDL2.
 
