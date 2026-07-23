@@ -306,8 +306,6 @@ INLINE f32 clampf(f32 v, f32 min, f32 max) {
     return minf(maxf(v, min), max);
 }
 
-
-
 /**
  * @brief Returns the absolute value of a floating-point number.
  * @param v The input value
