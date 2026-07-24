@@ -24,16 +24,17 @@ Developed by **Hudson Schumaker** — [Dodoi-Lab](https://github.com/Dodoi-Lab) 
 
 ```
 src/
-├── core/        # Engine init/quit, context (window + renderer), camera
-├── gfx/         # Scene, graphics helpers, parallax scrolling
-├── sfx/         # Sound effects and music (SDL_mixer)
-├── ui/          # Button, image, label widgets
-├── math/        # 2D math with LUT-based trigonometry
-├── util/        # Grid and tile-map utilities
-└── playground/  # Splash screen and level prototypes
-data/            # Binary assets (images, audio, fonts) embedded at build time
-build/           # Intermediate object files (generated)
-bin/             # Output .elf / .dol binaries (generated)
+├── de-ngc/
+|      ├── core/  # Engine init/quit, context (window + renderer), camera
+|      ├── gfx/   # Scene, graphics helpers, parallax scrolling
+|      ├── sfx/   # Sound effects and music (SDL_mixer)
+|      ├── ui/    # Button, image, label widgets
+|      ├── math/  # 2D math with LUT-based trigonometry
+|      ├── util/  # Grid and tile-map utilities
+└── playground/   # Splash screen and level prototypes
+data/             # Binary assets (images, audio, fonts) embedded at build time
+build/            # Intermediate object files (generated)
+bin/              # Output .elf / .dol binaries (generated)
 ```
 
 ---
