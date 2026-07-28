@@ -4,7 +4,7 @@
  *
  * Dodoi-Engine is a game engine developed by Dodoi-Lab.
  * @copyright Copyright (c) 2024, Dodoi-Lab
-*/
+ */
 #include "label.h"
 #include "../gfx/gfx.h"
 #include "../gfx/color.h"
@@ -54,7 +54,7 @@ void label_set_font_size(label_t* lbl, u8 font_size, const u8* data, size_t size
 }
 
 void label_render(const label_t* lbl) {
-    if (lbl->visible && lbl->texture) {     
+    if (lbl->visible && lbl->texture) {
         SDL_Rect rect = { lbl->x, lbl->y, lbl->w, lbl->h };
         SDL_RenderCopy(ctx_get_renderer(), lbl->texture, NULL, &rect);
     }
@@ -77,4 +77,22 @@ void label_set_horizontal_center(label_t* lbl) {
 
     SDL_Rect rect = gfx_get_texture_size(lbl->texture);
     lbl->x = (WINDOW_WIDTH - rect.w) * DIV2;
+}
+
+void label_set_text(label_t* lbl, const char* text, const u8* data, size_t size) {
+    free(lbl->text);
+    lbl->text = strdup(text);
+    label_set_font_size(lbl, lbl->font_size, data, size);
+}
+
+void label_release(label_t* lbl) {
+    if (lbl->texture) {
+        SDL_DestroyTexture(lbl->texture);
+        lbl->texture = NULL;
+    }
+
+    if (lbl->text) {
+        free(lbl->text);
+        lbl->text = NULL;
+    }
 }
