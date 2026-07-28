@@ -6,7 +6,6 @@
  * @copyright Copyright (c) 2024, Dodoi-Lab
 */
 #include "input.h"
-
 static pad_state_t pads[INPUT_MAX_PADS];
 
 static f32 normalize_stick_axis(s8 raw) {
