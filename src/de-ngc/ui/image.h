@@ -41,27 +41,27 @@ image_t* image_new(i32 x, i32 y);
 
 /**
  * Destroys an image created with image_new. This will destroy its texture (if set) and free the image itself.
- * @param image Pointer to the heap-allocated image_t struct to destroy
+ * @param img Pointer to the heap-allocated image_t struct to destroy
 */
-void image_destroy(image_t* image);
+void image_destroy(image_t* img);
 
 /**
  * Sets the source texture of the image. This will update the image's texture with the provided data.
- * @param image Pointer to the image_t struct to modify
+ * @param img Pointer to the image_t struct to modify
  * @param data Pointer to the texture data in memory
  * @param size Size of the texture data in bytes
 */
-void image_set_source(image_t* image, const u8* data, size_t size);
+void image_set_source(image_t* img, const u8* data, size_t size);
 
 /**
  * Sets the color tint of the image. This will affect how the image is rendered on the screen.
- * @param image Pointer to the image_t struct to modify
+ * @param img Pointer to the image_t struct to modify
  * @param color The new color tint to set for the image
 */
-void image_set_tint(image_t* image, color_t color);
+void image_set_tint(image_t* img, color_t color);
 
 /**
  * Renders the image on the screen. This will draw the image using its current properties such as color tint, size, and visibility.
- * @param image Pointer to the image_t struct to render
+ * @param img Pointer to the image_t struct to render
 */
-void image_render(const image_t* image);
+void image_render(const image_t* img);

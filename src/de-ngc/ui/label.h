@@ -45,40 +45,40 @@ label_t* label_new(i32 x, i32 y, const char* text);
 
 /**
  * Destroys a label created with label_new. This will destroy its texture (if set), free its text, and free the label itself.
- * @param label Pointer to the heap-allocated label_t struct to destroy
+ * @param lbl Pointer to the heap-allocated label_t struct to destroy
 */
-void label_destroy(label_t* label);
+void label_destroy(label_t* lbl);
 
 /**
  * Sets the color of the label's text. This will affect how the label is rendered on the screen.
- * @param label Pointer to the label_t struct to modify
+ * @param lbl Pointer to the label_t struct to modify
  * @param color The new color to set for the label's text
 */
-void label_set_color(label_t* label, color_t color);
+void label_set_color(label_t* lbl, color_t color);
 
 /**
  * Sets the font size of the label and updates its texture accordingly. This will change how the label's text is rendered on the screen.
- * @param label Pointer to the label_t struct to modify
+ * @param lbl Pointer to the label_t struct to modify
  * @param font_size The new font size to set for the label
  * @param data Pointer to the font data in memory
  * @param size Size of the font data in bytes
 */
-void label_set_font_size(label_t* label, u8 font_size, const u8* data, size_t size);
+void label_set_font_size(label_t* lbl, u8 font_size, const u8* data, size_t size);
 
 /**
  * Renders the label on the screen. This will draw the label's text using its current properties such as color, font size, and visibility.
- * @param label Pointer to the label_t struct to render
+ * @param lbl Pointer to the label_t struct to render
 */
-void label_render(const label_t* label);
+void label_render(const label_t* lbl);
 
 /**
  * Centers the label on the screen. This will adjust the label's position so that it is centered both horizontally and vertically.
- * @param label Pointer to the label_t struct to modify
+ * @param lbl Pointer to the label_t struct to modify
 */
-void label_set_on_center(label_t* label);
+void label_set_on_center(label_t* lbl);
 
 /**
  * Centers the label horizontally on the screen. This will adjust the label's X position so that it is centered horizontally.
- * @param label Pointer to the label_t struct to modify
+ * @param lbl Pointer to the label_t struct to modify
 */
-void label_set_horizontal_center(label_t* label);
+void label_set_horizontal_center(label_t* lbl);

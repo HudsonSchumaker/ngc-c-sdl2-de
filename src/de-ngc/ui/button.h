@@ -42,27 +42,27 @@ button_t* button_new(i32 x, i32 y);
 
 /**
  * Destroys a button created with button_new. This will destroy its texture (if set) and free the button itself.
- * @param button Pointer to the heap-allocated button_t struct to destroy
+ * @param btn Pointer to the heap-allocated button_t struct to destroy
 */
-void button_destroy(button_t* button);
+void button_destroy(button_t* btn);
 
 /**
  * Sets the source texture of the button. This will update the button's texture with the provided data and also update its width and height based on the texture's dimensions.
- * @param button Pointer to the button_t struct to modify
+ * @param btn Pointer to the button_t struct to modify
  * @param data Pointer to the texture data in memory
  * @param size Size of the texture data in bytes
 */
-void button_set_source(button_t* button, const u8* data, size_t size);
+void button_set_source(button_t* btn, const u8* data, size_t size);
 
 /**
  * Sets the onclick callback function of the button. This will be called when the button is clicked.
- * @param button Pointer to the button_t struct to modify
+ * @param btn Pointer to the button_t struct to modify
  * @param callback The callback function to set for the button
 */
-void button_set_onclick(button_t* button, button_onclick_callback_t callback);
+void button_set_onclick(button_t* btn, button_onclick_callback_t callback);
 
 /**
  * Renders the button on the screen. This will draw the button using its current properties such as texture, size, and visibility.
- * @param button Pointer to the button_t struct to render
+ * @param btn Pointer to the button_t struct to render
 */
-void button_render(const button_t* button);
+void button_render(const button_t* btn);

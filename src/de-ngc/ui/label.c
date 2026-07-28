@@ -30,43 +30,51 @@ label_t* label_new(i32 x, i32 y, const char* text) {
     return heap_label;
 }
 
-void label_destroy(label_t* label) {
-    if (label->texture) {
-        SDL_DestroyTexture(label->texture);
-        label->texture = NULL;
+void label_destroy(label_t* lbl) {
+    if (lbl->texture) {
+        SDL_DestroyTexture(lbl->texture);
+        lbl->texture = NULL;
     }
-    free(label->text);
-    label->text = NULL;
-    free(label);
+    free(lbl->text);
+    lbl->text = NULL;
+    free(lbl);
 }
 
-void label_set_color(label_t* label, color_t color) {
-    label->color = color;
+void label_set_color(label_t* lbl, color_t color) {
+    lbl->color = color;
 }
 
-void label_set_font_size(label_t* label, u8 font_size, const u8* data, size_t size) {
-    label->font_size = font_size;
-    if (label->texture) {
-        SDL_DestroyTexture(label->texture);
+void label_set_font_size(label_t* lbl, u8 font_size, const u8* data, size_t size) {
+    lbl->font_size = font_size;
+    if (lbl->texture) {
+        SDL_DestroyTexture(lbl->texture);
     }
-    label->texture = gfx_create_text(data, size, label->text, font_size, label->color);
-    SDL_QueryTexture(label->texture, NULL, NULL, &label->w, &label->h);
+    lbl->texture = gfx_create_text(data, size, lbl->text, font_size, lbl->color);
+    SDL_QueryTexture(lbl->texture, NULL, NULL, &lbl->w, &lbl->h);
 }
 
-void label_render(const label_t* label) {
-    if (label->visible && label->texture) {     
-        SDL_Rect rect = { label->x, label->y, label->w, label->h };
-        SDL_RenderCopy(ctx_get_renderer(), label->texture, NULL, &rect);
+void label_render(const label_t* lbl) {
+    if (lbl->visible && lbl->texture) {     
+        SDL_Rect rect = { lbl->x, lbl->y, lbl->w, lbl->h };
+        SDL_RenderCopy(ctx_get_renderer(), lbl->texture, NULL, &rect);
     }
 }
 
-void label_set_on_center(label_t* label) {
-    SDL_Rect rect = gfx_get_texture_size(label->texture);
-    label->x = (WINDOW_WIDTH - rect.w)  * DIV2;
-    label->y = (WINDOW_HEIGHT - rect.h) * DIV2;
+void label_set_on_center(label_t* lbl) {
+    if (lbl->texture == NULL) {
+        return; // Cannot center a label without a texture
+    }
+
+    SDL_Rect rect = gfx_get_texture_size(lbl->texture);
+    lbl->x = (WINDOW_WIDTH - rect.w)  * DIV2;
+    lbl->y = (WINDOW_HEIGHT - rect.h) * DIV2;
 }
 
-void label_set_horizontal_center(label_t* label) {
-    SDL_Rect rect = gfx_get_texture_size(label->texture);
-    label->x = (WINDOW_WIDTH - rect.w) * DIV2;
+void label_set_horizontal_center(label_t* lbl) {
+    if (lbl->texture == NULL) {
+        return; // Cannot center a label without a texture
+    }
+
+    SDL_Rect rect = gfx_get_texture_size(lbl->texture);
+    lbl->x = (WINDOW_WIDTH - rect.w) * DIV2;
 }

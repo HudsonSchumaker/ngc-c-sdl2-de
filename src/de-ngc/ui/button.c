@@ -27,26 +27,26 @@ button_t* button_new(i32 x, i32 y) {
     return heap_button;
 }
 
-void button_destroy(button_t* button) {
-    if (button->texture) {
-        SDL_DestroyTexture(button->texture);
-        button->texture = NULL;
+void button_destroy(button_t* btn) {
+    if (btn->texture) {
+        SDL_DestroyTexture(btn->texture);
+        btn->texture = NULL;
     }
-    free(button);
+    free(btn);
 }
 
-void button_set_source(button_t* button, const u8* data, size_t size) {
-    button->texture = gfx_load_texture(data, size);
-    SDL_QueryTexture(button->texture, NULL, NULL, &button->w, &button->h);
+void button_set_source(button_t* btn, const u8* data, size_t size) {
+    btn->texture = gfx_load_texture(data, size);
+    SDL_QueryTexture(btn->texture, NULL, NULL, &btn->w, &btn->h);
 }
 
-void button_set_onclick(button_t* button, button_onclick_callback_t callback) {
-    button->onclick = callback;
+void button_set_onclick(button_t* btn, button_onclick_callback_t callback) {
+    btn->onclick = callback;
 }
 
-void button_render(const button_t* button) {
-    if (button->visible) {
-        SDL_Rect rect = { button->x, button->y, button->w, button->h };
-        SDL_RenderCopy(ctx_get_renderer(), button->texture, NULL, &rect);
+void button_render(const button_t* btn) {
+    if (btn->visible && btn->texture) {
+        SDL_Rect rect = { btn->x, btn->y, btn->w, btn->h };
+        SDL_RenderCopy(ctx_get_renderer(), btn->texture, NULL, &rect);
     }
 }

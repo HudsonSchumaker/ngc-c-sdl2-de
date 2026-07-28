@@ -28,29 +28,29 @@ image_t* image_new(i32 x, i32 y) {
     return heap_image;
 }
 
-void image_destroy(image_t* image) {
-    if (image->texture) {
-        SDL_DestroyTexture(image->texture);
-        image->texture = NULL;
+void image_destroy(image_t* img) {
+    if (img->texture) {
+        SDL_DestroyTexture(img->texture);
+        img->texture = NULL;
     }
-    free(image);
+    free(img);
 }
     
-void image_set_source(image_t* image, const u8* data, size_t size) {
-    image->texture = gfx_load_texture(data, size);
-    SDL_QueryTexture(image->texture, NULL, NULL, &image->w, &image->h);
+void image_set_source(image_t* img, const u8* data, size_t size) {
+    img->texture = gfx_load_texture(data, size);
+    SDL_QueryTexture(img->texture, NULL, NULL, &img->w, &img->h);
 }
 
-void image_set_tint(image_t* image, color_t color) {
-    image->color = color;
+void image_set_tint(image_t* img, color_t color) {
+    img->color = color;
 }
 
-void image_render(const image_t* image) {
-    if (image->visible) {
-        SDL_SetTextureColorMod(image->texture, image->color.r, image->color.g, image->color.b);
-        SDL_SetTextureAlphaMod(image->texture, image->color.a);
+void image_render(const image_t* img) {
+    if (img->visible) {
+        SDL_SetTextureColorMod(img->texture, img->color.r, img->color.g, img->color.b);
+        SDL_SetTextureAlphaMod(img->texture, img->color.a);
         
-        SDL_Rect rect = { image->x, image->y, image->w, image->h };
-        SDL_RenderCopy(ctx_get_renderer(), image->texture, NULL, &rect);
+        SDL_Rect rect = { img->x, img->y, img->w, img->h };
+        SDL_RenderCopy(ctx_get_renderer(), img->texture, NULL, &rect);
     }
 }
