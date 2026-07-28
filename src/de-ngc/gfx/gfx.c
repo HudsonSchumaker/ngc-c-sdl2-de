@@ -7,6 +7,10 @@
 */
 #include "gfx.h"
 #include "../core/context.h"
+#define GFX_TEXTURE_CACHE_SIZE 32
+
+static texture_cache_entry_t texture_cache[GFX_TEXTURE_CACHE_SIZE];
+static i32 texture_cache_count = 0;
 
 SDL_Texture* gfx_load_texture(const u8* data, const size_t size) {
     SDL_RWops* rw = SDL_RWFromMem((void*)data, size);
@@ -22,6 +26,31 @@ texture_t gfx_load_texture_ex(const u8* data, const size_t size) {
 
     SDL_Rect rect = gfx_get_texture_size(texture);
     return (texture_t){ rect.w, rect.h, texture };
+}
+
+texture_t gfx_load_texture_cached(const u8* data, const size_t size) {
+    for (i32 i = 0; i < texture_cache_count; i++) {
+        if (texture_cache[i].data == data) {
+            return texture_cache[i].texture;
+        }
+    }
+
+    texture_t texture = gfx_load_texture_ex(data, size);
+    if (texture.texture != NULL && texture_cache_count < GFX_TEXTURE_CACHE_SIZE) {
+        texture_cache[texture_cache_count].data = data;
+        texture_cache[texture_cache_count].texture = texture;
+        texture_cache_count++;
+    }
+    return texture;
+}
+
+void gfx_clear_texture_cache(void) {
+    for (i32 i = 0; i < texture_cache_count; i++) {
+        if (texture_cache[i].texture.texture != NULL) {
+            SDL_DestroyTexture(texture_cache[i].texture.texture);
+        }
+    }
+    texture_cache_count = 0;
 }
 
 SDL_Texture* gfx_create_text(const u8* data, const size_t size, const char* text, u8 text_size, color_t color) {

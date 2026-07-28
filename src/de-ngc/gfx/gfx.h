@@ -16,6 +16,11 @@ typedef struct {
     SDL_Texture* texture;
 } texture_t;
 
+typedef struct {
+    const u8* data;
+    texture_t texture;
+} texture_cache_entry_t;
+
 /**
  * @brief Loads a texture from memory data.
  * @param data The pointer to the texture data in memory
@@ -31,6 +36,22 @@ SDL_Texture* gfx_load_texture(const u8* data, const size_t size);
  * @return A texture_t struct containing the loaded texture and its dimensions, or a struct with NULL texture on failure
 */
 texture_t gfx_load_texture_ex(const u8* data, const size_t size);
+
+/**
+ * @brief Loads a texture from memory data, reusing a previously loaded texture if the same data pointer was already loaded through this function.
+ * Useful when many entities share one source asset (e.g. several enemies of the same sprite).
+ * 
+ * @param data The pointer to the texture data in memory, used as the cache key
+ * @param size The size of the texture data in bytes
+ * @return A texture_t struct containing the shared texture and its dimensions, or a struct with NULL texture on failure
+*/
+texture_t gfx_load_texture_cached(const u8* data, const size_t size);
+
+/**
+ * @brief Destroys every texture loaded through gfx_load_texture_cached and empties the cache.
+ * Call this when unloading a scene that used the cache.
+*/
+void gfx_clear_texture_cache(void);
 
 /**
  * @brief Creates a texture from text using a font loaded from memory.
@@ -148,10 +169,13 @@ void gfx_draw_fill_fbox(SDL_FRect rect, color_t color);
  * @brief Draws a triangle with the specified vertices and color.
  * @param x1 The X coordinate of the first vertex
  * @param y1 The Y coordinate of the first vertex
+ * 
  * @param x2 The X coordinate of the second vertex
  * @param y2 The Y coordinate of the second vertex
+ * 
  * @param x3 The X coordinate of the third vertex
  * @param y3 The Y coordinate of the third vertex
+ * 
  * @param color The color of the triangle
 */
 void gfx_draw_triangle(i32 x1, i32 y1, i32 x2, i32 y2, i32 x3, i32 y3, color_t color);
