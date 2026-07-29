@@ -33,7 +33,7 @@ src/
 |      ├── sfx/   # Sound effects and music (SDL_mixer)
 |      ├── ui/    # Button, image, label widgets
 |      ├── math/  # 2D math with LUT-based trigonometry
-|      ├── util/  # Grid and tile-map utilities
+|      ├── util/  # Grid, tile-map, and isometric projection utilities
 └── playground/   # Splash screen and level prototypes
 data/             # Binary assets (images, audio, fonts) embedded at build time
 build/            # Intermediate object files (generated)
@@ -92,6 +92,23 @@ int main(int argc, char **argv) {
 ```
 
 `engine_calculate_delta_time()` / `engine_get_delta_time()` return the smoothed frame delta (seconds) for use in `update()`.
+
+### Delta time (`de-ngc/core/engine.h`)
+
+`engine_calculate_delta_time()` measures the time since it was last called (via `SDL_GetPerformanceCounter`), clamps it to 250 ms (`MAX_DT`) so a stall or breakpoint can't produce a huge jump, then blends it into a running average with an exponential moving average (`smooth_dt += 0.08 * (dt - smooth_dt)`) to iron out frame-to-frame jitter:
+
+```c
+void my_scene_update(void) {
+    f32 dt = engine_calculate_delta_time(); // recomputes AND stores the new smoothed value
+    transforms->px[e] += velocity_x * dt;
+}
+
+void my_scene_render(void) {
+    f32 dt = engine_get_delta_time(); // re-reads the value stored by the last calculate() call, no recomputation
+}
+```
+
+Call `engine_calculate_delta_time()` exactly once per frame — normally at the top of `update()` — since each call advances the internal clock. Use `engine_get_delta_time()` anywhere else in that same frame (e.g. `render()`) that needs the value without ticking the clock again.
 
 ### Scenes
 
@@ -338,6 +355,22 @@ map.textures[1] = gfx_load_texture(path_png, path_png_size);
 
 // In render():
 map_render(&map);
+```
+
+### Isometric grids (`de-ngc/util/iso.h`)
+
+For 2:1 diamond-projection maps, convert between grid coordinates and screen pixels:
+
+```c
+#include "de-ngc/util/iso.h"
+
+iso_grid_t grid = iso_grid(64, 32); // tile diamond is 64px wide, 32px tall
+
+vec2_t screen_pos = iso_to_screen(grid, col, row); // grid -> pixel position, for rendering
+
+vec2_t frac = screen_to_iso(grid, mouse_x, mouse_y); // pixel -> fractional grid coord
+i32 picked_col = (i32)floorf(frac.x);
+i32 picked_row = (i32)floorf(frac.y); // e.g. for cursor/tile picking
 ```
 
 ---
