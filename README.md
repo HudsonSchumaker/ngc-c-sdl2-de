@@ -1,8 +1,8 @@
-# Dodoi-Engine - version 0.26.3
+# Dodoi-Engine NGC - version 0.26.3
 
-A lightweight 2D game engine for **Nintendo GameCube** homebrew, built in C using the [devkitPPC](https://devkitpro.org/) toolchain and SDL2.
+A lightweight 2D game engine for **Nintendo GameCube** homebrew, built in C17 using the [devkitPPC](https://devkitpro.org/) toolchain and SDL2.
 
-Developed by **Hudson Schumaker** — [Dodoi-Lab](https://github.com/Dodoi-Lab) © 2024
+Developed by **Hudson Schumaker** — [Dodoi-Lab](http://dodoi-lab.com:8080/) © 2024
 
 ---
 
