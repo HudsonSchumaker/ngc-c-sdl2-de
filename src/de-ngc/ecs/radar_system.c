@@ -9,7 +9,7 @@
 #include "../core/engine.h"
 #include "../math/math2d.h"
 
-void radar_system(tag_t source, tag_t target) {
+void radar_system(tag_e source, tag_e target) {
     entity_manager_t* em = engine_get_entity_manager();
     transform_pool_t* t = engine_get_transform_pool();
     texture_pool_t* tp = engine_get_texture_pool();

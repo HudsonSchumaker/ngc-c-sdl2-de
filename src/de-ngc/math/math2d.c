@@ -18,6 +18,7 @@ void build_trigo_tables(void) {
 i32 degrees_to_index(f32 degrees) {
     return (i32)(degrees * TABLE_SCALE) & ANGLE_MASK;
 }
+
 f32 de_sinf(i32 angle) {
     return sin_table[angle & ANGLE_MASK];
 }

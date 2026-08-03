@@ -12,10 +12,10 @@
 typedef enum {
     TILE_PATH,
     TILE_GROUND
-} map_tile_type_t;
+} map_tile_type_e;
 
 typedef struct {
-    map_tile_type_t type;
+    map_tile_type_e type;
     short texture_id;
 } map_tile_t;
 
@@ -44,4 +44,4 @@ void map_render(const map_t* map);
  * @param y The y-coordinate of the tile
  * @return The type of the tile at the specified coordinates
 */
-map_tile_type_t map_get_tile_type(const map_t* map, short x, short y);
+map_tile_type_e map_get_tile_type(const map_t* map, short x, short y);

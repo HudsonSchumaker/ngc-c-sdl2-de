@@ -16,11 +16,11 @@ typedef enum {
     TAG_PROJECTILE = 3,
     TAG_POWERUP = 4,
     TAG_TOWER = 5
-} tag_t;
+} tag_e;
 
 typedef struct {
     bool alive[MAX_ENTITIES];
-    tag_t tag[MAX_ENTITIES];
+    tag_e tag[MAX_ENTITIES];
     u16 next;
 } entity_manager_t;
 
@@ -59,7 +59,7 @@ static inline entity_t entity_create(entity_manager_t* em) {
  * @param tag The tag to assign to the newly created entity.
  * @return The ID of the newly created entity, or UINT16_MAX if no available slots.
 */
-static inline entity_t entity_create_w_tag(entity_manager_t* em, tag_t tag) {
+static inline entity_t entity_create_w_tag(entity_manager_t* em, tag_e tag) {
     for (u16 e = em->next; e < MAX_ENTITIES; e++) {
         if (!em->alive[e]) {
             em->alive[e] = true;
@@ -77,7 +77,7 @@ static inline entity_t entity_create_w_tag(entity_manager_t* em, tag_t tag) {
  * @param e The ID of the entity to set the tag for.
  * @param tag The tag to assign to the entity.
 */
-static inline void entity_set_tag(entity_manager_t* em, entity_t e, tag_t tag) {
+static inline void entity_set_tag(entity_manager_t* em, entity_t e, tag_e tag) {
     if (e < MAX_ENTITIES && em->alive[e]) {
         em->tag[e] = tag;
     }
@@ -89,7 +89,7 @@ static inline void entity_set_tag(entity_manager_t* em, entity_t e, tag_t tag) {
  * @param e The ID of the entity to get the tag for.
  * @return The tag of the entity, or TAG_NONE if the entity is not alive or the ID is out of bounds.
 */
-static inline tag_t entity_get_tag(entity_manager_t* em, entity_t e) {
+static inline tag_e entity_get_tag(entity_manager_t* em, entity_t e) {
     if (e < MAX_ENTITIES && em->alive[e]) {
         return em->tag[e];
     }

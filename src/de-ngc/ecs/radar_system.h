@@ -15,4 +15,4 @@
  * @param source The tag of the source entities to check from
  * @param target The tag of the target entities to check for
 */
-void radar_system(tag_t source, tag_t target);
+void radar_system(tag_e source, tag_e target);
