@@ -1,9 +1,9 @@
 /**
-  * @file engine.c
-  * @author Hudson Schumaker
-  * 
-  * Dodoi-Engine is a game engine developed by Dodoi-Lab.
-  * @copyright Copyright (c) 2024, Dodoi-Lab
+ * @file engine.c
+ * @author Hudson Schumaker
+ *
+ * Dodoi-Engine is a game engine developed by Dodoi-Lab.
+ * @copyright Copyright (c) 2024, Dodoi-Lab
  */
 #include "engine.h"
 #include "context.h"
@@ -13,6 +13,7 @@ static f32 delta_time = 0.0f;
 static texture_pool_t texture_pool;
 static entity_manager_t entity_manager;
 static transform_pool_t transform_pool;
+static animation_controller_pool_t animation_controller_pool;
 
 void engine_init(void) {
     if (ctx_init() != 0) {
@@ -22,6 +23,7 @@ void engine_init(void) {
     PAD_Init();
     build_trigo_tables();
     entity_manager_init(&entity_manager);
+    animation_controller_pool_init(&animation_controller_pool);
 }
 
 void engine_quit(void) {
@@ -81,4 +83,8 @@ transform_pool_t* engine_get_transform_pool(void) {
 
 texture_pool_t* engine_get_texture_pool(void) {
     return &texture_pool;
+}
+
+animation_controller_pool_t* engine_get_animation_controller_pool(void) {
+    return &animation_controller_pool;
 }
