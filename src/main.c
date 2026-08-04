@@ -1,12 +1,13 @@
 /**
  * @file main.c
- * @author Hudson Schumaker
  * @brief Defines the entry point of the game.
+ * @author Hudson Schumaker
+ * @version 1.0.0
  *
  * Dodoi-Engine is a game engine developed by Dodoi-Lab.
  * @copyright Copyright (c) 2024, Dodoi-Lab
 */
-#include "playground/game.h"
+#include "app.h"
 
 /**
  * @brief The entry point of the game.
@@ -14,7 +15,7 @@
  * @param argv The array of command-line arguments
  * @return Exit status of the program
 */
-int main(int argc, char **argv) {
-    game_start();
+int main(int argc, char** argv) {
+    app_start();
     return 0;
 }
