@@ -10,7 +10,8 @@ Developed by **Hudson Schumaker** — [Dodoi-Lab](http://dodoi-lab.com:8080/) ©
 
 - **Scene system** — lifecycle callbacks (`load`, `input`, `update`, `render`, `run`, `unload`) with clean scene transitions
 - **2D Graphics** — SDL2-backed renderer, color utilities, horizontal & vertical parallax scrolling
-- **ECS** — lightweight, struct-of-arrays entity/component system (transform, texture) with tags and simple systems (render, radar)
+- **ECS** — lightweight, struct-of-arrays entity/component system (transform, texture, animation) with tags and simple systems (render, radar, animation)
+- **Sprite animation** — named clips sliced from horizontal sprite-strip textures, with looping, flipping, and per-entity playback state
 - **Game Objects** — position, size, z-ordering, active flag, and AABB box-collider support
 - **Sound & Music** — load/play/pause/stop via SDL2_mixer (supports `.wav` and `.ogg`)
 - **Input** — per-frame GameCube controller (PAD) snapshot with down/held/up button state and analog sticks/triggers
@@ -128,6 +129,9 @@ static SDL_Rect logo_rect = { 0, 0, 0, 0 };
 
 void my_scene_init(void) {
     my_scene = malloc(sizeof(scene_t));
+    
+    // necessary if the scene will use the render_system
+    scene_init(my_scene); // sets the camera at(0,0) and w = WINDOW_WIDTH, h = WINDOW_HEIGHT and color black;
     my_scene->load   = my_scene_load;
     my_scene->input  = my_scene_input;
     my_scene->update = my_scene_update;
@@ -294,6 +298,38 @@ radar_system(TAG_TOWER, TAG_ENEMY); // proximity checks between two tags
 ```
 
 Available tags: `TAG_NONE`, `TAG_PLAYER`, `TAG_ENEMY`, `TAG_PROJECTILE`, `TAG_POWERUP`, `TAG_TOWER`.
+
+### Animation (`de-ngc/ecs/animation_controller.h`)
+
+An animation clip is a horizontal sprite-strip texture sliced into equal-width frames. Each entity can own up to `MAX_ANIMATIONS_PER_ENTITY` named clips, one of which plays at a time; the active clip's current frame is synced into the entity's `texture_pool_t` (texture, size, source rect, flip) automatically:
+
+```c
+#include "de-ngc/core/engine.h"
+#include "de-ngc/ecs/animation_controller.h"
+#include "hoshi-move-right_png.h"
+
+// In load(): register a clip and start playing it
+animation_controller_pool_t* anim = engine_get_animation_controller_pool();
+animation_controller_add(anim, hoshi, "move-right", hoshi_move_right_png, hoshi_move_right_png_size,
+                          8 /* frames */, 100 /* ms per frame */, true /* loop */);
+animation_controller_play(anim, hoshi);
+
+// Switch clips by name/index, or replay the active one
+animation_controller_play_by_name(anim, hoshi, "idle-right");
+animation_controller_play_by_index(anim, hoshi, 0);
+animation_controller_stop(anim, hoshi);
+animation_controller_set_flip(anim, hoshi, true); // mirror horizontally
+
+// In update(): advance frames and sync the texture pool
+animation_system(engine_get_animation_controller_pool(), engine_get_texture_pool());
+
+// In render(): draw as usual, render_system() honors the animation's source rect/flip
+render_system(engine_get_transform_pool(), engine_get_texture_pool(), &camera);
+
+// In unload(): free the clip textures and drop the entity
+animation_controller_clear(engine_get_animation_controller_pool(), hoshi);
+entity_destroy(engine_get_entity_manager(), hoshi);
+```
 
 ### UI Widgets (`de-ngc/ui/`)
 
