@@ -69,7 +69,7 @@ void credits_screen_load(void) {
 void credits_screen_input(void) {
     PAD_ScanPads();
     u16 buttonsDown = PAD_ButtonsDown(0);
-    if (buttonsDown & PAD_BUTTON_A) {
+    if (buttonsDown & PAD_BUTTON_B) {
         next_screen = SCENE_SPLASH;
         running = false;
     }

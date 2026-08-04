@@ -61,9 +61,8 @@ void game_screen_load(void) {
 void game_screen_input(void) {
     PAD_ScanPads();
     u16 down = PAD_ButtonsDown(0);
-    u16 held = PAD_ButtonsHeld(0);
 
-     if (down & PAD_BUTTON_B) {
+    if (down & PAD_BUTTON_A) {
         next_screen = SCENE_CREDITS;
         running = false;
         return;
