@@ -28,12 +28,14 @@ int ctx_init(void) {
         WINDOW_HEIGHT,
         SDL_WINDOW_SHOWN
     );
-    initialized.value |= BIT_1;
 
     if (!window) {
         ctx_quit();
         return -1;
     }
+    initialized.value |= BIT_1;
+
+    PAD_Init();
     initialized.value |= BIT_2;
 
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
@@ -79,6 +81,10 @@ u8 ctx_is_initialized(void) {
 
 u8 ctx_is_video_initialized(void) {
     return (initialized.value & BIT_0) != 0;
+}
+
+u8 ctx_is_pad_initialized(void) {
+    return (initialized.value & BIT_2) != 0;
 }
 
 u8 ctx_is_window_initialized(void) {
