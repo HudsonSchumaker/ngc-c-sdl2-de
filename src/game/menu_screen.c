@@ -7,11 +7,11 @@
  * @copyright Copyright (c) 2024, Dodoi-Lab
 */
 #include "menu_screen.h"
-#include "../de-wii/gfx/gfx.h"
-#include "../de-wii/core/engine.h"
-#include "../de-wii/core/input.h"
-#include "../de-wii/ui/menu.h"
-#include "../de-wii/ui/image.h"
+#include "../de-ngc/gfx/gfx.h"
+#include "../de-ngc/core/engine.h"
+#include "../de-ngc/core/input.h"
+#include "../de-ngc/ui/menu.h"
+#include "../de-ngc/ui/image.h"
 #include "HemiHead_ttf.h"
 #include "ans_png.h"
 
