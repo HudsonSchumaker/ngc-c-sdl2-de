@@ -8,7 +8,7 @@
 */
 #pragma once
 #include "../app.h"
-#include "../de-wii/gfx/scene.h"
+#include "../de-ngc/gfx/scene.h"
 
 void     menu_screen_init(void);
 void     menu_screen_load(void);
