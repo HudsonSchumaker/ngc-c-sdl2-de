@@ -6,7 +6,9 @@
  * Dodoi-Engine is a game engine developed by Dodoi-Lab.
  * @copyright Copyright (c) 2024, Dodoi-Lab
  */
-#pragma once
+#ifndef DE_ANIMATION_CONTROLLER_H
+#define DE_ANIMATION_CONTROLLER_H
+
 #include "../de.h"
 #include "../gfx/animation.h"
 #include "entity_manager.h"
@@ -102,3 +104,5 @@ void animation_controller_clear(animation_controller_pool_t* pool, entity_t e);
  * @param textures A pointer to the texture pool to update with the current frame's texture and source rect.
  */
 void animation_system(animation_controller_pool_t* pool, texture_pool_t* textures);
+
+#endif // DE_ANIMATION_CONTROLLER_H

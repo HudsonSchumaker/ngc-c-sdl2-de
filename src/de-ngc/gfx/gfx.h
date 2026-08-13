@@ -6,7 +6,9 @@
  * Dodoi-Engine is a game engine developed by Dodoi-Lab.
  * @copyright Copyright (c) 2024, Dodoi-Lab
 */
-#pragma once
+#ifndef DE_GFX_H
+#define DE_GFX_H
+
 #include "color.h"
 #include "../de.h"
 
@@ -179,3 +181,5 @@ void gfx_draw_fill_fbox(SDL_FRect rect, color_t color);
  * @param color The color of the triangle
 */
 void gfx_draw_triangle(i32 x1, i32 y1, i32 x2, i32 y2, i32 x3, i32 y3, color_t color);
+
+#endif // DE_GFX_H

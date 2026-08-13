@@ -6,7 +6,9 @@
  * Dodoi-Engine is a game engine developed by Dodoi-Lab.
  * @copyright Copyright (c) 2024, Dodoi-Lab
 */
-#pragma once
+#ifndef DE_ARRAYS_H
+#define DE_ARRAYS_H
+
 #include "../de.h"
 
 /**
@@ -243,3 +245,5 @@ static inline void* array_max(void* array, size_t count, size_t item_size, i32 (
 
     return max_item;
 }
+
+#endif // DE_ARRAYS_H

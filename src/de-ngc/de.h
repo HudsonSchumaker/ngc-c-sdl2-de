@@ -6,7 +6,9 @@
  * Dodoi-Engine is a game engine developed by Dodoi-Lab.
  * @copyright Copyright (c) 2024, Dodoi-Lab
 */
-#pragma once
+#ifndef DE_H
+#define DE_H
+
 #include <math.h>
 #include <time.h>
 #include <float.h>
@@ -92,3 +94,5 @@ typedef u16 entity_t;
 typedef struct {
     u8 value;
 } byte_t;
+
+#endif // DE_H

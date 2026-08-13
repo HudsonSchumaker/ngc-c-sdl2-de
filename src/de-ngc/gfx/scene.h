@@ -6,7 +6,9 @@
  * Dodoi-Engine is a game engine developed by Dodoi-Lab.
  * @copyright Copyright (c) 2024, Dodoi-Lab
 */
-#pragma once
+#ifndef DE_SCENE_H
+#define DE_SCENE_H
+
 #include "../de.h"
 #include "../core/camera.h"
 
@@ -45,3 +47,5 @@ void scene_begin_render(void);
  * @brief Ends the rendering process for the current scene.
 */
 void scene_end_render(void);
+
+#endif // DE_SCENE_H
