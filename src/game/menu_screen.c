@@ -32,6 +32,7 @@ void menu_screen_init(void) {
         exit(EXIT_FAILURE);
     }
 
+    scene_init(menu_screen);
     menu_screen->load   = menu_screen_load;
     menu_screen->input  = menu_screen_input;
     menu_screen->update = menu_screen_update;

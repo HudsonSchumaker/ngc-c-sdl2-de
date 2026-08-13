@@ -32,6 +32,7 @@ void credits_screen_init(void) {
         exit(EXIT_FAILURE);
     }
 
+    scene_init(credits_screen);
     credits_screen->load   = credits_screen_load;
     credits_screen->input  = credits_screen_input;
     credits_screen->update = credits_screen_update;

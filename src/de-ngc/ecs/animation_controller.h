@@ -58,7 +58,7 @@ void animation_controller_pool_init(animation_controller_pool_t* pool);
  * @param is_loop Whether the animation should loop.
  * @return The clip index, or -1 on failure.
  */
-i8 animation_controller_add(animation_controller_pool_t* pool, entity_t e, const char* name, const u8* data, size_t size, i8 number_frames, i8 frame_speed_rate, bool is_loop);
+i8 animation_controller_add(animation_controller_pool_t* pool, entity_t e, string_t name, const u8* data, size_t size, i8 number_frames, i8 frame_speed_rate, bool is_loop);
 
 /**
  * @brief Plays the currently active clip for an entity from the start.
@@ -68,7 +68,7 @@ void animation_controller_play(animation_controller_pool_t* pool, entity_t e);
 /**
  * @brief Makes the named clip active and plays it from the start.
  */
-void animation_controller_play_by_name(animation_controller_pool_t* pool, entity_t e, const char* name);
+void animation_controller_play_by_name(animation_controller_pool_t* pool, entity_t e, string_t name);
 
 /**
  * @brief Makes the clip at the given index active and plays it from the start.
@@ -89,7 +89,7 @@ void animation_controller_set_flip(animation_controller_pool_t* pool, entity_t e
  * @brief Gets the name of the entity's active clip.
  * @return The clip name, or NULL if the entity has no active clip.
  */
-const char* animation_controller_get_active_name(animation_controller_pool_t* pool, entity_t e);
+string_t animation_controller_get_active_name(animation_controller_pool_t* pool, entity_t e);
 
 /**
  * @brief Destroys all clip textures owned by an entity and resets its playback state. Call this when an entity or scene is unloaded.
