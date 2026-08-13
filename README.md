@@ -1,4 +1,4 @@
-# Dodoi-Engine NGC - version 0.31.1
+# Dodoi-Engine NGC - version 0.31.2
 
 A lightweight 2D game engine for **Nintendo GameCube** homebrew, built in C17 using the [devkitPPC](https://devkitpro.org/) toolchain and SDL2.
 
@@ -128,10 +128,7 @@ static SDL_Texture* logo = NULL;
 static SDL_Rect logo_rect = { 0, 0, 0, 0 };
 
 void my_scene_init(void) {
-    my_scene = malloc(sizeof(scene_t));
-    
-    // necessary if the scene will use the render_system
-    scene_init(my_scene); // sets the camera at(0,0) and w = WINDOW_WIDTH, h = WINDOW_HEIGHT and color black;
+    my_scene = scene_init(); // allocates the scene_t and sets the camera at (0,0), w = WINDOW_WIDTH, h = WINDOW_HEIGHT, color black
     my_scene->load   = my_scene_load;
     my_scene->input  = my_scene_input;
     my_scene->update = my_scene_update;

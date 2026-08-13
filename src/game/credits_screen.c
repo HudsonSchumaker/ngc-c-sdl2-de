@@ -27,12 +27,8 @@ static SDL_Texture* b_b_texture = NULL;
 static SDL_Rect b_b_rect = {0};
 
 void credits_screen_init(void) {
-    credits_screen = malloc(sizeof(scene_t));
-    if (credits_screen == NULL) {
-        exit(EXIT_FAILURE);
-    }
+    credits_screen = scene_init();
 
-    scene_init(credits_screen);
     credits_screen->load   = credits_screen_load;
     credits_screen->input  = credits_screen_input;
     credits_screen->update = credits_screen_update;

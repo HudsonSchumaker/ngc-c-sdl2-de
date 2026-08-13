@@ -21,12 +21,8 @@ static SDL_Rect logo_rect = {0};
 static SDL_Rect dodoi_rect = {0};
 
 void splash_screen_init(void) {
-    splash_screen = malloc(sizeof(scene_t));
-    if (splash_screen == NULL) {
-        exit(EXIT_FAILURE);
-    }
-
-    scene_init(splash_screen);
+    splash_screen = scene_init();
+    
     splash_screen->load   = splash_screen_load;
     splash_screen->input  = splash_screen_input;
     splash_screen->update = splash_screen_update;

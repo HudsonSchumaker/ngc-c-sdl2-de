@@ -27,9 +27,9 @@ typedef struct {
 
 /**
  * @brief Initializes the scene, setting the camera of the scene.
- * @param scene Pointer to the scene to initialize.
+ * @return Pointer to the initialized scene.
 */
-void scene_init(scene_t* scene);
+void* scene_init(void);
 
 /**
  * @brief Sets the current active scene. If there is an existing scene, it will be unloaded before the new scene is loaded and run.
