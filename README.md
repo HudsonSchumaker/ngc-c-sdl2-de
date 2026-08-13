@@ -1,4 +1,4 @@
-# Dodoi-Engine NGC - version 0.30.4
+# Dodoi-Engine NGC - version 0.31.0
 
 A lightweight 2D game engine for **Nintendo GameCube** homebrew, built in C17 using the [devkitPPC](https://devkitpro.org/) toolchain and SDL2.
 
@@ -34,7 +34,7 @@ src/
 |      ├── sfx/   # Sound effects and music (SDL_mixer)
 |      ├── ui/    # Button, image, label widgets
 |      ├── math/  # 2D math with LUT-based trigonometry
-|      ├── util/  # Grid, tile-map, and isometric projection utilities
+|      ├── util/  # Grid, tile-map, isometric projection, and dynamic list utilities
 └── playground/   # Splash screen and level prototypes
 data/             # Binary assets (images, audio, fonts) embedded at build time
 build/            # Intermediate object files (generated)
@@ -408,6 +408,33 @@ vec2_t frac = screen_to_iso(grid, mouse_x, mouse_y); // pixel -> fractional grid
 i32 picked_col = (i32)floorf(frac.x);
 i32 picked_row = (i32)floorf(frac.y); // e.g. for cursor/tile picking
 ```
+
+### Dynamic lists (`de-ngc/util/list.h`)
+
+`list_t` is a type-erased, growable array (like a `qsort`-friendly `vector`): it stores raw bytes, sized by `type_size`, and grows by doubling capacity as needed. Push/get always work through pointers to the element:
+
+```c
+#include "de-ngc/util/list.h"
+#include "de-ngc/util/arrays.h" // compare_i32, compare_u32, compare_str, ...
+
+list_t scores;
+list_init(&scores, sizeof(i32));
+
+i32 a = 42, b = 7;
+list_push_back(&scores, &a);
+list_push_back(&scores, &b);
+
+list_sort(&scores, compare_i32);
+
+for (size_t i = 0; i < list_size(&scores); i++) {
+    i32* value = (i32*)list_get(&scores, i);
+    printf("%d\n", *value);
+}
+
+list_free(&scores); // frees the backing buffer, safe to list_init() again afterwards
+```
+
+`list_push_back` and `list_resize` return `false` on allocation failure instead of growing silently, so check the return value if the list can grow unbounded. `list_get` returns `NULL` for an out-of-bounds index.
 
 ---
 
