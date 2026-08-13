@@ -8,6 +8,7 @@
 */
 #pragma once
 #include <math.h>
+#include <time.h>
 #include <float.h>
 #include <stdio.h>
 #include <stdint.h>
