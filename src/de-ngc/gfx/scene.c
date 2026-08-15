@@ -10,7 +10,7 @@
 #include "../core/context.h"
 static scene_t* current_scene = NULL;
 
-void* scene_init() {
+scene_t* scene_init() {
     scene_t* scene = malloc(sizeof(scene_t));
     if (scene == NULL) {
         exit(EXIT_FAILURE);
