@@ -112,7 +112,18 @@ void gfx_render_texture_rotated(SDL_Texture* texture, i32 x, i32 y, i32 w, i32 h
 void gfx_draw_line(i32 x0, i32 y0, i32 x1, i32 y1, color_t color);
 
 /**
- * @brief Draws a circle with the specified center, radius, and color.
+ * @brief Draws a dashed circle with the specified center, radius, dash length, and color.
+ * @param x0 The X coordinate of the starting point
+ * @param y0 The Y coordinate of the starting point
+ * @param x1 The X coordinate of the ending point
+ * @param y1 The Y coordinate of the ending point
+ * @param dash_length The length of each dash
+ * @param color The color of the line 
+ */
+void gfx_draw_dashed_line(i32 x0, i32 y0, i32 x1, i32 y1, i16 dash_length, color_t color);
+
+/**
+ * @brief Draws a dashed line between two points with the specified color.
  * @param cx The X coordinate of the center
  * @param cy The Y coordinate of the center
  * @param radius The radius of the circle
