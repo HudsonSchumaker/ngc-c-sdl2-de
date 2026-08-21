@@ -59,7 +59,10 @@
  * @return Negative if a < b, zero if a == b, positive if a > b
  */
 static inline i32 compare_i32(const void* a, const void* b) {
-    return (*(const i32 *)a - *(const i32 *)b);
+    i32 va = *(const i32 *)a;
+    i32 vb = *(const i32 *)b;
+    
+    return (va > vb) - (va < vb);
 }
 
 /**
@@ -259,36 +262,19 @@ static inline int array_linear_search(const void* array, size_t count, size_t it
 }
 
 /**
- * @brief Perform a binary search on a sorted array
- * @param array The sorted array to search
+ * @brief Perform a binary search, sort before search
+ * @param array The array to search (will be sorted in place)
  * @param count Number of items in the array
  * @param item_size Size of each item in bytes
  * @param key The item to search for
  * @param compare Comparison function that returns negative, zero, or positive
  * @return The index of the found item, or -1 if not found
  */
-static inline int array_binary_search(const void* array, size_t count, size_t item_size, const void* key, i32 (*compare)(const void*, const void*)) {
-    size_t left = 0;
-    size_t right = count;
-    const uint8_t* arr = (const uint8_t *)array;
-
-    while (left < right) {
-        size_t mid = left + (right - left) / 2;
-        const void* item = arr + (mid * item_size);
-        i32 result = compare(item, key);
-
-        if (result == 0) {
-            return (int)mid;
-        }
-
-        if (result < 0) {
-            left = mid + 1;
-        } else {
-            right = mid;
-        }
-    }
-
-    return -1;
+static inline int array_binary_search(void* array, size_t count, size_t item_size, const void* key, int (*compare)(const void*, const void*)) {
+    qsort(array, count, item_size, compare);
+    const void* result = bsearch(key, array, count, item_size, compare);
+    if (result == NULL) return -1;
+    return (int)(((const uint8_t*)result - (const uint8_t*)array) / item_size);
 }
 
 /**
