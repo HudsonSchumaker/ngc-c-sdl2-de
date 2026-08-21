@@ -61,7 +61,7 @@
 static inline i32 compare_i32(const void* a, const void* b) {
     i32 va = *(const i32 *)a;
     i32 vb = *(const i32 *)b;
-    
+
     return (va > vb) - (va < vb);
 }
 
@@ -250,7 +250,7 @@ static inline void array_sort(void* array, size_t count, size_t item_size, i32 (
  * @param compare Comparison function that returns negative, zero, or positive
  * @return The index of the found item, or -1 if not found
  */
-static inline int array_linear_search(const void* array, size_t count, size_t item_size, const void* key, i32 (*compare)(const void*, const void*)) {
+static inline i32 array_linear_search(const void* array, size_t count, size_t item_size, const void* key, i32 (*compare)(const void*, const void*)) {
     const uint8_t* arr = (const uint8_t *)array;
     for (size_t i = 0; i < count; i++) {
         const void* item = arr + (i * item_size);
@@ -270,11 +270,11 @@ static inline int array_linear_search(const void* array, size_t count, size_t it
  * @param compare Comparison function that returns negative, zero, or positive
  * @return The index of the found item, or -1 if not found
  */
-static inline int array_binary_search(void* array, size_t count, size_t item_size, const void* key, int (*compare)(const void*, const void*)) {
+static inline i32 array_binary_search(void* array, size_t count, size_t item_size, const void* key, i32 (*compare)(const void*, const void*)) {
     qsort(array, count, item_size, compare);
     const void* result = bsearch(key, array, count, item_size, compare);
     if (result == NULL) return -1;
-    return (int)(((const uint8_t*)result - (const uint8_t*)array) / item_size);
+    return (i32)(((const uint8_t*)result - (const uint8_t*)array) / item_size);
 }
 
 /**
