@@ -255,7 +255,7 @@ static inline i32 array_linear_search(const void* array, size_t count, size_t it
     for (size_t i = 0; i < count; i++) {
         const void* item = arr + (i * item_size);
         if (compare(item, key) == 0) {
-            return (int)i;
+            return (i32)i;
         }
     }
     return -1;
