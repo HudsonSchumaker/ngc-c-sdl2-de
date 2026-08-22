@@ -23,4 +23,4 @@ typedef struct {
     i8  zi[MAX_ENTITIES]; 
 } transform_pool_t;
 
-#endif // DE_TRANSFORM_COMPONENT_H
+#endif /* DE_TRANSFORM_COMPONENT_H */

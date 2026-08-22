@@ -68,4 +68,4 @@ void image_set_tint(image_t* img, color_t color);
 */
 void image_render(const image_t* img);
 
-#endif // DE_IMAGE_H
+#endif /* DE_IMAGE_H */

@@ -66,4 +66,4 @@ bool input_button_held(u8 chan, u16 button);
 */
 bool input_button_up(u8 chan, u16 button);
 
-#endif // DE_INPUT_H
+#endif /* DE_INPUT_H */

@@ -116,4 +116,4 @@ color_t color_gray(void);
 */
 color_t color_yellow(void);
 
-#endif // DE_COLOR_H
+#endif /* DE_COLOR_H */

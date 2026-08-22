@@ -30,4 +30,4 @@ typedef struct {
 */
 camera_t camera_new(color_t color);
 
-#endif // DE_CAMERA_H
+#endif /* DE_CAMERA_H */

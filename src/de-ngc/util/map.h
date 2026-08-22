@@ -48,4 +48,4 @@ void map_render(const map_t* map);
 */
 map_tile_type_e map_get_tile_type(const map_t* map, short x, short y);
 
-#endif // DE_MAP_H
+#endif /* DE_MAP_H */

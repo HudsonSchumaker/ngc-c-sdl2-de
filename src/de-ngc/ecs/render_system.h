@@ -22,4 +22,4 @@
 */
 void render_system(transform_pool_t* t, texture_pool_t* r, camera_t* c);
 
-#endif // DE_RENDER_SYSTEM_H
+#endif /* DE_RENDER_SYSTEM_H */

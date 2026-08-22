@@ -65,4 +65,4 @@ INLINE bool circle_intersects(vec2_t a, i32 ra, vec2_t b, i32 rb) {
     return vec2_distance_sq(a, b) <= (rr * rr);
 }
 
-#endif // DE_COLLISION_H
+#endif /* DE_COLLISION_H */

@@ -145,4 +145,4 @@ void parallax_vertical_destroy(parallax_vertical_t* parallax);
 */
 void parallax_horizontal_destroy(parallax_horizontal_t* parallax);
 
-#endif // DE_PARALLAX_H
+#endif /* DE_PARALLAX_H */

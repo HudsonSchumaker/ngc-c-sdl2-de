@@ -67,4 +67,4 @@ size_t list_size(const list_t* list);
  */
 void list_free(list_t* list);
 
-#endif // DE_LIST_H
+#endif /* DE_LIST_H */

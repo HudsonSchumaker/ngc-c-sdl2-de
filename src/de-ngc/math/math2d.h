@@ -10,9 +10,9 @@
 #define DE_MATH2D_H
 
 #include "../de.h"
-//----------------------------------------------------------------
-// Lookup tables for trigonometric functions
-//----------------------------------------------------------------
+/*----------------------------------------------------------------
+ * Lookup tables for trigonometric functions
+ *---------------------------------------------------------------- */
 
 /**
  * @brief Builds the sine, cosine, and arctangent lookup tables. This function should be called once during initialization.
@@ -83,9 +83,9 @@ INLINE f32 fsqrtf(f32 number) {
     return number * rsqrtf(number);
 }
 
-//----------------------------------------------------------------
-// Vector2D struct and functions
-//----------------------------------------------------------------
+/*----------------------------------------------------------------
+ * Vector2D struct and functions
+ *---------------------------------------------------------------- */
 
 /**
  * @brief A 2D vector structure with x and y components, aligned to 32 bytes for SIMD optimizations.
@@ -273,9 +273,9 @@ INLINE vec2_t vec2_move_forward(vec2_t position, i32 angle,f32 speed) {
     return position;
 }
 
-//----------------------------------------------------------------
-// Math utility functions
-//----------------------------------------------------------------
+/*----------------------------------------------------------------
+ * Math utility functions
+ *---------------------------------------------------------------- */
 
 /**
  * @brief Returns the minimum of two floating-point values.
@@ -398,9 +398,9 @@ INLINE f32 angle_between_direction(f32 dx, f32 dy) {
     return atan2f(dy, dx);
 }
 
-//----------------------------------------------------------------
-// Angle utilities
-//----------------------------------------------------------------
+/*----------------------------------------------------------------
+ * Angle utilities
+ *---------------------------------------------------------------- */
 
 /**
  * @brief Wraps an angle to the range [0, 1024) where 1024 represents 360 degrees.
@@ -429,4 +429,4 @@ INLINE f32 rad2deg(f32 rad) {
     return rad * RAD_2_DEG_F;
 }
 
-#endif // DE_MATH2D_H
+#endif /* DE_MATH2D_H */

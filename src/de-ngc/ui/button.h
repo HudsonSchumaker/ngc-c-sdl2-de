@@ -69,4 +69,4 @@ void button_set_onclick(button_t* btn, button_onclick_callback_t callback);
 */
 void button_render(const button_t* btn);
 
-#endif // DE_BUTTON_H
+#endif /* DE_BUTTON_H */

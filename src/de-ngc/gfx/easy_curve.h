@@ -179,4 +179,4 @@ INLINE f32 ease_in_out_quart(f32 t) {
     return 1.0f - (u * u * u * u) * 0.5f;
 }
 
-#endif // DE_EASY_CURVE_H
+#endif /* DE_EASY_CURVE_H */

@@ -100,4 +100,4 @@ void label_set_text(label_t* lbl, const char* text, const u8* data, size_t size)
  */
 void label_release(label_t* lbl);
 
-#endif // DE_LABEL_H
+#endif /* DE_LABEL_H */

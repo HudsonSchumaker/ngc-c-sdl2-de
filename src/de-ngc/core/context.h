@@ -82,4 +82,4 @@ u8 ctx_is_ttf_initialized(void);
  */
 void ctx_quit(void);
 
-#endif // DE_CONTEXT_H
+#endif /* DE_CONTEXT_H */

@@ -193,4 +193,4 @@ void gfx_draw_fill_fbox(SDL_FRect rect, color_t color);
 */
 void gfx_draw_triangle(i32 x1, i32 y1, i32 x2, i32 y2, i32 x3, i32 y3, color_t color);
 
-#endif // DE_GFX_H
+#endif /* DE_GFX_H */

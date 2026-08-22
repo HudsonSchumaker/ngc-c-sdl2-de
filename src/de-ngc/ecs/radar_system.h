@@ -19,4 +19,4 @@
 */
 void radar_system(tag_e source, tag_e target);
 
-#endif // DE_RADAR_SYSTEM_H
+#endif /* DE_RADAR_SYSTEM_H */

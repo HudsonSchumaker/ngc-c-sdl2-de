@@ -57,4 +57,4 @@ void sfx_unpause_music();
 */
 void sfx_stop_music();
 
-#endif // DE_SFX_H
+#endif /* DE_SFX_H */

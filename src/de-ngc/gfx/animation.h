@@ -36,4 +36,4 @@ void animation_stop(animation_t *animation);
  */
 void animation_update(animation_t* animation);
 
-#endif // DE_ANIMATION_H
+#endif /* DE_ANIMATION_H */

@@ -98,4 +98,4 @@ typedef struct {
     u8 value;
 } byte_t;
 
-#endif // DE_H
+#endif /* DE_H */

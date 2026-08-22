@@ -105,4 +105,4 @@ void animation_controller_clear(animation_controller_pool_t* pool, entity_t e);
  */
 void animation_system(animation_controller_pool_t* pool, texture_pool_t* textures);
 
-#endif // DE_ANIMATION_CONTROLLER_H
+#endif /* DE_ANIMATION_CONTROLLER_H */

@@ -50,4 +50,4 @@ void grid_destroy(grid_t* grid);
 */
 void grid_render(grid_t* grid);
 
-#endif // DE_GRID_H
+#endif /* DE_GRID_H */

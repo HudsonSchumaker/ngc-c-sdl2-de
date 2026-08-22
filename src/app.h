@@ -25,4 +25,4 @@ typedef enum {
 */
 void app_start(void);
 
-#endif // DE_APP_H
+#endif /* DE_APP_H */

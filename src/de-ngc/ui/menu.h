@@ -77,4 +77,4 @@ void menu_render(menu_t* m);
 */
 void menu_release(menu_t* m);
 
-#endif // DE_MENU_H
+#endif /* DE_MENU_H */

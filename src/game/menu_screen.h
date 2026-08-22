@@ -6,7 +6,9 @@
  * Dodoi-Engine is a game engine developed by Dodoi-Lab.
  * @copyright Copyright (c) 2024, Dodoi-Lab
 */
-#pragma once
+#ifndef MENU_SCREEN_H
+#define MENU_SCREEN_H
+
 #include "../app.h"
 #include "../de-ngc/gfx/scene.h"
 
@@ -18,3 +20,5 @@ void     menu_screen_render(void);
 u8       menu_screen_run(void);
 void     menu_screen_unload(void);
 scene_t* menu_screen_get_scene(void);
+
+#endif /* MENU_SCREEN_H */

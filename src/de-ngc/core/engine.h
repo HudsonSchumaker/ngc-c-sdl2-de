@@ -62,4 +62,4 @@ texture_pool_t* engine_get_texture_pool(void);
  */
 animation_controller_pool_t* engine_get_animation_controller_pool(void);
 
-#endif // DE_ENGINE_H
+#endif /* DE_ENGINE_H */

@@ -48,4 +48,4 @@ void scene_begin_render(void);
 */
 void scene_end_render(void);
 
-#endif // DE_SCENE_H
+#endif /* DE_SCENE_H */

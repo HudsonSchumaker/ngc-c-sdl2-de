@@ -23,4 +23,4 @@ typedef struct {
     bool flip[MAX_ENTITIES];
 } texture_pool_t;
 
-#endif // DE_TEXTURE_COMPONENT_H
+#endif /* DE_TEXTURE_COMPONENT_H */

@@ -327,4 +327,4 @@ static inline void* array_max(void* array, size_t count, size_t item_size, i32 (
     return max_item;
 }
 
-#endif // DE_ARRAYS_H
+#endif /* DE_ARRAYS_H */
