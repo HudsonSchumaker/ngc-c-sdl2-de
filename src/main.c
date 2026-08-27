@@ -4,6 +4,12 @@
  * @author Hudson Schumaker
  * @version 1.0.0
  *
+ * NGC specs
+ * CPU: IBM Gekko @486 MHz
+ * GPU: ATI Flipper @162 MHz
+ * RAM: 24 MB
+ * VRAM: 3 MB
+ *
  * Dodoi-Engine is a game engine developed by Dodoi-Lab.
  * @copyright Copyright (c) 2024, Dodoi-Lab
 */
