@@ -10,7 +10,7 @@
 
 #include "../de.h"
 
-typedef struct {
+typedef struct list_t {
 	void* value;
 	size_t size;
 	size_t capacity;
@@ -52,7 +52,7 @@ void* list_get(const list_t* list, size_t index);
  * @param list Pointer to the list
  * @param comparator Comparison function that returns negative, zero, or positive
  */
-void list_sort(const list_t* list, int (*comparator)(const void*, const void*));
+void list_sort(const list_t* list, i32(*comparator)(const void*, const void*));
 
 /**
  * @brief Get the number of items in the list

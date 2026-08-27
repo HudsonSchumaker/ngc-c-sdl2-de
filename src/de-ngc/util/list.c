@@ -48,7 +48,7 @@ void* list_get(const list_t* list, size_t index) {
 	return NULL;
 }
 
-void list_sort(const list_t* list, int (*comparator)(const void*, const void*)) {
+void list_sort(const list_t* list, i32(*comparator)(const void*, const void*)) {
     if (list == NULL || list->value == NULL || list->size <= 1) {
         return; // Nothing to sort
     }
