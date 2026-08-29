@@ -10,6 +10,14 @@
 #include "../core/context.h"
 static scene_t* current_scene = NULL;
 
+static void scene_load_screen(void) {
+    SDL_Renderer* renderer = ctx_get_renderer();
+
+    SDL_SetRenderDrawColor(renderer, 138, 43, 226, 255); // purple color
+    SDL_RenderClear(renderer);
+    SDL_RenderPresent(renderer);
+}
+
 scene_t* scene_init() {
     scene_t* scene = malloc(sizeof(scene_t));
     if (scene == NULL) {
@@ -28,6 +36,7 @@ u8 scene_set_scene(scene_t* scene) {
 
     current_scene = scene;
     if (current_scene != NULL) {
+        scene_load_screen();
         current_scene->load();
         status = current_scene->run();
     }
