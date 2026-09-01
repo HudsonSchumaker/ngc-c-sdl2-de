@@ -88,7 +88,7 @@ void gfx_render_texture(SDL_Texture* texture, i32 x, i32 y, i32 w, i32 h) {
     SDL_RenderCopy(ctx_get_renderer(), texture, NULL, &dest);
 }
 
-void gfx_render_texture_rotated(SDL_Texture* texture, i32 x, i32 y, i32 w, i32 h, double angle) {
+void gfx_render_texture_rotated(SDL_Texture* texture, i32 x, i32 y, i32 w, i32 h, f64 angle) {
     SDL_Rect dest = { x, y, w, h };
     SDL_Point center = { w >> 1, h >> 1 };
     SDL_RenderCopyEx(ctx_get_renderer(), texture, NULL, &dest, angle, &center, SDL_FLIP_NONE);

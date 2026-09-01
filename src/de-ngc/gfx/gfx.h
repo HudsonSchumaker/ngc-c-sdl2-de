@@ -99,7 +99,7 @@ void gfx_render_texture(SDL_Texture* texture, i32 x, i32 y, i32 w, i32 h);
  * @param h The height to render the texture
  * @param angle The rotation angle in degrees
 */
-void gfx_render_texture_rotated(SDL_Texture* texture, i32 x, i32 y, i32 w, i32 h, double angle);
+void gfx_render_texture_rotated(SDL_Texture* texture, i32 x, i32 y, i32 w, i32 h, f64 angle);
 
 /**
  * @brief Draws a line between two points with the specified color.
