@@ -19,7 +19,7 @@ void credits_screen_update(void);
 void credits_screen_render(void);
 u8   credits_screen_run(void);
 void credits_screen_unload(void);
-
 scene_t* credits_screen_get_scene(void);
 
 #endif /* CREDITS_SCREEN_H */
+

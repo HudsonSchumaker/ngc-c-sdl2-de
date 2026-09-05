@@ -19,7 +19,6 @@ void splash_screen_update(void);
 void splash_screen_render(void);
 u8   splash_screen_run(void);
 void splash_screen_unload(void);
-
 scene_t* splash_screen_get_scene(void);
 
 #endif /* SPLASH_SCREEN_H */

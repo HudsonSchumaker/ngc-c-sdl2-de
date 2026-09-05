@@ -12,13 +12,13 @@
 #include "../app.h"
 #include "../de-ngc/gfx/scene.h"
 
-void     menu_screen_init(void);
-void     menu_screen_load(void);
-void     menu_screen_input(void);
-void     menu_screen_update(void);
-void     menu_screen_render(void);
-u8       menu_screen_run(void);
-void     menu_screen_unload(void);
+void menu_screen_init(void);
+void menu_screen_load(void);
+void menu_screen_input(void);
+void menu_screen_update(void);
+void menu_screen_render(void);
+u8   menu_screen_run(void);
+void menu_screen_unload(void);
 scene_t* menu_screen_get_scene(void);
 
 #endif /* MENU_SCREEN_H */

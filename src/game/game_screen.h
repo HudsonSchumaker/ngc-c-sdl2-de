@@ -19,7 +19,6 @@ void game_screen_update(void);
 void game_screen_render(void);
 u8   game_screen_run(void);
 void game_screen_unload(void);
-
 scene_t* game_screen_get_scene(void);
 
 #endif /* GAME_SCREEN_H */
