@@ -11,7 +11,7 @@
 
 #include "de-ngc/de.h"
 
-typedef enum {
+typedef enum scene_id_e {
     SCENE_EXIT = 0,
     SCENE_SPLASH,
     SCENE_MENU,
