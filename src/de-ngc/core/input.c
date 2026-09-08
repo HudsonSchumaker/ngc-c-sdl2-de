@@ -32,9 +32,9 @@ void input_update(void) {
         pad->buttons_held = held;
 
         pad->stick.x = normalize_stick_axis(PAD_StickX(chan));
-        pad->stick.y = normalize_stick_axis(PAD_StickY(chan));
+        pad->stick.y = -normalize_stick_axis(PAD_StickY(chan));
         pad->sub_stick.x = normalize_stick_axis(PAD_SubStickX(chan));
-        pad->sub_stick.y = normalize_stick_axis(PAD_SubStickY(chan));
+        pad->sub_stick.y = -normalize_stick_axis(PAD_SubStickY(chan));
 
         pad->trigger_l = normalize_trigger(PAD_TriggerL(chan));
         pad->trigger_r = normalize_trigger(PAD_TriggerR(chan));
